@@ -137,9 +137,11 @@ p {
 
 .hero {
     height: 70vh;
-    background-image: url("../images/hero.jpg");
-    background-size: cover;
+    background-image: url("../images/progress-not-perfection.jpg");
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: white; */
     display: flex;
     align-items: center;
     justify-content: center;
