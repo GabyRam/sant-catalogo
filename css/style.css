@@ -136,12 +136,12 @@ p {
 }
 
 .hero {
-    height: 70vh;
+    height: 45vh;
     background-image: url("../images/progress-not-perfection.jpg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    /* background-color: white; */
+    background-color: #b2b2b2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,4 +189,262 @@ html {
 
 .logo-img {
     height: 100px;
+}
+
+/* ── HERO COLLAGE ── */
+.hero-collage {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 540px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.mosaic {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+    grid-template-rows: 1.3fr 1fr 1fr;
+    gap: 3px;
+}
+
+.cell-1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.cell-2 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.cell-3 {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.cell-4 {
+    grid-column: 4;
+    grid-row: 1 / 3;
+}
+
+.cell-5 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.cell-6 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.cell-7 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.cell-8 {
+    grid-column: 2 / 4;
+    grid-row: 3;
+}
+
+.cell-9 {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.mosaic-cell {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.mosaic-cell img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: opacity 1s ease;
+    will-change: opacity;
+    transform: scale(1.05);
+    animation: subtleZoom 14s ease-in-out infinite alternate;
+}
+
+.mosaic-cell:nth-child(even) img {
+    animation-delay: -7s;
+}
+
+.mosaic-cell:nth-child(3n) img {
+    animation-delay: -3s;
+}
+
+@keyframes subtleZoom {
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+.mosaic-cell img.layer-a {
+    opacity: 1;
+    z-index: 1;
+}
+
+.mosaic-cell img.layer-b {
+    opacity: 0;
+    z-index: 2;
+}
+
+.mosaic-cell img.layer-b.show {
+    opacity: 1;
+}
+
+.mosaic-cell img.layer-a.hide {
+    opacity: 0;
+}
+
+.mosaic-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 0.5) 0%, transparent 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.08) 45%, rgba(0, 0, 0, 0.38) 100%);
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.brand-name {
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+    font-size: clamp(28px, 6vw, 86px);
+    font-weight: 600;
+    letter-spacing: clamp(6px, 2.5vw, 26px);
+    color: #ffffff;
+    text-shadow: 0 0 80px rgba(0, 0, 0, 0.9), 0 2px 20px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 1.2s 0.3s cubic-bezier(.22, 1, .36, 1) forwards;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.brand-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.75s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.brand-divider span {
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.brand-star {
+    width: 11px;
+    height: 11px;
+    fill: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mosaic-cell.pulsing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.07);
+    animation: cellPulse 1.2s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes cellPulse {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .cell-1 {
+        grid-column: 1;
+        grid-row: 1 / 3;
+    }
+
+    .cell-2 {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .cell-3 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .cell-4 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .cell-5 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .cell-6 {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .cell-7 {
+        grid-column: 2;
+        grid-row: 4;
+    }
+
+    .cell-8 {
+        grid-column: 1 / 3;
+        grid-row: 5;
+    }
+
+    .cell-9 {
+        display: none;
+    }
 }
