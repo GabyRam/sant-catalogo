@@ -99,6 +99,14 @@ p {
     background: #6f695b;
 }
 
+.gris-legging {
+    background: #60606c;
+}
+
+.gris-short {
+    background: #b4b1ac;
+}
+
 .lavanda {
     background: #6e6482;
 }
@@ -125,6 +133,10 @@ p {
 
 .rosa-claro {
     background: #c3aaa3;
+}
+
+.durazno {
+    background: #ffddd4;
 }
 
 .producto {
