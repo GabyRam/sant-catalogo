@@ -46,7 +46,7 @@ document.querySelectorAll(".producto-img").forEach(producto => {
 
 // ── HERO COLLAGE ──
 (function () {
- 
+
   const IMAGES = [
     'images/hero/img1.jpg',  'images/hero/img2.jpg',
     'images/hero/img3.jpg',  'images/hero/img4.jpg',
@@ -55,75 +55,99 @@ document.querySelectorAll(".producto-img").forEach(producto => {
     'images/hero/img9.jpg',  'images/hero/img10.jpg',
     'images/hero/img11.jpg', 'images/hero/img12.jpg',
     'images/hero/img13.jpg', 'images/hero/img14.jpg',
-    'images/hero/img15.jpg',
+    'images/hero/img15.jpg', 'images/hero/img16.jpg',
+    'images/hero/img17.jpg',
   ];
- 
-  // Cuántas fotos visibles al mismo tiempo
-  const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 5 : 15;
- 
-  // Duración que cada foto permanece visible (ms)
-  const STAY_MS = 6000;
- 
-  // Intervalo entre apariciones (ms)
-  const INTERVAL_MS = 1200;
- 
+
+  const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 6 : 15;
+
+  // Cada foto dura entre 7 y 11 segundos (aleatorio)
+  const STAY_MIN = 7000;
+  const STAY_MAX = 11000;
+
+  // Nueva foto aparece cada 1.0–2.2s (aleatorio)
+  const INTERVAL_MIN = 1000;
+  const INTERVAL_MAX = 2200;
+
   const hero = document.querySelector('.hero-collage');
   if (!hero) return;
- 
-  // Zonas seguras: evitar el centro donde está el texto
-  // Devuelve una posición aleatoria que NO caiga en el centro
-  function randomPosition(wPct, hPct) {
-    const isMobile = window.innerWidth < 640;
-    // Zona muerta central (donde está el texto)
-    const deadX = isMobile ? [25, 75] : [30, 70];
-    const deadY = isMobile ? [38, 62] : [30, 70];
- 
-    let x, y, attempts = 0;
-    do {
-      x = Math.random() * (95 - wPct);
-      y = Math.random() * (95 - hPct);
-      attempts++;
-    } while (
-      attempts < 30 &&
-      x + wPct / 2 > deadX[0] && x < deadX[1] &&
-      y + hPct / 2 > deadY[0] && y < deadY[1]
-    );
- 
-    return { x, y };
+
+  const COLS = window.innerWidth < 640 ? 3 : 5;
+  const ROWS = window.innerWidth < 640 ? 5 : 4;
+
+  // Guardamos qué zonas están ocupadas actualmente
+  let occupiedZones = new Set();
+  let allZones = [];
+
+  function buildZones() {
+    allZones = [];
+    for (let col = 0; col < COLS; col++) {
+      for (let row = 0; row < ROWS; row++) {
+        allZones.push(`${col},${row}`);
+      }
+    }
   }
- 
-  // z-index rotativo para que las fotos nuevas aparezcan encima
+  buildZones();
+
+  function randomPosition(wPct, hPct) {
+    // Zonas libres: las que no están ocupadas ahora mismo
+    const free = allZones.filter(z => !occupiedZones.has(z));
+    const pool = free.length > 0 ? free : allZones;
+
+    // Elegir zona aleatoria de las libres
+    const zoneKey = pool[Math.floor(Math.random() * pool.length)];
+    const [col, row] = zoneKey.split(',').map(Number);
+
+    const cellW = 100 / COLS;
+    const cellH = 100 / ROWS;
+
+    const baseX = col * cellW;
+    const baseY = row * cellH;
+
+    const maxOffsetX = Math.max(0, cellW - wPct);
+    const maxOffsetY = Math.max(0, cellH - hPct);
+
+    // Posición con algo de aleatoriedad extra dentro de la celda
+    const x = baseX + Math.random() * maxOffsetX;
+    const y = baseY + Math.random() * maxOffsetY;
+
+    return {
+      x: Math.min(x, 100 - wPct),
+      y: Math.min(y, 100 - hPct),
+      zoneKey
+    };
+  }
+
   let zCounter = 2;
   const Z_MAX = 45;
- 
-  // Historial para no repetir la misma foto seguida
+
   let lastUsed = [];
- 
+
   function pickImage() {
     const available = IMAGES.filter(img => !lastUsed.includes(img));
     const pool = available.length > 0 ? available : IMAGES;
     const picked = pool[Math.floor(Math.random() * pool.length)];
     lastUsed.push(picked);
-    if (lastUsed.length > 4) lastUsed.shift();
+    if (lastUsed.length > 5) lastUsed.shift();
     return picked;
   }
- 
+
   function spawnPhoto() {
     const isMobile = window.innerWidth < 640;
- 
-    // Tamaño aleatorio dentro de un rango
+
     const wPct = isMobile
-      ? 30 + Math.random() * 18   // 30–48% en mobile
-      : 14 + Math.random() * 12;  // 14–26% en desktop
- 
-    const hPct = wPct * (12 / 9); // mantener aspecto 9:12
- 
-    const { x, y } = randomPosition(wPct, hPct);
- 
-    // Rotación aleatoria sutil
-    const rot = (Math.random() * 8 - 4).toFixed(2); // -4 a +4 grados
- 
-    // Crear elemento
+      ? 28 + Math.random() * 12
+      : 13 + Math.random() * 10;
+
+    const hPct = wPct * (12 / 9);
+
+    const { x, y, zoneKey } = randomPosition(wPct, hPct);
+
+    // Marcar zona como ocupada
+    occupiedZones.add(zoneKey);
+
+    const rot = (Math.random() * 8 - 4).toFixed(2);
+
     const div = document.createElement('div');
     div.className = 'hero-photo';
     div.style.cssText = `
@@ -134,35 +158,38 @@ document.querySelectorAll(".producto-img").forEach(producto => {
       transform: rotate(${rot}deg);
       z-index: ${(zCounter = zCounter >= Z_MAX ? 2 : zCounter + 1)};
     `;
- 
+
     const img = document.createElement('img');
     img.src = pickImage();
     img.alt = '';
     div.appendChild(img);
     hero.insertBefore(div, hero.querySelector('.hero-overlay'));
- 
-    // Fade in
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => div.classList.add('visible'));
     });
- 
-    // Fade out y eliminar después de STAY_MS
+
+    // Duración aleatoria para que no desaparezcan todas a la vez
+    const stayMs = STAY_MIN + Math.random() * (STAY_MAX - STAY_MIN);
+
     setTimeout(() => {
       div.classList.remove('visible');
-      setTimeout(() => div.remove(), 950); // esperar transición
-    }, STAY_MS);
+      occupiedZones.delete(zoneKey); // liberar zona
+      setTimeout(() => div.remove(), 950);
+    }, stayMs);
+
+    // Programar la siguiente foto con intervalo aleatorio
+    const nextInterval = INTERVAL_MIN + Math.random() * (INTERVAL_MAX - INTERVAL_MIN);
+    setTimeout(spawnPhoto, nextInterval);
   }
- 
-  // Arrancar con varias fotos ya visibles al cargar
+
   function init() {
-    // Lanzar las primeras fotos escalonadas
+    // Lanzar las primeras fotos muy escalonadas para que no aparezcan todas juntas
     for (let i = 0; i < VISIBLE_AT_ONCE; i++) {
-      setTimeout(spawnPhoto, i * 1200);
+      setTimeout(spawnPhoto, i * 1800);
     }
-    // Seguir lanzando continuamente
-    setInterval(spawnPhoto, INTERVAL_MS);
   }
- 
+
   window.addEventListener('load', () => setTimeout(init, 300));
- 
+
 })();
