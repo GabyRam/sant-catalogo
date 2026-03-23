@@ -15,64 +15,43 @@
         rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrito.css">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
 
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
         <div class="container">
 
             <a class="navbar-brand" href="#">
-                <img src="images/sant-activewear.png" alt="SA/NT Activewear" class="logo-img">
+                <img src="images/logo-horizontal.png" alt="SA/NT Activewear" class="logo-img">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCatalogo">
-
                 <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tops">Tops</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#croptops">Crop Tops</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#leggings">Leggings</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#bikers">Bikers</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#shorts">Shorts</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#playeras">Playeras</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#accesorios">Accesorios</a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link" href="#tops">Tops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#croptops">Crop Tops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leggings">Leggings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bikers">Bikers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#shorts">Shorts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#playeras">Playeras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#falda-teniss">Falda Tenis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pantalon-yoga">Pantalón Yoga</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                 </ul>
-
             </div>
 
         </div>
-
     </nav>
 
+    <!-- HERO -->
     <section class="hero-collage">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -88,598 +67,562 @@
     </section>
 
     <!-- TOPS -->
-
     <section id="tops" class="container py-5">
-
         <h2 class="text-center mb-5">Tops</h2>
-
         <div class="row g-4">
 
             <!-- PRODUCTO 1 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
+                    <div class="producto-img tiene-espalda">
                         <img id="top1" src="images/tops/top-rosa-claro.jpg" class="img-frente" alt="Top deportivo rosa">
-
                         <img src="images/tops/top-rosa-claro-espalda.jpg" class="img-espalda"
                             alt="Top deportivo rosa espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Top Deportivo</h5>
-
-                        <p class="descripcion">
-                            Espalda atlética · Cierre frontal para mayor comodidad · Gran cobertura · Gran soporte para
-                            mayor movimiento
-                        </p>
-
+                        <p class="descripcion">Espalda atlética · Cierre frontal para mayor comodidad · Gran cobertura ·
+                            Gran soporte para mayor movimiento</p>
                         <p><strong>Tallas:</strong> CH - L</p>
-
                         <div class="colores">
-
-                            <span class="color rosa-claro" onclick="cambiarImagen(
-                                'top1',
-                                'images/tops/top-rosa-claro.jpg',
-                                'images/tops/top-rosa-claro-espalda.jpg'
-                                )"></span>
-
-                            <span class="color blanco" onclick="cambiarImagen(
-                                'top1',
-                                'images/tops/top-blanco.jpg',
-                                'images/tops/top-blanco-espalda.jpg'
-                                )"></span>
-
+                            <span class="color rosa-claro"
+                                onclick="cambiarImagen('top1','images/tops/top-rosa-claro.jpg','images/tops/top-rosa-claro-espalda.jpg')"></span>
+                            <span class="color blanco"
+                                onclick="cambiarImagen('top1','images/tops/top-blanco.jpg','images/tops/top-blanco-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top Deportivo',['CH','S','M','L'],[{nombre:'Rosa claro',bg:'#c3aaa3'},{nombre:'Blanco',bg:'#ffffff'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
-
             <!-- PRODUCTO 2 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
+                    <div class="producto-img tiene-espalda">
                         <img id="top2" src="images/tops/top-negro.jpg" class="img-frente">
-
                         <img src="images/tops/top-negro-espalda.jpg" class="img-espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Top Deportivo tirantes cruzados</h5>
-
-                        <p class="descripcion">
-                            Ajuste perfecto · Gran soporte y libertad de movimiento · Ideal para entrenamiento
-                        </p>
-
+                        <p class="descripcion">Ajuste perfecto · Gran soporte y libertad de movimiento · Ideal para
+                            entrenamiento</p>
                         <p><strong>Tallas:</strong> CH - L</p>
-
                         <div class="colores">
-
-                            <span class="color negro" onclick="cambiarImagen(
-                                'top2',
-                                'images/tops/top-negro.jpg',
-                                'images/tops/top-negro-espalda.jpg'
-                                )"></span>
-
-                            <span class="color rosa" onclick="cambiarImagen(
-                                'top2',
-                                'images/tops/top-rosa.jpg',
-                                'images/tops/top-rosa-espalda.jpg'
-                                )"></span>
-
+                            <span class="color negro"
+                                onclick="cambiarImagen('top2','images/tops/top-negro.jpg','images/tops/top-negro-espalda.jpg')"></span>
+                            <span class="color rosa"
+                                onclick="cambiarImagen('top2','images/tops/top-rosa.jpg','images/tops/top-rosa-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top Deportivo tirantes cruzados',['CH','S','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#9e4b55'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
             <!-- PRODUCTO 3 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
+                    <div class="producto-img tiene-espalda">
                         <img id="top3" src="images/tops/top-atletico-negro.jpg" class="img-frente">
-
                         <img src="images/tops/top-atletico-negro-espalda.jpg" class="img-espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Top Atlético</h5>
-
-                        <p class="descripcion">
-                            Multi tirantes en espalda · Tela ultra soft · Elástico ancho para mayor soporte
-                            · Tirantes cruzados para estilo chic · Transparencia al frente · Gran cobertura
-                        </p>
-
+                        <p class="descripcion">Multi tirantes en espalda · Tela ultra soft · Elástico ancho para mayor
+                            soporte · Tirantes cruzados para estilo chic · Transparencia al frente · Gran cobertura</p>
                         <p><strong>Tallas:</strong> CH - L</p>
-
                         <div class="colores">
-
-                            <span class="color negro" onclick="cambiarImagen(
-                                'top3',
-                                'images/tops/top-atletico-negro.jpg',
-                                'images/tops/top-atletico-negro-espalda.jpg'
-                                )">
-                            </span>
-
+                            <span class="color negro"
+                                onclick="cambiarImagen('top3','images/tops/top-atletico-negro.jpg','images/tops/top-atletico-negro-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top Atlético',['CH','S','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
             <!-- PRODUCTO 4 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
+                    <div class="producto-img tiene-espalda">
                         <img id="top4" src="images/tops/top-largo-negro.jpg" class="img-frente">
-
                         <img src="images/tops/top-largo-negro-espalda.jpg" class="img-espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Top Deportivo largo</h5>
-
-                        <p class="descripcion">
-                            Incluye copas para mayor ajuste · Tirantes cruzados en espalda · Soporte medio
-                        </p>
-
+                        <p class="descripcion">Incluye copas para mayor ajuste · Tirantes cruzados en espalda · Soporte
+                            medio</p>
                         <p><strong>Tallas:</strong> CH - L</p>
-
                         <div class="colores">
-
-                            <span class="color negro" onclick="cambiarImagen(
-                                'top4',
-                                'images/tops/top-largo-negro.jpg',
-                                'images/tops/top-largo-negro-espalda.jpg'
-                                )"></span>
-
+                            <span class="color negro"
+                                onclick="cambiarImagen('top4','images/tops/top-largo-negro.jpg','images/tops/top-largo-negro-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top Deportivo largo',['CH','S','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
             <!-- PRODUCTO 5 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
+                    <div class="producto-img tiene-espalda">
                         <img id="top5" src="images/tops/tank-negro.jpg" class="img-frente">
-
                         <img src="images/tops/tank-negro-espalda.jpg" class="img-espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Tank Top</h5>
-
-                        <p class="descripcion">
-                            Espalda atlética · High compressor · Tela transpirable · Slim fit
-                        </p>
-
+                        <p class="descripcion">Espalda atlética · High compressor · Tela transpirable · Slim fit</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
-                            <span class="color negro" onclick="cambiarImagen(
-                                'top5',
-                                'images/tops/tank-negro.jpg',
-                                'images/tops/tank-negro-espalda.jpg'
-                                )"></span>
-
+                            <span class="color negro"
+                                onclick="cambiarImagen('top5','images/tops/tank-negro.jpg','images/tops/tank-negro-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Tank Top',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
+    <!-- CROP TOPS -->
     <section id="croptops" class="container py-5">
-
         <h2 class="text-center mb-5">Crop Tops</h2>
-
         <div class="row g-4">
 
-            <!-- producto 1 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="crop1" src="images/crop-tops/crop-negro.jpg" class="card-img-top"
                         alt="Crop Top cuello redondo negro">
-
                     <div class="card-body">
-
                         <h5>Crop Top Cuello Redondo</h5>
-
-                        <p class="descripcion">
-                            Cuello redondo · Tela transpirable · Super soft · Slim fit
-                        </p>
-
+                        <p class="descripcion">Cuello redondo · Tela transpirable · Super soft · Slim fit</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color negro"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-negro.jpg')"></span>
-
                             <span class="color blanco"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-blanco.jpg')"></span>
-
                             <span class="color lavanda"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-lavanda.jpg')"></span>
-
                             <span class="color azul"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-azul.jpg')"></span>
-
                             <span class="color azul-marino"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-azul-marino.jpg')"></span>
-
                             <span class="color gris"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-gris.jpg')"></span>
-
-                            <span class="color celeste"
-                                onclick="cambiarImagen('crop1','images/crop-tops/crop-celeste.jpg')"></span>
-
                             <span class="color verde-bandera"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-verde-bandera.jpg')"></span>
-
                             <span class="color vino"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-vino.jpg')"></span>
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Crop Top Cuello Redondo',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Blanco',bg:'#ffffff'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},{nombre:'Gris',bg:'#6f695b'},{nombre:'Celeste',bg:'#305872'},{nombre:'Verde bandera',bg:'#0e3432'},{nombre:'Vino',bg:'#682d4d'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
     <!-- LEGGINGS -->
-
     <section id="leggings" class="container py-5">
-
         <h2 class="text-center mb-5">Leggings</h2>
-
         <div class="row g-4">
 
-            <!-- producto 1 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="legging1" src="images/leggings/legging-negro.jpg" class="card-img-top"
                         alt="Legging cintura V negro">
-
                     <div class="card-body">
-
                         <h5>Legging Cintura V</h5>
-
-                        <p class="descripcion">
-                            Cintura V · Tela transpirable · High support · Super soft · Bolsas laterales
-                        </p>
-
+                        <p class="descripcion">Cintura V · Tela transpirable · High support · Super soft · Bolsas
+                            laterales</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color negro"
                                 onclick="cambiarImagen('legging1','images/leggings/legging-negro.jpg')"></span>
-
                             <span class="color lavanda"
                                 onclick="cambiarImagen('legging1','images/leggings/legging-lavanda.jpg')"></span>
-
                             <span class="color azul"
                                 onclick="cambiarImagen('legging1','images/leggings/legging-azul.jpg')"></span>
-
                             <span class="color azul-marino"
                                 onclick="cambiarImagen('legging1','images/leggings/legging-azul-marino.jpg')"></span>
-
                             <span class="color gris"
                                 onclick="cambiarImagen('legging1','images/leggings/legging-gris.jpg')"></span>
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Cintura V',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},{nombre:'Gris',bg:'#6f695b'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- LEGGINGS FLARE -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="legging2" src="images/leggings/legging-flare-celeste.jpg" class="card-img-top"
                         alt="Legging Flare">
-
                     <div class="card-body">
-
                         <h5>Legging Flare</h5>
-
-                        <p class="descripcion">
-                            Legging acampanado · Cintura V · Tela súper soft (alta suavidad y elasticidad) · Estiliza la
-                            figura
-                        </p>
-
+                        <p class="descripcion">Legging acampanado · Cintura V · Tela súper soft (alta suavidad y
+                            elasticidad) · Estiliza la figura</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color celeste"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-celeste.jpg')"></span>
-
                             <span class="color vino"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-vino.jpg')"></span>
-
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Flare',['CH','S','M','L','XL'],[{nombre:'Celeste',bg:'#305872'},{nombre:'Vino',bg:'#682d4d'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- LEGGINGS TELA COLOMBIANA -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="legging3" src="images/leggings/legging-colombiano-negro.jpg" class="card-img-top"
                         alt="Legging Tela Colombiana">
-
                     <div class="card-body">
-
                         <h5>Legging Tela Colombiana</h5>
-
-                        <p class="descripcion">
-                            Cintura V · High compressor · Tela transpirable · Bolsas laterales
-                        </p>
-
+                        <p class="descripcion">Cintura V · High compressor · Tela transpirable · Bolsas laterales</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color negro"
                                 onclick="cambiarImagen('legging3','images/leggings/legging-colombiano-negro.jpg')"></span>
-
                             <span class="color gris-legging"
                                 onclick="cambiarImagen('legging3','images/leggings/legging-colombiano-gris.jpg')"></span>
-
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Tela Colombiana',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris',bg:'#60606c'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
     <!-- BIKERS -->
-
     <section id="bikers" class="container py-5">
-
         <h2 class="text-center mb-5">Bikers</h2>
-
         <div class="row g-4">
 
-            <!-- producto 1 -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="biker1" src="images/bikers/biker-negro.jpg" class="card-img-top"
                         alt="Biker cintura alta negro">
-
                     <div class="card-body">
-
                         <h5>Biker</h5>
-
-                        <p class="descripcion">
-                            Cintura alta · Tela transpirable · High support · Super soft · Bolsas laterales
-                        </p>
-
+                        <p class="descripcion">Cintura alta · Tela transpirable · High support · Super soft · Bolsas
+                            laterales</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color negro"
                                 onclick="cambiarImagen('biker1','images/bikers/biker-negro.jpg')"></span>
-
                             <span class="color lavanda"
                                 onclick="cambiarImagen('biker1','images/bikers/biker-lavanda.jpg')"></span>
-
                             <span class="color azul"
                                 onclick="cambiarImagen('biker1','images/bikers/biker-azul.jpg')"></span>
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Biker',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
     <!-- SHORTS -->
-
     <section id="shorts" class="container py-5">
-
         <h2 class="text-center mb-5">Shorts</h2>
-
         <div class="row g-4">
 
-            <!-- Short negro -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
                     <img id="short1" src="images/shorts/short-negro.jpg" class="card-img-top"
                         alt="Short cintura alta negro">
-
                     <div class="card-body">
-
                         <h5>Short</h5>
-
-                        <p class="descripcion">
-                            Cintura alta · Tela transpirable · High support · Super soft
-                        </p>
-
+                        <p class="descripcion">Cintura alta · Tela transpirable · High support · Super soft</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
-
                         <div class="colores">
-
                             <span class="color negro"
                                 onclick="cambiarImagen('short1','images/shorts/short-negro.jpg')"></span>
-
                             <span class="color lavanda"
                                 onclick="cambiarImagen('short1','images/shorts/short-lavanda.jpg')"></span>
-
                             <span class="color azul"
                                 onclick="cambiarImagen('short1','images/shorts/short-azul.jpg')"></span>
-
                             <span class="color gris-short"
                                 onclick="cambiarImagen('short1','images/shorts/short-gris.jpg')"></span>
-
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Short',['CH','S','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Gris',bg:'#b4b1ac'}])">+
+                            Agregar al pedido</button>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
-     <!-- PLAYERAS  -->
-
+    <!-- PLAYERAS -->
     <section id="playeras" class="container py-5">
-
         <h2 class="text-center mb-5">Playeras</h2>
-
         <div class="row g-4">
 
-            <!-- Aura runner -->
-
             <div class="col-12 col-md-6 col-lg-4">
-
                 <div class="card producto border-0">
-
-                    <div class="producto-img">
-
-                        <img id="playera1" src="images/playeras/aura-runner-blanca.jpg" class="img-frente" alt="Playera aura runner blanca">
-
+                    <div class="producto-img tiene-espalda">
+                        <img id="playera1" src="images/playeras/aura-runner-blanca.jpg" class="img-frente"
+                            alt="Playera aura runner blanca">
                         <img src="images/playeras/aura-runner-blanca-espalda.jpg" class="img-espalda"
                             alt="Playera aura runner blanca espalda">
-
                     </div>
-
                     <div class="card-body">
-
                         <h5>Playera Aura Runner</h5>
-
-                        <p class="descripcion">
-                            Ajuste ergonómico con terminación curva para mayor cobertura · Panel posterior en mesh para máxima frescura ·
-                            Tela ligera y de secado rápido.
-                        </p>
-
+                        <p class="descripcion">Ajuste ergonómico con terminación curva para mayor cobertura · Panel
+                            posterior en mesh para máxima frescura · Tela ligera y de secado rápido.</p>
                         <p><strong>Tallas:</strong> CH - L</p>
-
                         <div class="colores">
-
-                            <span class="color blanco" onclick="cambiarImagen(
-                                'playera1',
-                                'images/playeras/aura-runner-blanca.jpg',
-                                'images/playeras/aura-runner-blanca-espalda.jpg'
-                                )"></span>
-
-                            <span class="color azul" onclick="cambiarImagen(
-                                'playera1',
-                                'images/playeras/aura-runner-azul.jpg',
-                                'images/playeras/aura-runner-azul-espalda.jpg'
-                                )"></span>
-
-                            <span class="color durazno" onclick="cambiarImagen(
-                                'playera1',
-                                'images/playeras/aura-runner-durazno.jpg',
-                                'images/playeras/aura-runner-durazno-espalda.jpg'
-                                )"></span>
-
+                            <span class="color blanco"
+                                onclick="cambiarImagen('playera1','images/playeras/aura-runner-blanca.jpg','images/playeras/aura-runner-blanca-espalda.jpg')"></span>
+                            <span class="color azul"
+                                onclick="cambiarImagen('playera1','images/playeras/aura-runner-azul.jpg','images/playeras/aura-runner-azul-espalda.jpg')"></span>
+                            <span class="color durazno"
+                                onclick="cambiarImagen('playera1','images/playeras/aura-runner-durazno.jpg','images/playeras/aura-runner-durazno-espalda.jpg')"></span>
                         </div>
-
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Playera Aura Runner',['CH','S','M','L'],[{nombre:'Blanco',bg:'#ffffff'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Durazno',bg:'#ffddd4'}])">+
+                            Agregar al pedido</button>
                     </div>
+                </div>
+            </div>
 
+        </div>
+    </section>
+
+    <!-- FALDA TENIS -->
+    <section id="falda-teniss" class="container py-5">
+        <h2 class="text-center mb-5">Falda Tenis</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="falda1" src="images/faldas/falda-tenis-negra.jpg" class="img-frente"
+                            alt="Falda tenis negra">
+                        <img src="images/faldas/falda-tenis-negra-bolsa.jpg" class="img-detalle"
+                            alt="Falda tenis negra bolsa">
+                    </div>
+                    <div class="card-body">
+                        <h5>Falda Tenis</h5>
+                        <p class="descripcion">Falda-short plisada con diseño asimétrico · Doble funcionalidad: Incluye
+                            short con bolsillo interno · Diseño High-Waist: Su pretina ancha estiliza la figura y ofrece
+                            un soporte cómodo que no se desliza</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('falda1','images/faldas/falda-tenis-negra.jpg','images/faldas/falda-tenis-negra-bolsa.jpg')"></span>
+                            <span class="color azul"
+                                onclick="cambiarImagen('falda1','images/faldas/falda-tenis-azul.jpg','images/faldas/falda-tenis-azul-bolsa.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Falda Tenis',['CH','S','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul',bg:'#adc1f4'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PANTALÓN YOGA -->
+    <section id="pantalon-yoga" class="container py-5">
+        <h2 class="text-center mb-5">Pantalón Yoga</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="pantalon1" src="images/pantalones/pantalon-yoga-negro.jpg" class="card-img-top"
+                        alt="Pantalón yoga negro">
+                    <div class="card-body">
+                        <h5>Pantalón Yoga</h5>
+                        <p class="descripcion">Tela suave que se ajusta al cuerpo · Pierna amplia · Bolsas laterales ·
+                            Elástico en cintura para mayor soporte</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('pantalon1','images/pantalones/pantalon-yoga-negro.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('pantalon1','images/pantalones/pantalon-yoga-azul.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Pantalón Yoga',['CH','S','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul marino',bg:'#2a385b'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="nosotros py-5">
+        <div class="container">
+            <div class="nosotros-grid">
+
+                <div class="nosotros-foto">
+                    <div class="nosotros-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg>
+                        <span>Tu foto aquí</span>
+                    </div>
+                </div>
+
+                <div class="nosotros-texto">
+                    <p class="nosotros-eyebrow">Nuestra historia</p>
+                    <h2>SA/NT Activewear</h2>
+                    <p>Nacimos de la convicción de que el movimiento es libertad. SA/NT Activewear es una marca creada
+                        para mujeres que buscan rendimiento sin sacrificar estilo — prendas que te acompañan desde el
+                        gym hasta tu día a día.</p>
+                    <p>Cada pieza está diseñada con telas de alta calidad, pensadas para adaptarse a tu cuerpo y
+                        potenciar tu confianza en cada movimiento.</p>
+                    <div class="nosotros-valores">
+                        <div class="nosotros-valor"><span>✦</span> Calidad</div>
+                        <div class="nosotros-valor"><span>✦</span> Comodidad</div>
+                        <div class="nosotros-valor"><span>✦</span> Estilo</div>
+                    </div>
                 </div>
 
             </div>
-
+        </div>
     </section>
 
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto py-5">
+        <div class="container text-center">
+            <p class="nosotros-eyebrow">¿Tienes dudas?</p>
+            <h2>Contáctanos</h2>
+            <p class="contacto-sub">Estamos aquí para ayudarte. Escríbenos y te respondemos a la brevedad.</p>
+            <div class="contacto-btns">
+                <a href="https://wa.me/5554705157?text=Hola!%20Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20sus%20productos"
+                    target="_blank" class="contacto-btn contacto-wa">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12c0 2.136.559 4.14 1.535 5.874L.057 23.886l6.188-1.453A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 0 1-5.032-1.388l-.36-.214-3.733.877.945-3.642-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z" />
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="https://instagram.com/@sant.activewear" target="_blank" class="contacto-btn contacto-ig">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                    </svg>
+                    Instagram
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- FOOTER -->
+    <footer class="sant-footer">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <span class="sant-footer-logo">SA/NT ACTIVEWEAR</span>
+            <span class="sant-footer-copy">© 2025 · Todos los derechos reservados</span>
+            <div class="sant-footer-links">
+                <a href="https://wa.me/5554705157" target="_blank">WhatsApp</a>
+                <a href="https://instagram.com/@sant.activewear" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE CARRITO -->
+    <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <!-- bolsa -->
+            <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7z" />
+            <!-- asa -->
+            <path d="M9 7V5a3 3 0 0 1 6 0v2" />
+            <!-- corazón -->
+            <path d="M12 15.5s-3-1.8-3-3.8a1.8 1.8 0 0 1 3-.9 1.8 1.8 0 0 1 3 .9c0 2-3 3.8-3 3.8z" />
+        </svg>
+        <span class="carrito-badge" id="carritoBadge">0</span>
+    </button>
+
+    <!-- PANEL CARRITO -->
+    <div class="carrito-panel" id="carritoPanel">
+        <div class="carrito-header">
+            <h3>Tu pedido</h3>
+            <button class="carrito-close" onclick="toggleCarrito()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="carrito-items" id="carritoItems">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+        <div class="carrito-footer">
+            <button class="carrito-whatsapp" onclick="enviarWhatsApp()">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.136.559 4.14 1.535 5.874L.057 23.886l6.188-1.453A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 0 1-5.032-1.388l-.36-.214-3.733.877.945-3.642-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z" />
+                </svg>
+                Enviar por WhatsApp
+            </button>
+        </div>
+    </div>
+    <div class="carrito-backdrop" id="carritoBackdrop" onclick="toggleCarrito()"></div>
+
+    <!-- MODAL AGREGAR AL CARRITO -->
+    <div class="modal-agregar" id="modalAgregar">
+        <button class="modal-agregar-close" onclick="cerrarModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <h4 id="modalNombre"></h4>
+        <label>Talla</label>
+        <div class="modal-tallas" id="modalTallas"></div>
+        <label>Color</label>
+        <div class="modal-colores-sel" id="modalColoresSel"></div>
+        <label>Cantidad</label>
+        <div class="modal-cantidad">
+            <button onclick="cambiarCantidad(-1)">−</button>
+            <span id="modalCantidad">1</span>
+            <button onclick="cambiarCantidad(1)">+</button>
+        </div>
+        <button class="modal-agregar-btn" onclick="confirmarAgregar()">Agregar al pedido</button>
+    </div>
+    <div class="modal-backdrop" id="modalBackdrop" onclick="cerrarModal()"></div>
+
+    <!-- SCRIPTS — siempre al final, en este orden -->
     <script src="js/script.js"></script>
+    <script src="js/carrito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

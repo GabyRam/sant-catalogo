@@ -2,7 +2,7 @@ function cambiarImagen(id, frente, espalda) {
 
     const imgFrente = document.getElementById(id);
     const producto = imgFrente.closest(".producto");
-    const imgEspalda = producto.querySelector(".img-espalda");
+    const imgEspalda = producto.querySelector(".img-espalda, .img-detalle");
 
     imgFrente.src = frente;
 
@@ -10,37 +10,83 @@ function cambiarImagen(id, frente, espalda) {
         imgEspalda.src = espalda;
     }
 
+    // Mostrar hint de swipe en mobile al cambiar color
+    const productoImg = imgFrente.closest('.producto-img');
+    if (productoImg && productoImg.classList.contains('tiene-espalda')) {
+        productoImg.classList.remove('swipe-hint');
+        void productoImg.offsetWidth;
+        productoImg.classList.add('swipe-hint');
+        setTimeout(() => productoImg.classList.remove('swipe-hint'), 2100);
+    }
+
 }
 
-let startX = 0;
-let endX = 0;
+// ── SWIPE EN PRODUCTOS (táctil + mouse) ──
+document.querySelectorAll(".producto-img").forEach(container => {
 
-document.querySelectorAll(".producto-img").forEach(producto => {
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
 
-    producto.addEventListener("touchstart", function (e) {
+    // ── Touch ──
+    container.addEventListener("touchstart", e => {
         startX = e.touches[0].clientX;
-    });
+        startY = e.touches[0].clientY;
+        isDragging = false;
+    }, { passive: true });
 
-    producto.addEventListener("touchend", function (e) {
+    container.addEventListener("touchmove", e => {
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > dy) {
+            isDragging = true;
+            e.preventDefault();
+        }
+    }, { passive: false });
 
-        endX = e.changedTouches[0].clientX;
-
-        const frente = this.querySelector(".img-frente");
-        const espalda = this.querySelector(".img-espalda");
-
+    container.addEventListener("touchend", e => {
+        if (!isDragging) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        const frente = container.querySelector(".img-frente");
+        const espalda = container.querySelector(".img-espalda, .img-detalle");
         if (!espalda) return;
-
-        if (startX - endX > 50) {
+        if (dx < -40) {
             espalda.style.opacity = "1";
             frente.style.opacity = "0";
         }
-
-        if (endX - startX > 50) {
+        if (dx > 40) {
             espalda.style.opacity = "0";
             frente.style.opacity = "1";
         }
-
     });
+
+    // ── Mouse (desktop modo móvil) ──
+    let mouseStartX = 0;
+    let mouseDown = false;
+
+    container.addEventListener("mousedown", e => {
+        mouseStartX = e.clientX;
+        mouseDown = true;
+    });
+
+    container.addEventListener("mouseup", e => {
+        if (!mouseDown) return;
+        mouseDown = false;
+        const dx = e.clientX - mouseStartX;
+        const frente = container.querySelector(".img-frente");
+        const espalda = container.querySelector(".img-espalda, .img-detalle");
+        if (!espalda) return;
+        if (dx < -40) {
+            espalda.style.opacity = "1";
+            frente.style.opacity = "0";
+        }
+        if (dx > 40) {
+            espalda.style.opacity = "0";
+            frente.style.opacity = "1";
+        }
+    });
+
+    container.addEventListener("mouseleave", () => { mouseDown = false; });
 
 });
 
@@ -60,12 +106,8 @@ document.querySelectorAll(".producto-img").forEach(producto => {
   ];
 
   const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 6 : 15;
-
-  // Cada foto dura entre 7 y 11 segundos (aleatorio)
   const STAY_MIN = 7000;
   const STAY_MAX = 11000;
-
-  // Nueva foto aparece cada 1.0–2.2s (aleatorio)
   const INTERVAL_MIN = 1000;
   const INTERVAL_MAX = 2200;
 
@@ -75,42 +117,26 @@ document.querySelectorAll(".producto-img").forEach(producto => {
   const COLS = window.innerWidth < 640 ? 3 : 5;
   const ROWS = window.innerWidth < 640 ? 5 : 4;
 
-  // Guardamos qué zonas están ocupadas actualmente
   let occupiedZones = new Set();
   let allZones = [];
 
   function buildZones() {
     allZones = [];
-    for (let col = 0; col < COLS; col++) {
-      for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++)
+      for (let row = 0; row < ROWS; row++)
         allZones.push(`${col},${row}`);
-      }
-    }
   }
   buildZones();
 
   function randomPosition(wPct, hPct) {
-    // Zonas libres: las que no están ocupadas ahora mismo
     const free = allZones.filter(z => !occupiedZones.has(z));
     const pool = free.length > 0 ? free : allZones;
-
-    // Elegir zona aleatoria de las libres
     const zoneKey = pool[Math.floor(Math.random() * pool.length)];
     const [col, row] = zoneKey.split(',').map(Number);
-
     const cellW = 100 / COLS;
     const cellH = 100 / ROWS;
-
-    const baseX = col * cellW;
-    const baseY = row * cellH;
-
-    const maxOffsetX = Math.max(0, cellW - wPct);
-    const maxOffsetY = Math.max(0, cellH - hPct);
-
-    // Posición con algo de aleatoriedad extra dentro de la celda
-    const x = baseX + Math.random() * maxOffsetX;
-    const y = baseY + Math.random() * maxOffsetY;
-
+    const x = col * cellW + Math.random() * Math.max(0, cellW - wPct);
+    const y = row * cellH + Math.random() * Math.max(0, cellH - hPct);
     return {
       x: Math.min(x, 100 - wPct),
       y: Math.min(y, 100 - hPct),
@@ -120,7 +146,6 @@ document.querySelectorAll(".producto-img").forEach(producto => {
 
   let zCounter = 2;
   const Z_MAX = 45;
-
   let lastUsed = [];
 
   function pickImage() {
@@ -134,62 +159,63 @@ document.querySelectorAll(".producto-img").forEach(producto => {
 
   function spawnPhoto() {
     const isMobile = window.innerWidth < 640;
-
-    const wPct = isMobile
-      ? 28 + Math.random() * 12
-      : 13 + Math.random() * 10;
-
+    const wPct = isMobile ? 28 + Math.random() * 12 : 13 + Math.random() * 10;
     const hPct = wPct * (12 / 9);
-
     const { x, y, zoneKey } = randomPosition(wPct, hPct);
-
-    // Marcar zona como ocupada
     occupiedZones.add(zoneKey);
-
     const rot = (Math.random() * 8 - 4).toFixed(2);
-
     const div = document.createElement('div');
     div.className = 'hero-photo';
     div.style.cssText = `
-      width: ${wPct}%;
-      aspect-ratio: 9/12;
-      left: ${x}%;
-      top: ${y}%;
-      transform: rotate(${rot}deg);
-      z-index: ${(zCounter = zCounter >= Z_MAX ? 2 : zCounter + 1)};
+      width:${wPct}%;aspect-ratio:9/12;
+      left:${x}%;top:${y}%;
+      transform:rotate(${rot}deg);
+      z-index:${(zCounter = zCounter >= Z_MAX ? 2 : zCounter + 1)};
     `;
-
     const img = document.createElement('img');
     img.src = pickImage();
     img.alt = '';
     div.appendChild(img);
     hero.insertBefore(div, hero.querySelector('.hero-overlay'));
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => div.classList.add('visible'));
-    });
-
-    // Duración aleatoria para que no desaparezcan todas a la vez
+    requestAnimationFrame(() => requestAnimationFrame(() => div.classList.add('visible')));
     const stayMs = STAY_MIN + Math.random() * (STAY_MAX - STAY_MIN);
-
     setTimeout(() => {
       div.classList.remove('visible');
-      occupiedZones.delete(zoneKey); // liberar zona
+      occupiedZones.delete(zoneKey);
       setTimeout(() => div.remove(), 950);
     }, stayMs);
-
-    // Programar la siguiente foto con intervalo aleatorio
     const nextInterval = INTERVAL_MIN + Math.random() * (INTERVAL_MAX - INTERVAL_MIN);
     setTimeout(spawnPhoto, nextInterval);
   }
 
   function init() {
-    // Lanzar las primeras fotos muy escalonadas para que no aparezcan todas juntas
-    for (let i = 0; i < VISIBLE_AT_ONCE; i++) {
+    for (let i = 0; i < VISIBLE_AT_ONCE; i++)
       setTimeout(spawnPhoto, i * 1800);
-    }
   }
 
   window.addEventListener('load', () => setTimeout(init, 300));
 
 })();
+
+// ── SWIPE HINT AL ENTRAR EN PANTALLA ──
+// Aplica a TODOS los .producto-img que tengan .img-espalda, con o sin clase tiene-espalda
+document.querySelectorAll('.producto-img').forEach(el => {
+    if (!el.querySelector('.img-espalda, .img-detalle')) return;
+    el.classList.add('tiene-espalda'); // asegurar la clase aunque no esté en el HTML
+});
+
+const swipeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            el.classList.remove('swipe-hint');
+            void el.offsetWidth;
+            el.classList.add('swipe-hint');
+            setTimeout(() => el.classList.remove('swipe-hint'), 2100);
+        }
+    });
+}, { threshold: 0.6 });
+
+document.querySelectorAll('.producto-img.tiene-espalda').forEach(el => {
+    swipeObserver.observe(el);
+});
