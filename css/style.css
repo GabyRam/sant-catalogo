@@ -95,6 +95,10 @@ p {
     background: #adc1f4;
 }
 
+.azul-calceta {
+    background: #b1c2d3;
+}
+
 .azul-marino {
     background: #2a385b;
 }
@@ -139,6 +143,10 @@ p {
     background: #c3aaa3;
 }
 
+.rosa-calceta {
+    background: #d7bdba;
+}
+
 .durazno {
     background: #ffddd4;
 }
@@ -147,12 +155,33 @@ p {
     background: #616161;
 }
 
+.verde-olivo {
+    background: #4c4e43;
+}
+
+.hueso {
+    background: #e7e2dc;
+}
+
+.ivory { 
+    background: #bdab9f;
+}
+
+.cafe {
+    background: #61341f;
+}
+
 .producto {
     transition: transform .2s;
 }
 
 .producto:hover {
     transform: translateY(-5px);
+}
+
+.ultimas-piezas {
+    color: #9e4b55;
+    font-size: 16px;
 }
 
 .hero {
