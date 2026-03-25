@@ -35,6 +35,9 @@
 
             <div class="collapse navbar-collapse" id="navbarCatalogo">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-nueva-coleccion" href="nueva-coleccion.html">✦ Nueva Colección ✦</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#tops">Tops</a></li>
                     <li class="nav-item"><a class="nav-link" href="#croptops">Crop Tops</a></li>
                     <li class="nav-item"><a class="nav-link" href="#leggings">Leggings</a></li>
@@ -55,7 +58,7 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero-collage">
+    <section class="hero-collage" data-collection="main">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="brand-name">SA/NT ACTIVEWEAR</h1>
@@ -65,6 +68,18 @@
                     <path d="M10 0 L10.9 9.1 L20 10 L10.9 10.9 L10 20 L9.1 10.9 L0 10 L9.1 9.1 Z" />
                 </svg>
                 <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA COLECCIÓN -->
+    <section class="nueva-coleccion">
+        <div class="nueva-coleccion-banner">
+            <div class="nueva-coleccion-contenido">
+                <p class="nueva-coleccion-eyebrow">Recién llegado</p>
+                <h2 class="nueva-coleccion-titulo">Nueva Colección</h2>
+                <p class="nueva-coleccion-sub">Piezas diseñadas para moverte con estilo</p>
+                <a href="nueva-coleccion.html" class="nueva-coleccion-btn">Ver colección</a>
             </div>
         </div>
     </section>
@@ -220,15 +235,19 @@
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-azul.jpg')"></span>
                             <span class="color azul-marino"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-azul-marino.jpg')"></span>
-                            <span class="color gris"
+                            <span class="color gris-short"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-gris.jpg')"></span>
-                            <span class="color verde-bandera"
-                                onclick="cambiarImagen('crop1','images/crop-tops/crop-verde-bandera.jpg')"></span>
+                            <span class="color gris-oxford"
+                                onclick="cambiarImagen('crop1','images/crop-tops/crop-gris-oxford.jpg')"></span>
+                            <span class="color esmeralda"
+                                onclick="cambiarImagen('crop1','images/crop-tops/crop-esmeralda.jpg')"></span>
                             <span class="color vino"
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-vino.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Crop Top Cuello Redondo',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Blanco',bg:'#ffffff'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},{nombre:'Gris',bg:'#6f695b'},{nombre:'Verde bandera',bg:'#0e3432'},{nombre:'Vino',bg:'#682d4d'}])">+
+                            onclick="abrirModal('Crop Top Cuello Redondo',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
+                            {nombre:'Blanco',bg:'#ffffff'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},
+                            {nombre:'Gris',bg:'#b4b1ac'},{nombre:'Gris oxford',bg:'#616161'},{nombre:'Esmeralda',bg:'#4999B4'},{nombre:'Vino',bg:'#682d4d'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -495,7 +514,8 @@
                         alt="Chamarra negra">
                     <div class="card-body">
                         <h5>Chamarra</h5>
-                        <p class="descripcion">Slim fit · Largo regular · Ojales para pulgar · High compressor · Tela transpirable · Tela stretch</p>
+                        <p class="descripcion">Slim fit · Largo regular · Ojales para pulgar · High compressor · Tela
+                            transpirable · Tela stretch</p>
                         <p><strong>Tallas:</strong> CH - L</p>
                         <div class="colores">
                             <span class="color negro"
@@ -510,7 +530,7 @@
                 </div>
             </div>
 
-                <!-- CHAMARRA DEPORTIVA  -->
+            <!-- CHAMARRA DEPORTIVA  -->
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
@@ -519,7 +539,8 @@
                     <div class="card-body">
                         <p class="ultimas-piezas"><strong>* Últimas piezas</strong></p>
                         <h5>Chamarra Deportiva</h5>
-                        <p class="descripcion">Ajuste ergonómico que realza la silueta sin restringir el movimiento · Cierre frontal completo · Bolsas laterales discretas</p>
+                        <p class="descripcion">Ajuste ergonómico que realza la silueta sin restringir el movimiento ·
+                            Cierre frontal completo · Bolsas laterales discretas</p>
                         <p><strong>Tallas:</strong> CH - L</p>
                         <div class="colores">
                             <span class="color verde-olivo"
@@ -578,7 +599,8 @@
                     </div>
                     <div class="card-body">
                         <h5>Jumper</h5>
-                        <p class="descripcion">Tela súper soft · Escote en espalda profundo · Incluye copas para mayor comodidad
+                        <p class="descripcion">Tela súper soft · Escote en espalda profundo · Incluye copas para mayor
+                            comodidad
                             · Largo del short media pierna
                         </p>
                         <p><strong>Tallas:</strong> CH - L</p>
@@ -605,8 +627,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="calceta1" src="images/calcetas/calceta-negra.jpg" class="card-img-top"
-                        alt="Calceta Yoga">
+                    <img id="calceta1" src="images/calcetas/calceta-negra.jpg" class="card-img-top" alt="Calceta Yoga">
                     <div class="card-body">
                         <h5>Calceta Yoga</h5>
                         <p class="descripcion">90% algodón · 7% elastano · 3% poliéster</p>
@@ -628,8 +649,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="calceta2" src="images/calcetas/calceta-have.jpg" class="card-img-top"
-                        alt="Calceta Moda">
+                    <img id="calceta2" src="images/calcetas/calceta-have.jpg" class="card-img-top" alt="Calceta Moda">
                     <div class="card-body">
                         <h5>Calceta Moda</h5>
                         <p class="descripcion">70% algodón · 25% elastano · 5% poliéster</p>
@@ -644,11 +664,11 @@
                             <span class="color" onclick="cambiarImagen('calceta2','images/calcetas/calceta-waht.jpg')"
                                 style="background-image: url('images/calcetas/calceta-waht-thumb.png'); background-size: cover;
                                 background-position: center;"></span>
-                            <span class="color" onclick="cambiarImagen('calceta2','images/calcetas/calceta-grateful.jpg')"
-                                style="background-image: url('images/calcetas/calceta-grateful-thumb.png'); background-size: cover;
+                            <span class="color"
+                                onclick="cambiarImagen('calceta2','images/calcetas/calceta-grateful.jpg')" style="background-image: url('images/calcetas/calceta-grateful-thumb.png'); background-size: cover;
                                 background-position: center;"></span>
-                            <span class="color" onclick="cambiarImagen('calceta2','images/calcetas/calceta-free-mind.jpg')"
-                                style="background-image: url('images/calcetas/calceta-free-mind-thumb.png'); background-size: cover;
+                            <span class="color"
+                                onclick="cambiarImagen('calceta2','images/calcetas/calceta-free-mind.jpg')" style="background-image: url('images/calcetas/calceta-free-mind-thumb.png'); background-size: cover;
                                 background-position: center;"></span>
                         </div>
                         <button class="btn-agregar-carrito"
@@ -703,7 +723,7 @@
                             <polyline points="21 15 16 10 5 21" />
                         </svg>
                         <!-- <span>Tu foto aquí</span> -->
-                         <img src="images/sandy.jpeg" alt="Foto de equipo SA/NT Activewear">
+                        <img src="images/sandy.jpeg" alt="Foto de equipo SA/NT Activewear">
                     </div>
                 </div>
 
@@ -796,7 +816,8 @@
             <p class="carrito-vacio">Tu carrito está vacío</p>
         </div>
         <div class="carrito-footer">
-            <button onclick="toggleCarrito()" style="width:100%;background:none;border:1px solid #ddd;border-radius:8px;padding:10px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;">
+            <button onclick="toggleCarrito()"
+                style="width:100%;background:none;border:1px solid #ddd;border-radius:8px;padding:10px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;">
                 Seguir comprando
             </button>
             <button class="carrito-whatsapp" onclick="enviarWhatsApp()">

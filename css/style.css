@@ -103,6 +103,14 @@ p {
     background: #2a385b;
 }
 
+.azul-rey{
+    background: #0B7FF2;
+}
+
+.rojo {
+    background: #E2011B;
+}
+
 .gris {
     background: #6f695b;
 }
@@ -119,12 +127,8 @@ p {
     background: #6e6482;
 }
 
-.celeste {
-    background: #0b4b55;
-}
-
-.verde-bandera {
-    background: #0e3432;
+.esmeralda {
+    background: #4999B4;
 }
 
 .vino {
@@ -186,7 +190,6 @@ p {
 
 .hero {
     height: 45vh;
-    background-image: url("../images/progress-not-perfection.jpg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -377,4 +380,98 @@ html {
 
 .img-detalle {
     opacity: 0;
+}
+
+/* ── NUEVA COLECCIÓN ── */
+.nueva-coleccion {
+  width: 100%;
+}
+
+.nueva-coleccion-banner {
+  width: 100%;
+  height: 40vh;
+  min-height: 380px;
+  background: #e8e4df url('images/nueva-coleccion.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay oscuro */
+.nueva-coleccion-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.nueva-coleccion-contenido {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 24px;
+}
+
+.nueva-coleccion-eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+}
+
+.nueva-coleccion-titulo {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-size: clamp(32px, 6vw, 72px);
+  letter-spacing: 4px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.nueva-coleccion-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 28px;
+}
+
+.nueva-coleccion-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nueva-coleccion-btn:hover {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+@media (max-width: 640px) {
+  .nueva-coleccion-banner {
+    height: 50vh;
+    min-height: 300px;
+  }
+}
+
+/* ── NUEVA COLECCIÓN NAVBAR ── */
+.nav-nueva-coleccion {
+  position: relative;
+  font-weight: 500;
+  color: #9e4b55 !important;
+  animation: navBrillo 2.5s ease-in-out infinite;
+}
+
+@keyframes navBrillo {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1; }
 }
