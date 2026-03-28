@@ -123,6 +123,9 @@ document.querySelectorAll(".producto-img").forEach(container => {
         'images/hero/new-collection/img19.jpg',
         'images/hero/new-collection/img20.jpg',
         'images/hero/new-collection/img21.jpg',
+        'images/hero/new-collection/img22.jpg',
+        'images/hero/new-collection/img23.jpg',
+        'images/hero/new-collection/img24.jpg',
     ];
 
     const IMAGES = collectionType === "new"

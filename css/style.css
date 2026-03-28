@@ -103,7 +103,7 @@ p {
     background: #2a385b;
 }
 
-.azul-rey{
+.azul-rey {
     background: #0B7FF2;
 }
 
@@ -151,6 +151,10 @@ p {
     background: #d7bdba;
 }
 
+.rosa-neon {
+    background: #fc53ae;
+}
+
 .durazno {
     background: #ffddd4;
 }
@@ -167,7 +171,7 @@ p {
     background: #e7e2dc;
 }
 
-.ivory { 
+.ivory {
     background: #bdab9f;
 }
 
@@ -247,8 +251,10 @@ html {
 .hero-collage {
     position: relative;
     width: 100%;
-    height: 70vh;        /* ← antes 100vh, más compacto */
-    min-height: 420px;   /* ← antes 600px */
+    height: 70vh;
+    /* ← antes 100vh, más compacto */
+    min-height: 420px;
+    /* ← antes 600px */
     overflow: hidden;
     background: #e8e4df;
 }
@@ -341,8 +347,10 @@ html {
 
 @media (max-width: 640px) {
     .hero-collage {
-        height: 65vh;      /* ← antes 100svh */
-        min-height: 380px; /* ← antes 500px */
+        height: 65vh;
+        /* ← antes 100svh */
+        min-height: 380px;
+        /* ← antes 500px */
     }
 
     .hero-overlay {
@@ -363,7 +371,7 @@ html {
         transform: translate(-50%, -50%);
         width: 44px;
         height: 44px;
-        background: rgba(255,255,255,0.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Cpath d='M64,216,34.68,166a20,20,0,0,1,34.64-20L88,176V68a20,20,0,0,1,40,0v56a20,20,0,0,1,40,0v16a20,20,0,0,1,40,0v36c0,24-8,40-8,40' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='176' y1='56' x2='248' y2='56' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='208 24 176 56 208 88' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E") center/26px no-repeat;
+        background: rgba(255, 255, 255, 0.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Cpath d='M64,216,34.68,166a20,20,0,0,1,34.64-20L88,176V68a20,20,0,0,1,40,0v56a20,20,0,0,1,40,0v16a20,20,0,0,1,40,0v36c0,24-8,40-8,40' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='176' y1='56' x2='248' y2='56' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='208 24 176 56 208 88' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E") center/26px no-repeat;
         border-radius: 50%;
         z-index: 10;
         pointer-events: none;
@@ -371,10 +379,25 @@ html {
     }
 
     @keyframes swipeHint {
-        0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        20%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        20% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        70% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
     }
 }
 
@@ -384,94 +407,145 @@ html {
 
 /* ── NUEVA COLECCIÓN ── */
 .nueva-coleccion {
-  width: 100%;
+    width: 100%;
 }
 
 .nueva-coleccion-banner {
-  width: 100%;
-  height: 40vh;
-  min-height: 380px;
-  background: #e8e4df url('images/nueva-coleccion.jpg') center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 40vh;
+    min-height: 380px;
+    background: #e8e4df url('images/nueva-coleccion.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Overlay oscuro */
 .nueva-coleccion-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .nueva-coleccion-contenido {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  padding: 0 24px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 24px;
 }
 
 .nueva-coleccion-eyebrow {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
 }
 
 .nueva-coleccion-titulo {
-  font-family: 'Caviar Dreams', sans-serif;
-  font-size: clamp(32px, 6vw, 72px);
-  letter-spacing: 4px;
-  color: #fff;
-  margin-bottom: 14px;
+    font-family: 'Caviar Dreams', sans-serif;
+    font-size: clamp(32px, 6vw, 72px);
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 14px;
 }
 
 .nueva-coleccion-sub {
-  font-size: 15px;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 28px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 28px;
 }
 
 .nueva-coleccion-btn {
-  display: inline-block;
-  padding: 12px 32px;
-  border: 1px solid #fff;
-  color: #fff;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: background 0.2s ease, color 0.2s ease;
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nueva-coleccion-btn:hover {
-  background: #fff;
-  color: #1a1a1a;
+    background: #fff;
+    color: #1a1a1a;
 }
 
 @media (max-width: 640px) {
-  .nueva-coleccion-banner {
-    height: 50vh;
-    min-height: 300px;
-  }
+    .nueva-coleccion-banner {
+        height: 50vh;
+        min-height: 300px;
+    }
 }
 
 /* ── NUEVA COLECCIÓN NAVBAR ── */
 .nav-nueva-coleccion {
-  position: relative;
-  font-weight: 500;
-  color: #9e4b55 !important;
-  animation: navBrillo 2.5s ease-in-out infinite;
+    position: relative;
+    font-weight: 500;
+    color: #9e4b55 !important;
+    animation: navBrillo 2.5s ease-in-out infinite;
 }
 
 @keyframes navBrillo {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.5; }
-  100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.coleccion-nav {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    z-index: 70;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    pointer-events: none;
+}
+
+.coleccion-nav-btn {
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #3a3530;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity 0.25s ease, gap 0.25s ease;
+}
+
+.coleccion-nav-btn:hover {
+    opacity: 1;
+    gap: 12px;
+}
+
+.coleccion-nav-btn.disabled {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.coleccion-nav-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }

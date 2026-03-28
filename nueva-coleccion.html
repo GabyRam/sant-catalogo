@@ -64,6 +64,22 @@
                 <span></span>
             </div>
         </div>
+        <nav class="coleccion-nav">
+            <a href="index.html" class="coleccion-nav-btn prev">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>Colección anterior</span>
+            </a>
+            <a href="#" class="coleccion-nav-btn next disabled">
+                <span>Siguiente colección</span>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
+        </nav>
     </section>
 
 
@@ -74,8 +90,11 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="top6" src="images/tops/top-rojo.jpg" class="card-img-top"
-                        alt="Top Deportivo rojo">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top6" src="images/tops/top-rojo.jpg" class="card-img-top" alt="Top Deportivo rojo">
+                        <img src="images/tops/top-rojo-espalda.jpg" class="img-espalda"
+                            alt="Top deportivo rojo espalda">
+                    </div>
                     <div class="card-body">
                         <h5>Top Deportivo</h5>
                         <p class="descripcion">Espalda atlética · Cierre frontal para mayor comodidad · Gran cobertura ·
@@ -83,12 +102,14 @@
                         <p><strong>Tallas:</strong> CH - L</p>
                         <div class="colores">
                             <span class="color rojo"
-                                onclick="cambiarImagen('top6','images/tops/top-rojo.jpg')"></span>
+                                onclick="cambiarImagen('top6','images/tops/top-rojo.jpg', 'images/tops/top-rojo-espalda.jpg')"></span>
                             <span class="color azul-rey"
-                                onclick="cambiarImagen('top6','images/tops/top-azul-rey.jpg')"></span>
+                                onclick="cambiarImagen('top6','images/tops/top-azul-rey.jpg', 'images/tops/top-azul-rey-espalda.jpg')"></span>
+                            <span class="color rosa-neon"
+                                onclick="cambiarImagen('top6','images/tops/top-rosa-neon.jpg', 'images/tops/top-rosa-neon-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Deportivo',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'}])">+
+                            onclick="abrirModal('Top Deportivo',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -104,8 +125,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="legging4" src="images/leggings/legging-rojo.jpg" class="card-img-top"
-                        alt="Legging">
+                    <img id="legging4" src="images/leggings/legging-rojo.jpg" class="card-img-top" alt="Legging">
                     <div class="card-body">
                         <h5>Legging</h5>
                         <p class="descripcion">Cintura V · Tela transpirable · High support · Super soft · Bolsas
@@ -126,7 +146,36 @@
         </div>
     </section>
 
-        <!-- NOSOTROS -->
+    <!-- SHORTS -->
+
+    <section id="shorts" class="container py-5">
+        <h2 class="text-center mb-5">Shorts</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="short2" src="images/shorts/short-rojo.jpg" class="card-img-top" alt="Short">
+                    <div class="card-body">
+                        <h5>Short</h5>
+                        <p class="descripcion">Cintura V · Tela transpirable · High support · Super soft · Bolsas
+                            laterales</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color rojo"
+                                onclick="cambiarImagen('short2','images/shorts/short-rojo.jpg')"></span>
+                            <span class="color rosa-neon"
+                                onclick="cambiarImagen('short2','images/shorts/short-rosa-neon.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Short',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
     <section id="nosotros" class="nosotros py-5">
         <div class="container">
             <div class="nosotros-grid">
@@ -138,8 +187,8 @@
                             <circle cx="8.5" cy="8.5" r="1.5" />
                             <polyline points="21 15 16 10 5 21" />
                         </svg>
-                        <!-- <span>Tu foto aquí</span> -->
-                        <img src="images/sandy.jpeg" alt="Foto de equipo SA/NT Activewear">
+                        <span>Tu foto aquí</span>
+                        <!-- <img src="images/sandy.jpeg" alt="Foto de equipo SA/NT Activewear"> -->
                     </div>
                 </div>
 
