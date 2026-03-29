@@ -130,6 +130,10 @@ document.querySelectorAll(".producto-img").forEach(container => {
         'images/hero/new-collection/img26.jpg',
         'images/hero/new-collection/img27.jpg',
         'images/hero/new-collection/img28.jpg',
+        'images/hero/new-collection/img29.jpg',
+        'images/hero/new-collection/img30.jpg',
+        'images/hero/new-collection/img31.jpg',
+        'images/hero/new-collection/img32.jpg',
 
     ];
 
@@ -250,4 +254,14 @@ const swipeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.producto-img.tiene-espalda').forEach(el => {
     swipeObserver.observe(el);
+});
+
+const btnTop = document.getElementById('btn-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+    } else {
+        btnTop.classList.remove('visible');
+    }
 });

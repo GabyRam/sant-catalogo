@@ -107,6 +107,10 @@ p {
     background: #0B7FF2;
 }
 
+.azul-bicolor {
+    background: #586D97;
+}
+
 .rojo {
     background: #E2011B;
 }
@@ -155,6 +159,10 @@ p {
     background: #fc53ae;
 }
 
+.palo-de-rosa {
+    background: #DFA6B5;
+}
+
 .durazno {
     background: #ffddd4;
 }
@@ -177,6 +185,10 @@ p {
 
 .cafe {
     background: #61341f;
+}
+
+.amarillo-bicolor {
+    background: #f6e7af;
 }
 
 .producto {
@@ -548,4 +560,36 @@ html {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+#btn-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 95px;
+    right: 24px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 0;
+    background: whitesmoke;
+    color: #9e4b55;
+    font-size: 40px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+    z-index: 199;
+}
+
+#btn-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#btn-top:hover {
+    transform: scale(1.08);
+    background: #f0f0f0;
 }

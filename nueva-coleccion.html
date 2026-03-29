@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
         <div class="container">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="images/logo-horizontal.png" alt="SA/NT Activewear" class="logo-img">
             </a>
 
@@ -41,6 +41,7 @@
                     <li class="nav-item"><a class="nav-link" href="#tops">Tops</a></li>
                     <li class="nav-item"><a class="nav-link" href="#leggings">Leggings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#shorts">Shorts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vestidos">Vestidos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#falda-teniss">Falda Tenis</a></li>
                     <li class="nav-item"><a class="nav-link" href="#chamarras">Chamarras</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
@@ -201,6 +202,54 @@
                 </div>
             </div>
 
+            <!-- TOP -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top10" src="images/tops/top-bra-negro.jpg" class="card-img-top" alt="Top">
+                        <img src="images/tops/top-bra-negro-espalda.jpg" class="img-espalda" alt="Top">
+                    </div>
+                    <div class="card-body">
+                        <h5>Top</h5>
+                        <p class="descripcion">Tela Ultrasoft · Elástico ancho para mayor soporte · Look Athleisure</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('top10','images/tops/top-bra-negro.jpg', 'images/tops/top-bra-negro-espalda.jpg')"></span>
+                            <span class="color palo-de-rosa"
+                                onclick="cambiarImagen('top10','images/tops/top-bra-rosa.jpg', 'images/tops/top-bra-rosa-espalda.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#DFA6B5'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top11" src="images/tops/top-bicolor-azul.jpg" class="card-img-top" alt="Top">
+                        <img src="images/tops/top-bicolor-azul-espalda.jpg" class="img-espalda" alt="Top">
+                    </div>
+                    <div class="card-body">
+                        <h5>Top</h5>
+                        <p class="descripcion">Tela Ultrasoft · Elástico ancho para mayor soporte · Look Athleisure</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color azul-bicolor"
+                                onclick="cambiarImagen('top11','images/tops/top-bicolor-azul.jpg', 'images/tops/top-bicolor-azul-espalda.jpg')"></span>
+                            <span class="color amarillo-bicolor"
+                                onclick="cambiarImagen('top11','images/tops/top-bicolor-amarillo.jpg', 'images/tops/top-bicolor-amarillo-espalda.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top',['CH','M','L'],[{nombre:'Azul',bg:'#586D97'},{nombre:'Amarillo',bg:'#f6e7af'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -259,10 +308,11 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <div class="producto-img img-detalle">
-                        <img id="legging4" src="images/leggings/legging-yoga-cafe.jpg" class="card-img-top"
+                    <div class="producto-img tiene-espalda">
+                        <img id="legging4" src="images/leggings/legging-yoga-cafe.jpg" class="card-img-top img-frente"
                             alt="Legging Yoga">
-                        <img src="images/leggings/legging-yoga-cafe-bolsa.jpg" class="img-detalle" alt="Legging Yoga">
+                        <img src="images/leggings/legging-yoga-cafe-bolsa.jpg" class="img-detalle img-detalle"
+                            alt="Legging Yoga">
                     </div>
                     <div class="card-body">
                         <h5>Legging Yoga</h5>
@@ -282,29 +332,27 @@
                 </div>
             </div>
 
-            <!-- LEGGING RECTO -->
+            <!-- LEGGING -->
 
-            <!-- <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="legging5" src="images/leggings/legging-recto-negro.jpg" class="card-img-top"
-                        alt="Legging recto">
+                    <img id="legging5" src="images/leggings/legging-negro.jpg" class="card-img-top" alt="Legging">
                     <div class="card-body">
-                        <h5>Legging recto</h5>
+                        <h5>Legging</h5>
                         <p class="descripcion">Cambiar descripcion</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
                         <div class="colores">
                             <span class="color negro"
-                                onclick="cambiarImagen('legging5','images/leggings/legging-recto-negro.jpg', 'images/leggings/legging-recto-negro-detalle.jpg')"></span>
-                            <span class="color hueso"
-                                onclick="cambiarImagen('legging5','images/leggings/legging-recto-hueso.jpg', 'images/leggings/legging-recto-hueso-detalle.jpg')"></span>
+                                onclick="cambiarImagen('legging5','images/leggings/legging-negro.jpg')"></span>
+                            <span class="color palo-de-rosa"
+                                onclick="cambiarImagen('legging5','images/leggings/legging-rosa.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging recto',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Hueso',bg:'#e7e2dc'}])">+
-                            Add
-                            to order</button>
+                            onclick="abrirModal('Legging',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#DFA6B5'}])">+
+                            Agregar al pedido</button>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
 
@@ -341,6 +389,69 @@
             </div>
         </div>
     </section>
+
+    <!-- VESTIDOS -->
+
+    <section id="vestidos" class="container py-5">
+        <h2 class="text-center mb-5">Vestidos</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="vestido1" src="images/vestidos/vestido-negro.jpg" class="card-img-top" alt="Vestido">
+                    <div class="card-body">
+                        <h5>Vestido</h5>
+                        <p class="descripcion">descripcion aqui</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('vestido1','images/vestidos/vestido-negro.jpg')"></span>
+                            <span class="color palo-de-rosa"
+                                onclick="cambiarImagen('vestido1','images/vestidos/vestido-rosa.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Vestido',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#DFA6B5'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FALDA  -->
+
+    <section id="faldas" class="container py-5">
+        <h2 class="text-center mb-5">Faldas</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="falda2" src="images/faldas/falda-bicolor-azul.jpg" class="img-frente"
+                            alt="Falda bicolor">
+                        <img src="images/faldas/falda-bicolor-azul-detalle.jpg" class="img-detalle"
+                            alt="Falda bicolor detalle">
+                    </div>
+                    <div class="card-body">
+                        <h5>Falda</h5>
+                        <p class="descripcion">descripcion aqui</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color azul-bicolor"
+                                onclick="cambiarImagen('falda2','images/faldas/falda-bicolor-azul.jpg','images/faldas/falda-bicolor-azul-detalle.jpg')"></span>
+                            <span class="color amarillo-bicolor"
+                                onclick="cambiarImagen('falda2','images/faldas/falda-bicolor-amarilla.jpg','images/faldas/falda-bicolor-amarilla-detalle.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Falda',['CH','M','L'],[{nombre:'Azul Bicolor',bg:'#586D97'},{nombre:'Amarillo Bicolor',bg:'#f6e7af'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <!-- CHAMARRAS -->
 
@@ -454,6 +565,14 @@
             </div>
         </div>
     </footer>
+
+    <button id="btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="width:26px; height:26px;">
+            <path d="M8 6L12 2L16 6" />
+            <path d="M12 2V22" />
+        </svg>
+    </button>
 
     <!-- BOTÓN FLOTANTE CARRITO -->
     <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
