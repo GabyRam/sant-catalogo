@@ -797,15 +797,18 @@
 
     <!-- BOTÓN FLOTANTE CARRITO -->
     <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
+        <!--
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
             stroke-linejoin="round">
-            <!-- bolsa -->
             <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7z" />
-            <!-- asa -->
             <path d="M9 7V5a3 3 0 0 1 6 0v2" />
-            <!-- corazón -->
             <path d="M12 15.5s-3-1.8-3-3.8a1.8 1.8 0 0 1 3-.9 1.8 1.8 0 0 1 3 .9c0 2-3 3.8-3 3.8z" />
         </svg>
+        -->
+        <button class="carrito-fab" onclick="abrirCarrito()">
+            <img src="images/amor.png" alt="Carrito" style="width:36px; height:36px;">
+            <span class="carrito-badge" data-count="0">0</span>
+        </button>
         <span class="carrito-badge" id="carritoBadge">0</span>
     </button>
 
