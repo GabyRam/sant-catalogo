@@ -126,6 +126,11 @@ document.querySelectorAll(".producto-img").forEach(container => {
         'images/hero/new-collection/img22.jpg',
         'images/hero/new-collection/img23.jpg',
         'images/hero/new-collection/img24.jpg',
+        'images/hero/new-collection/img25.jpg',
+        'images/hero/new-collection/img26.jpg',
+        'images/hero/new-collection/img27.jpg',
+        'images/hero/new-collection/img28.jpg',
+
     ];
 
     const IMAGES = collectionType === "new"
@@ -135,8 +140,8 @@ document.querySelectorAll(".producto-img").forEach(container => {
     const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 6 : 15;
     const STAY_MIN = 7000;
     const STAY_MAX = 11000;
-    const INTERVAL_MIN = 1000;
-    const INTERVAL_MAX = 2200;
+    const INTERVAL_MIN = 2000;
+    const INTERVAL_MAX = 3200;
 
     const hero = document.querySelector('.hero-collage');
     if (!hero) return;

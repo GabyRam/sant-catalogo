@@ -42,7 +42,7 @@
                     <li class="nav-item"><a class="nav-link" href="#leggings">Leggings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#shorts">Shorts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#falda-teniss">Falda Tenis</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pantalon-yoga">Pantalón Yoga</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chamarras">Chamarras</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                 </ul>
@@ -88,19 +88,21 @@
         <h2 class="text-center mb-5">Tops</h2>
         <div class="row g-4">
 
+            <!-- TANK TOP ROJA -->
+
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
                     <div class="producto-img tiene-espalda">
-                        <img id="top6" src="images/tops/top-rojo.jpg" class="card-img-top" alt="Top Deportivo rojo">
-                        <img src="images/tops/top-rojo-espalda.jpg" class="img-espalda"
-                            alt="Top deportivo rojo espalda">
+                        <img id="top6" src="images/tops/tank-bicolor-negro.jpg" class="card-img-top" alt="Tank Top">
+                        <img src="images/tops/tank-bicolor-negro-espalda.jpg" class="img-espalda" alt="Tank Top">
                     </div>
                     <div class="card-body">
-                        <h5>Top Deportivo</h5>
-                        <p class="descripcion">Espalda atlética · Cierre frontal para mayor comodidad · Gran cobertura ·
-                            Gran soporte para mayor movimiento</p>
+                        <h5>Tank Top</h5>
+                        <p class="descripcion">Tela Ultrasoft · Estilo vintage · Escote V para estilizar</p>
                         <p><strong>Tallas:</strong> CH - L</p>
                         <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('top6','images/tops/tank-bicolor-negro.jpg', 'images/tops/tank-bicolor-negro-espalda.jpg')"></span>
                             <span class="color rojo"
                                 onclick="cambiarImagen('top6','images/tops/top-rojo.jpg', 'images/tops/top-rojo-espalda.jpg')"></span>
                             <span class="color azul-rey"
@@ -109,11 +111,96 @@
                                 onclick="cambiarImagen('top6','images/tops/top-rosa-neon.jpg', 'images/tops/top-rosa-neon-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Deportivo',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
+                            onclick="abrirModal('Tank Top',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
             </div>
+
+            <!-- TOP TIRANTE ANCHO -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top7" src="images/tops/top-tirante-ancho-negro.jpg" class="card-img-top"
+                            alt="Top tirante ancho">
+                        <img src="images/tops/top-tirante-ancho-negro-espalda.jpg" class="img-espalda"
+                            alt="Top tirante ancho">
+                    </div>
+                    <div class="card-body">
+                        <h5>Top tirante ancho</h5>
+                        <p class="descripcion">Tela Ultrasoft · Elástico ancho para mayor soporte · Gran soporte para
+                            mayor movimiento</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('top7','images/tops/top-tirante-ancho-negro.jpg', 'images/tops/top-tirante-ancho-negro-espalda.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('top7','images/tops/top-tirante-ancho-azul-marino.jpg', 'images/tops/top-tirante-ancho-azul-marino-espalda.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top tirante ancho',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP NUDO -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top8" src="images/tops/top-nudo-negro.jpg" class="card-img-top"
+                            alt="Top tirante ancho">
+                        <img src="images/tops/top-nudo-negro-espalda.jpg" class="img-espalda" alt="Top tirante ancho">
+                    </div>
+                    <div class="card-body">
+                        <h5>Top nudo</h5>
+                        <p class="descripcion">Tela Ultrasoft · Tirantes Dobles Delgados · Elástico ancho para mayor
+                            soporte · Diseño Frontal con Nudo y Abertura</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('top8','images/tops/top-nudo-negro.jpg', 'images/tops/top-nudo-negro-espalda.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('top8','images/tops/top-nudo-azul-marino.jpg', 'images/tops/top-nudo-azul-marino-espalda.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top nudo',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP ASIMÉTRICO -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-espalda">
+                        <img id="top9" src="images/tops/top-asimetrico-negro.jpg" class="card-img-top"
+                            alt="Top asimétrico">
+                        <img src="images/tops/top-asimetrico-negro-espalda.jpg" class="img-espalda"
+                            alt="Top asimétrico">
+                    </div>
+                    <div class="card-body">
+                        <h5>Top asimétrico</h5>
+                        <p class="descripcion">Tela Ultrasoft · Elástico ancho para mayor soporte · Look Athleisure</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('top9','images/tops/top-asimetrico-negro.jpg', 'images/tops/top-asimetrico-negro-espalda.jpg')"></span>
+                            <span class="color rojo"
+                                onclick="cambiarImagen('top9','images/tops/top-asimetrico-rojo.jpg', 'images/tops/top-asimetrico-rojo-espalda.jpg')"></span>
+                            <span class="color azul-rey"
+                                onclick="cambiarImagen('top9','images/tops/top-asimetrico-azul.jpg', 'images/tops/top-asimetrico-azul-espalda.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top asimétrico',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -125,17 +212,17 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="legging4" src="images/leggings/legging-rojo.jpg" class="card-img-top" alt="Legging">
+                    <img id="legging1" src="images/leggings/legging-rojo.jpg" class="card-img-top" alt="Legging">
                     <div class="card-body">
-                        <h5>Legging</h5>
+                        <h5>Legging Cintura V</h5>
                         <p class="descripcion">Cintura V · Tela transpirable · High support · Super soft · Bolsas
                             laterales</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
                         <div class="colores">
                             <span class="color rojo"
-                                onclick="cambiarImagen('legging4','images/leggings/legging-rojo.jpg')"></span>
+                                onclick="cambiarImagen('legging1','images/leggings/legging-rojo.jpg')"></span>
                             <span class="color azul-rey"
-                                onclick="cambiarImagen('legging4','images/leggings/legging-azul-rey.jpg')"></span>
+                                onclick="cambiarImagen('legging1','images/leggings/legging-azul-rey.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
                             onclick="abrirModal('Legging',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'}])">+
@@ -143,6 +230,81 @@
                     </div>
                 </div>
             </div>
+
+            <!-- LEGGING FLARE -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="legging2" src="images/leggings/legging-flare-negro.jpg" class="card-img-top"
+                        alt="Legging Flare">
+                    <div class="card-body">
+                        <h5>Legging Flare</h5>
+                        <p class="descripcion">Tela suave que se ajusta al cuerpo · Pierna amplia · Elástico en cintura
+                            para mayor soporte · Bolsa Oculta en cintura trasera</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('legging2','images/leggings/legging-flare-negro.jpg')"></span>
+                            <span class="color cafe"
+                                onclick="cambiarImagen('legging2','images/leggings/legging-flare-cafe.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Flare',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Cafe',bg:'#682d4d'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEGGING YOGA -->
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img img-detalle">
+                        <img id="legging4" src="images/leggings/legging-yoga-cafe.jpg" class="card-img-top"
+                            alt="Legging Yoga">
+                        <img src="images/leggings/legging-yoga-cafe-bolsa.jpg" class="img-detalle" alt="Legging Yoga">
+                    </div>
+                    <div class="card-body">
+                        <h5>Legging Yoga</h5>
+                        <p class="descripcion">Tela suave que se ajusta al cuerpo · Pierna amplia · Elástico en cintura
+                            para mayor soporte · Bolsa Oculta en cintura trasera</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color cafe"
+                                onclick="cambiarImagen('legging4','images/leggings/legging-yoga-cafe.jpg', 'images/leggings/legging-yoga-cafe-bolsa.jpg')"></span>
+                            <span class="color hueso"
+                                onclick="cambiarImagen('legging4','images/leggings/legging-yoga-hueso.jpg', 'images/leggings/legging-yoga-hueso-bolsa.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Yoga',['CH','M','L'],[{nombre:'Cafe',bg:'#61341f'},{nombre:'Hueso',bg:'#e7e2dc'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEGGING RECTO -->
+
+            <!-- <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="legging5" src="images/leggings/legging-recto-negro.jpg" class="card-img-top"
+                        alt="Legging recto">
+                    <div class="card-body">
+                        <h5>Legging recto</h5>
+                        <p class="descripcion">Cambiar descripcion</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('legging5','images/leggings/legging-recto-negro.jpg', 'images/leggings/legging-recto-negro-detalle.jpg')"></span>
+                            <span class="color hueso"
+                                onclick="cambiarImagen('legging5','images/leggings/legging-recto-hueso.jpg', 'images/leggings/legging-recto-hueso-detalle.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging recto',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Hueso',bg:'#e7e2dc'}])">+
+                            Add
+                            to order</button>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </section>
 
@@ -154,20 +316,61 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="short2" src="images/shorts/short-rojo.jpg" class="card-img-top" alt="Short">
+                    <img id="short2" src="images/shorts/short-bicolor-negro.jpg" class="card-img-top"
+                        alt="Short bicolor">
                     <div class="card-body">
                         <h5>Short</h5>
-                        <p class="descripcion">Cintura V · Tela transpirable · High support · Super soft · Bolsas
-                            laterales</p>
+                        <p class="descripcion">Tela Ultrasoft · Estilo vintage · Cintura ancha con forma V para
+                            estilizar</p>
                         <p><strong>Tallas:</strong> CH - XL</p>
                         <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('short2','images/shorts/short-bicolor-negro.jpg')"></span>
                             <span class="color rojo"
                                 onclick="cambiarImagen('short2','images/shorts/short-rojo.jpg')"></span>
+                            <span class="color azul-rey"
+                                onclick="cambiarImagen('short2','images/shorts/short-azul-rey.jpg')"></span>
                             <span class="color rosa-neon"
                                 onclick="cambiarImagen('short2','images/shorts/short-rosa-neon.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Short',['CH','M','L'],[{nombre:'Rojo',bg:'#E2011B'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
+                            onclick="abrirModal('Short Bicolor',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
+                            Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAMARRAS -->
+
+    <section id="chamarras" class="container py-5">
+        <h2 class="text-center mb-5">Chamarras</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <div class="producto-img tiene-detalle">
+                        <img id="chamarra4" src="images/chamarras/chamarra-basica-negra.jpg" class="img-frente"
+                            alt="Chamarra">
+                        <img src="images/chamarras/chamarra-basica-negra-detalle.jpg" class="img-detalle"
+                            alt="Chamarra detalle">
+                    </div>
+                    <div class="card-body">
+                        <h5>Chamarra</h5>
+                        <p class="descripcion">Tela Ultrasoft · Ajuste ergonómico que realza la silueta sin restringir
+                            el movimiento · Medio Cierre frontal completo · Ojales para pulgar</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-negra.jpg', 'images/chamarras/chamarra-basica-negra-detalle.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-azul-marino.jpg', 'images/chamarras/chamarra-basica-azul-marino-detalle.jpg')"></span>
+                            <span class="color cafe"
+                                onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-cafe.jpg', 'images/chamarras/chamarra-basica-cafe-detalle.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Chamarra Básica',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'},{nombre:'Café',bg:'#6F4E37'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
