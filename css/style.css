@@ -69,6 +69,13 @@ p {
     font-size: 14px;
 }
 
+.precio {
+    font-size: 16px;
+    font-weight: 600;
+    color: #616161;
+    margin: 4px 0 8px 0;
+}
+
 .colores {
     margin-top: 10px;
 }
@@ -495,6 +502,11 @@ html {
         height: 50vh;
         min-height: 300px;
     }
+}
+
+.navbar {
+    z-index: 290;
+    /* menor que el panel (300) pero visible */
 }
 
 /* ── NUEVA COLECCIÓN NAVBAR ── */

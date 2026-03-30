@@ -240,6 +240,16 @@ document.querySelectorAll('.producto-img').forEach(el => {
     el.classList.add('tiene-espalda'); // asegurar la clase aunque no esté en el HTML
 });
 
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const navbarCollapse = document.getElementById('navbarCatalogo');
+        if (navbarCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) bsCollapse.hide();
+        }
+    });
+});
+
 const swipeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {

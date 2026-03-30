@@ -4,11 +4,27 @@
 
 const WA_NUMERO = '5554705157';
 
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let modalActual = null;
 let modalCantidad = 1;
 let modalTallaSeleccionada = null;
 let modalColorSeleccionado = null;
+
+const PRECIOS = {
+  'Top Deportivo': 350,
+  'Tank Top': 320,
+  'Top tirante ancho': 320,
+  'Top nudo': 320,
+  'Top asimétrico': 320,
+  'Legging Cintura V': 450,
+  'Legging Flare': 480,
+  'Legging Yoga': 480,
+  'Short': 280,
+  'Vestido': 520,
+  'Chamarra Básica': 650,
+  'Calceta Moda': 120,
+};
+
 
 // ── PANEL ──
 function toggleCarrito() {
@@ -20,6 +36,7 @@ function toggleCarrito() {
 function actualizarBadge() {
   const total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
   const badge = document.getElementById('carritoBadge');
+  if (!badge) return; //
   badge.textContent = total;
   badge.dataset.count = total;
 }
@@ -40,6 +57,8 @@ function renderCarrito() {
     <div class="carrito-item">
       <div class="carrito-item-info">
         <div class="carrito-item-nombre">${item.nombre}</div>
+        <div class="carrito-item-codigo">${item.codigo}</div>
+        <div class="carrito-item-precio">${item.precio}</div>
         <div class="carrito-item-detalle">Talla: ${item.talla} · Color: ${item.color}</div>
         <div class="carrito-item-acciones">
           <div class="carrito-item-cant">
@@ -56,14 +75,20 @@ function renderCarrito() {
 
 function cambiarCantidadItem(i, delta) {
   carrito[i].cantidad = Math.max(1, carrito[i].cantidad + delta);
+  guardarCarrito();
   renderCarrito();
   actualizarBadge();
 }
 
 function eliminarItem(i) {
   carrito.splice(i, 1);
+  guardarCarrito();
   renderCarrito();
   actualizarBadge();
+}
+
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 // ── WHATSAPP ──
@@ -72,6 +97,7 @@ function enviarWhatsApp() {
   let msg = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
   carrito.forEach((item, i) => {
     msg += `${i + 1}. ${item.nombre}\n`;
+    msg += `   Código: ${item.codigo}\n`;
     msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad}\n\n`;
   });
   msg += '¿Pueden confirmarme disponibilidad? 🙏';
@@ -79,13 +105,16 @@ function enviarWhatsApp() {
 }
 
 // ── MODAL ──
-function abrirModal(nombre, tallas, colores) {
-  modalActual = { nombre, tallas, colores };
+function abrirModal(nombre, codigo, tallas, colores) {
+  const precio = PRECIOS[nombre] || 0;
+  modalActual = { nombre, codigo, precio, tallas, colores };
   modalCantidad = 1;
   modalTallaSeleccionada = null;
   modalColorSeleccionado = null;
 
   document.getElementById('modalNombre').textContent = nombre;
+  document.getElementById('modalCodigo').textContent = codigo;
+  document.getElementById('modalPrecio').textContent = precio;
   document.getElementById('modalCantidad').textContent = 1;
 
   document.getElementById('modalTallas').innerHTML = tallas.map(t =>
@@ -93,7 +122,13 @@ function abrirModal(nombre, tallas, colores) {
   ).join('');
 
   document.getElementById('modalColoresSel').innerHTML = colores.map(c =>
-    `<button class="modal-color-btn" style="background:${c.bg}" title="${c.nombre}" onclick="seleccionarColor(this,'${c.nombre}')"></button>`
+    `<button class="modal-color-btn" 
+        style="${c.img
+      ? `background-image:url('${c.img}');background-size:cover;background-position:center;`
+      : `background:${c.bg};`}" 
+        title="${c.nombre}" 
+        onclick="seleccionarColor(this,'${c.nombre}')">
+    </button>`
   ).join('');
 
   // FIX: primero hacerlo visible, luego agregar clase para animación
@@ -147,12 +182,15 @@ function confirmarAgregar() {
   } else {
     carrito.push({
       nombre: modalActual.nombre,
+      codigo: modalActual.codigo,
+      precio: modalActual.precio,
       talla: modalTallaSeleccionada,
       color: modalColorSeleccionado || '—',
       cantidad: modalCantidad
     });
   }
 
+  guardarCarrito();
   cerrarModal();
   renderCarrito();
   actualizarBadge();
@@ -166,8 +204,23 @@ function confirmarAgregar() {
   }, 400);
 }
 
-// ── INIT ──
-document.addEventListener('DOMContentLoaded', () => {
+function vaciarCarrito() {
+  if (carrito.length === 0) return;
+  if (!confirm('¿Seguro que quieres vaciar el carrito?')) return;
+  carrito = [];
+  guardarCarrito();
   renderCarrito();
   actualizarBadge();
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  carrito = JSON.parse(localStorage.getItem('carrito')) || []; // ← agregar esta línea
+  renderCarrito();
+  actualizarBadge();
+
+  document.querySelectorAll('.precio[data-nombre]').forEach(el => {
+    const precio = PRECIOS[el.dataset.nombre];
+    if (precio) el.textContent = `$${precio}`;
+  });
 });

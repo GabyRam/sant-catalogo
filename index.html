@@ -78,7 +78,7 @@
         <div class="nueva-coleccion-banner">
             <div class="nueva-coleccion-contenido">
                 <p class="nueva-coleccion-eyebrow">Recién llegado</p>
-                <h2 class="nueva-coleccion-titulo">Nueva Colección</h2>
+                <h2 class="nueva-coleccion-titulo nav-nueva-coleccion">Nueva Colección</h2>
                 <p class="nueva-coleccion-sub">Piezas diseñadas para moverte con estilo</p>
                 <a href="nueva-coleccion.html" class="nueva-coleccion-btn">Ver colección</a>
             </div>
@@ -100,6 +100,7 @@
                     </div>
                     <div class="card-body">
                         <h5>Top Deportivo</h5>
+                        <p class="precio" data-nombre="Top Deportivo"></p>
                         <p class="descripcion">Espalda atlética · Cierre frontal para mayor comodidad · Gran cobertura ·
                             Gran soporte para mayor movimiento</p>
                         <p><strong>Tallas:</strong> CH - L</p>
@@ -110,7 +111,7 @@
                                 onclick="cambiarImagen('top1','images/tops/top-blanco.jpg','images/tops/top-blanco-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Deportivo',['CH','M','L'],[{nombre:'Rosa claro',bg:'#c3aaa3'},{nombre:'Blanco',bg:'#ffffff'}])">+
+                            onclick="abrirModal('Top Deportivo','TOPNY-001',['CH','M','L'],[{nombre:'Rosa claro',bg:'#c3aaa3'},{nombre:'Blanco',bg:'#ffffff'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -135,7 +136,7 @@
                                 onclick="cambiarImagen('top2','images/tops/top-rosa.jpg','images/tops/top-rosa-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Deportivo tirantes cruzados',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#9e4b55'}])">+
+                            onclick="abrirModal('Top Deportivo tirantes cruzados','TOPNY-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#9e4b55'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -158,7 +159,7 @@
                                 onclick="cambiarImagen('top3','images/tops/top-atletico-negro.jpg','images/tops/top-atletico-negro-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Atlético',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Top Atlético','TOPNY-003',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -181,7 +182,7 @@
                                 onclick="cambiarImagen('top4','images/tops/top-largo-negro.jpg','images/tops/top-largo-negro-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top Deportivo largo',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Top Deportivo largo','TOPNY-004',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -203,7 +204,7 @@
                                 onclick="cambiarImagen('top5','images/tops/tank-negro.jpg','images/tops/tank-negro-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Tank Top',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Tank Top','TANKNY-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -246,7 +247,7 @@
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-vino.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Crop Top Cuello Redondo',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
+                            onclick="abrirModal('Crop Top Cuello Redondo','CROPKW-001', ['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
                             {nombre:'Blanco',bg:'#ffffff'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},
                             {nombre:'Gris',bg:'#b4b1ac'},{nombre:'Gris oxford',bg:'#616161'},{nombre:'Esmeralda',bg:'#4999B4'},{nombre:'Vino',bg:'#682d4d'}])">+
                             Agregar al pedido</button>
@@ -284,7 +285,7 @@
                                 onclick="cambiarImagen('legging1','images/leggings/legging-gris.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Cintura V',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},{nombre:'Gris',bg:'#6f695b'}])">+
+                            onclick="abrirModal('Legging Cintura V','LEGGINGKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},{nombre:'Gris',bg:'#6f695b'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -306,7 +307,7 @@
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-vino.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Flare',['CH','M','L','XL'],[{nombre:'Esmeralda',bg:'#4999B4'},{nombre:'Vino',bg:'#682d4d'}])">+
+                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Esmeralda',bg:'#4999B4'},{nombre:'Vino',bg:'#682d4d'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -327,7 +328,7 @@
                                 onclick="cambiarImagen('legging3','images/leggings/legging-colombiano-gris.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Tela Colombiana',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris',bg:'#60606c'}])">+
+                            onclick="abrirModal('Legging Tela Colombiana','LEGGINGNY-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris',bg:'#60606c'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -358,7 +359,7 @@
                                 onclick="cambiarImagen('biker1','images/bikers/biker-azul.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Biker',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'}])">+
+                            onclick="abrirModal('Biker','BIKERKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -391,7 +392,7 @@
                                 onclick="cambiarImagen('short1','images/shorts/short-gris.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Short',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Gris',bg:'#b4b1ac'}])">+
+                            onclick="abrirModal('Short','SHORTKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Lavanda',bg:'#6e6482'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Gris',bg:'#b4b1ac'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -427,7 +428,7 @@
                                 onclick="cambiarImagen('playera1','images/playeras/aura-runner-durazno.jpg','images/playeras/aura-runner-durazno-espalda.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Playera Aura Runner',['CH','M','L'],[{nombre:'Blanco',bg:'#ffffff'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Durazno',bg:'#ffddd4'}])">+
+                            onclick="abrirModal('Playera Aura Runner','PLAYERAPO1',['CH','M','L'],[{nombre:'Blanco',bg:'#ffffff'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Durazno',bg:'#ffddd4'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -462,7 +463,7 @@
                                 onclick="cambiarImagen('falda1','images/faldas/falda-tenis-azul.jpg','images/faldas/falda-tenis-azul-bolsa.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Falda Tenis',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul',bg:'#adc1f4'}])">+
+                            onclick="abrirModal('Falda Tenis','SKIRT-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul',bg:'#adc1f4'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -551,7 +552,7 @@
                                 onclick="cambiarImagen('chamarra2','images/chamarras/chamarra-deportiva-ivory.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Chamarra',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris oxford',bg:'#808080'}])">+
+                            onclick="abrirModal('Chamarra',['CH','M','L'],[{nombre:'Verde olivo',bg:'#4c4e43'},{nombre:'Hueso',bg:'#e7e2dc'},{nombre:'Ivory',bg:'#bdab9f'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -671,9 +672,13 @@
                                 onclick="cambiarImagen('calceta2','images/calcetas/calceta-free-mind.jpg')" style="background-image: url('images/calcetas/calceta-free-mind-thumb.png'); background-size: cover;
                                 background-position: center;"></span>
                         </div>
-                        <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Calceta Moda',['Unitalla'],[{nombre:'Have',bg:'#000000'},{nombre:'1966',bg:'#ffffff'}])">+
-                            Agregar al pedido</button>
+                        <button class="btn-agregar-carrito" onclick="abrirModal('Calceta Moda',['Unitalla'],[
+                            {nombre:'Have', img:'images/calcetas/calceta-have-thumb.png'},
+                            {nombre:'1966', img:'images/calcetas/calceta-1966-thumb.png'},
+                            {nombre:'Waht', img:'images/calcetas/calceta-waht-thumb.png'},
+                            {nombre:'Grateful', img:'images/calcetas/calceta-grateful-thumb.png'},
+                            {nombre:'Free Mind', img:'images/calcetas/calceta-free-mind-thumb.png'}
+                        ])">+ Agregar al pedido</button>
                     </div>
                 </div>
             </div>
@@ -701,7 +706,8 @@
                                 onclick="cambiarImagen('calceta3','images/calcetas/calceta-rosa.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Calceta Moda Lisa',['Unitalla'],[{nombre:'Beige',bg:'#f5f5dc'},{nombre:'Azul',bg:'#4169e1'}])">+
+                            onclick="abrirModal('Calceta Moda Lisa',['Unitalla'],[{nombre:'Beige',bg:'#d8c3a5'},
+                            {nombre:'Azul',bg:'#b1c2d3'},{nombre:'Hueso',bg:'#e7e2dc'},{nombre:'Negro',bg:'#000000'},{nombre:'Rosa',bg:'#d7bdba'}])">+
                             Agregar al pedido</button>
                     </div>
                 </div>
@@ -796,20 +802,22 @@
     </button>
 
     <!-- BOTÓN FLOTANTE CARRITO -->
+    <!--
     <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
-        <!--
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
             stroke-linejoin="round">
             <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7z" />
             <path d="M9 7V5a3 3 0 0 1 6 0v2" />
             <path d="M12 15.5s-3-1.8-3-3.8a1.8 1.8 0 0 1 3-.9 1.8 1.8 0 0 1 3 .9c0 2-3 3.8-3 3.8z" />
         </svg>
-        -->
-        <button class="carrito-fab" onclick="abrirCarrito()">
-            <img src="images/amor.png" alt="Carrito" style="width:36px; height:36px;">
-            <span class="carrito-badge" data-count="0">0</span>
-        </button>
         <span class="carrito-badge" id="carritoBadge">0</span>
+    </button>
+    -->
+    <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
+        <div style="position: relative; width: 36px; height: 36px;">
+            <img src="images/amor.png" alt="Carrito" style="width:36px; height:36px;">
+            <span class="carrito-badge" id="carritoBadge">0</span>
+        </div>
     </button>
 
     <!-- PANEL CARRITO -->
@@ -827,10 +835,11 @@
             <p class="carrito-vacio">Tu carrito está vacío</p>
         </div>
         <div class="carrito-footer">
-            <button onclick="toggleCarrito()"
+            <!-- <button onclick="toggleCarrito()"
                 style="width:100%;background:none;border:1px solid #ddd;border-radius:8px;padding:10px;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;">
                 Seguir comprando
-            </button>
+            </button> -->
+            <button class="carrito-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
             <button class="carrito-whatsapp" onclick="enviarWhatsApp()">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path
@@ -853,6 +862,10 @@
             </svg>
         </button>
         <h4 id="modalNombre"></h4>
+        <p id="modalCodigo" style="font-size:11px; letter-spacing:2px; color:#aaa; margin:0 0 4px 0;"></p>
+        <!-- ← agregar -->
+        <p id="modalPrecio" style="font-size:20px; font-weight:600; color:#1a1a1a; margin:0 0 16px 0;"></p>
+        <!-- ← agregar -->
         <label>Talla</label>
         <div class="modal-tallas" id="modalTallas"></div>
         <label>Color</label>
@@ -868,8 +881,8 @@
     <div class="modal-backdrop" id="modalBackdrop" onclick="cerrarModal()"></div>
 
     <!-- SCRIPTS — siempre al final, en este orden -->
-    <script src="js/script.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

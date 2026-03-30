@@ -56,10 +56,10 @@
 /* ── PANEL CARRITO ── */
 .carrito-panel {
   position: fixed;
-  top: 0;
+  top: 80px;
   right: -420px;
   width: min(420px, 100vw);
-  height: 100dvh;
+  height: calc(100dvh - 70px);
   background: #fff;
   z-index: 300;
   display: flex;
@@ -255,6 +255,27 @@
   justify-content: space-between;
 }
 
+.carrito-vaciar {
+  width: 100%;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #aaa;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.carrito-vaciar:hover {
+  border-color: #9e4b55;
+  color: #9e4b55;
+}
+
 /* ── MODAL AGREGAR AL CARRITO ── */
 /* FIX: usar visibility en lugar de display para que la animación funcione */
 .modal-agregar {
@@ -349,7 +370,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.15) !important;
   cursor: pointer;
   transition: transform 0.15s;
   outline: 2px solid transparent;
@@ -361,7 +382,8 @@
 }
 
 .modal-color-btn.selected {
-  outline-color: #1a1a1a;
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9e4b55;
 }
 
 .modal-cantidad {
