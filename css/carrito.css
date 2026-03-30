@@ -276,6 +276,19 @@
   color: #9e4b55;
 }
 
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin-bottom: 12px;
+  border-top: 1px solid #f0eeec;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 /* ── MODAL AGREGAR AL CARRITO ── */
 /* FIX: usar visibility en lugar de display para que la animación funcione */
 .modal-agregar {

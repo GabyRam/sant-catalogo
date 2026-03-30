@@ -45,12 +45,17 @@ function actualizarBadge() {
 function renderCarrito() {
   const cont = document.getElementById('carritoItems');
   const btnWA = document.querySelector('.carrito-whatsapp');
+  const totalEl = document.getElementById('carritoTotal');
 
   if (carrito.length === 0) {
     cont.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
     btnWA.disabled = true;
+    if (totalEl) totalEl.textContent = '$0';
     return;
   }
+
+  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+  if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX')}`;
 
   btnWA.disabled = false;
   cont.innerHTML = carrito.map((item, i) => `
@@ -98,9 +103,14 @@ function enviarWhatsApp() {
   carrito.forEach((item, i) => {
     msg += `${i + 1}. ${item.nombre}\n`;
     msg += `   Código: ${item.codigo}\n`;
-    msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad}\n\n`;
+    msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad} · Precio: $${item.precio} c/u\n\n`;
   });
-  msg += '¿Pueden confirmarme disponibilidad? 🙏';
+
+  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+  msg += `Total: $${total.toLocaleString('es-MX')}\n\n`;  // ← agregar
+
+  msg += '¿Pueden confirmarme disponibilidad? 🙏\n\n';
+  msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
   window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
