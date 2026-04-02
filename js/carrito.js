@@ -55,7 +55,11 @@ function renderCarrito() {
   }
 
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+<<<<<<< HEAD
   if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX') + ' MXN'}`;
+=======
+  if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX')}` + ' MXN';
+>>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
 
   btnWA.disabled = false;
   cont.innerHTML = carrito.map((item, i) => `
@@ -63,7 +67,7 @@ function renderCarrito() {
       <div class="carrito-item-info">
         <div class="carrito-item-nombre">${item.nombre}</div>
         <div class="carrito-item-codigo">${item.codigo}</div>
-        <div class="carrito-item-precio">${item.precio}</div>
+        <div class="carrito-item-precio">$${item.precio} MXN</div>
         <div class="carrito-item-detalle">Talla: ${item.talla} · Color: ${item.color}</div>
         <div class="carrito-item-acciones">
           <div class="carrito-item-cant">
@@ -107,7 +111,11 @@ function enviarWhatsApp() {
   });
 
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+<<<<<<< HEAD
   msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;  // ← agregar
+=======
+  msg += `Total: $${total.toLocaleString('es-MX' + ' MXN')}\n\n`;  // ← agregar
+>>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
 
   msg += '¿Pueden confirmarme disponibilidad? 🙏\n\n';
   msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
@@ -124,7 +132,11 @@ function abrirModal(nombre, codigo, tallas, colores) {
 
   document.getElementById('modalNombre').textContent = nombre;
   document.getElementById('modalCodigo').textContent = codigo;
+<<<<<<< HEAD
   document.getElementById('modalPrecio').textContent = precio + ' MXN';
+=======
+  document.getElementById('modalPrecio').textContent = `$ ${precio} MXN`;
+>>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
   document.getElementById('modalCantidad').textContent = 1;
 
   document.getElementById('modalTallas').innerHTML = tallas.map(t =>
