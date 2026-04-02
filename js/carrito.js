@@ -55,7 +55,7 @@ function renderCarrito() {
   }
 
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-  if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX')}`;
+  if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX') + ' MXN'}`;
 
   btnWA.disabled = false;
   cont.innerHTML = carrito.map((item, i) => `
@@ -107,7 +107,7 @@ function enviarWhatsApp() {
   });
 
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-  msg += `Total: $${total.toLocaleString('es-MX')}\n\n`;  // ← agregar
+  msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;  // ← agregar
 
   msg += '¿Pueden confirmarme disponibilidad? 🙏\n\n';
   msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
@@ -124,7 +124,7 @@ function abrirModal(nombre, codigo, tallas, colores) {
 
   document.getElementById('modalNombre').textContent = nombre;
   document.getElementById('modalCodigo').textContent = codigo;
-  document.getElementById('modalPrecio').textContent = precio;
+  document.getElementById('modalPrecio').textContent = precio + ' MXN';
   document.getElementById('modalCantidad').textContent = 1;
 
   document.getElementById('modalTallas').innerHTML = tallas.map(t =>
@@ -225,12 +225,12 @@ function vaciarCarrito() {
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
-  carrito = JSON.parse(localStorage.getItem('carrito')) || []; // ← agregar esta línea
+  carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   renderCarrito();
   actualizarBadge();
 
   document.querySelectorAll('.precio[data-nombre]').forEach(el => {
     const precio = PRECIOS[el.dataset.nombre];
-    if (precio) el.textContent = `$${precio}`;
+    if (precio) el.textContent = `$${precio}` + ' MXN';
   });
 });
