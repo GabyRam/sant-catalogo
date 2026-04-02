@@ -16,6 +16,7 @@ const PRECIOS = {
   'Calceta Moda Lisa': 60,
   'Tank Top': 249,
   'Top Deportivo Largo': 289,
+  'Top Deportivo': 289,
   'Crop Top': 299,
   'Top Atlético': 369,
   'Short': 299,
@@ -108,7 +109,7 @@ function renderCarrito() {
 
   // Nota de promo si aplica
   const promoHtml = (pares > 0 && ahorro > 0)
-    ? `<div class="carrito-promo-nota">🎉 Promo calcetas 2x$100 aplicada · Ahorro: $${ahorro}</div>`
+    ? `<div class="carrito-promo-nota">Promo calcetas 2x$100 aplicada · Ahorro: $${ahorro}</div>`
     : '';
 
   btnWA.disabled = false;
