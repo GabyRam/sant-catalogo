@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zweat — Flow Under Pressure. Ropa deportiva de alto rendimiento.">
+    <title>Zweat — Flow Under Pressure</title>
+
+    <link rel="icon" href="images/zweat-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── RESET ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --z-black:   #0b0c0f;
+            --z-dark:    #111318;
+            --z-mid:     #1c1f27;
+            --z-accent:  #e8ff00;   /* amarillo neón */
+            --z-white:   #f0f0f0;
+            --z-muted:   rgba(240,240,240,0.35);
+            --z-font:    'Barlow Condensed', sans-serif;
+            --z-body:    'Barlow', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--z-body);
+            background: var(--z-black);
+            color: var(--z-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ── */
+        .z-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            background: rgba(11, 12, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .z-nav-logos {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .z-logo-text {
+            font-family: var(--z-font);
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--z-white);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .z-logo-text span { color: var(--z-accent); }
+
+        .z-nav-divider {
+            width: 1px;
+            height: 24px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .z-nav-sant {
+            font-family: var(--z-body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .z-nav-sant:hover { color: var(--z-white); }
+
+        .z-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .z-nav-links a {
+            font-family: var(--z-font);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .z-nav-links a:hover { color: var(--z-white); }
+
+        /* ── HERO ── */
+        .z-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--z-black);
+            overflow: hidden;
+        }
+
+        /* Textura de fondo sutil */
+        .z-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,255,0,0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 70%, rgba(255,255,255,0.02) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        /* Grid decorativo */
+        .z-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .z-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .z-hero-eyebrow {
+            font-family: var(--z-font);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--z-accent);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: zFadeUp 0.8s 0.2s ease forwards;
+        }
+
+        .z-hero-brand {
+            font-family: var(--z-font);
+            font-size: clamp(80px, 18vw, 200px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            color: var(--z-white);
+            line-height: 0.9;
+            opacity: 0;
+            animation: zFadeUp 1s 0.4s cubic-bezier(.22,1,.36,1) forwards;
+        }
+
+        .z-hero-tagline {
+            font-family: var(--z-body);
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(240,240,240,0.5);
+            margin-top: 20px;
+            opacity: 0;
+            animation: zFadeUp 0.8s 0.8s ease forwards;
+        }
+
+        .z-hero-coords {
+            font-family: var(--z-font);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: rgba(240,240,240,0.2);
+            margin-top: 40px;
+            opacity: 0;
+            animation: zFadeUp 0.8s 1.1s ease forwards;
+        }
+
+        .z-hero-cta {
+            margin-top: 48px;
+            opacity: 0;
+            animation: zFadeUp 0.8s 1.3s ease forwards;
+        }
+
+        .z-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            font-family: var(--z-font);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--z-accent);
+            color: var(--z-black);
+            background: var(--z-accent);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .z-btn:hover {
+            background: transparent;
+            color: var(--z-accent);
+        }
+
+        .z-btn-ghost {
+            background: transparent;
+            color: rgba(240,240,240,0.6);
+            border-color: rgba(240,240,240,0.2);
+            margin-left: 16px;
+        }
+
+        .z-btn-ghost:hover {
+            color: var(--z-white);
+            border-color: var(--z-white);
+        }
+
+        /* ── BARRA HORIZONTAL ── */
+        .z-ticker {
+            background: var(--z-accent);
+            overflow: hidden;
+            padding: 12px 0;
+        }
+
+        .z-ticker-track {
+            display: flex;
+            gap: 0;
+            animation: zTicker 18s linear infinite;
+            width: max-content;
+        }
+
+        .z-ticker-item {
+            font-family: var(--z-font);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--z-black);
+            padding: 0 32px;
+            white-space: nowrap;
+        }
+
+        .z-ticker-item::after {
+            content: ' ✦ ';
+            padding-left: 32px;
+        }
+
+        /* ── SECCIÓN PRÓXIMAMENTE ── */
+        .z-coming {
+            padding: 120px 40px;
+            text-align: center;
+            background: var(--z-dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .z-coming-label {
+            font-family: var(--z-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--z-accent);
+            margin-bottom: 24px;
+        }
+
+        .z-coming-title {
+            font-family: var(--z-font);
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--z-white);
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .z-coming-sub {
+            font-family: var(--z-body);
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(240,240,240,0.45);
+            max-width: 480px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        /* ── FEATURES ── */
+        .z-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .z-feature {
+            background: var(--z-dark);
+            padding: 48px 40px;
+            transition: background 0.3s;
+        }
+
+        .z-feature:hover { background: var(--z-mid); }
+
+        .z-feature-num {
+            font-family: var(--z-font);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--z-accent);
+            margin-bottom: 16px;
+        }
+
+        .z-feature-title {
+            font-family: var(--z-font);
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--z-white);
+            margin-bottom: 12px;
+        }
+
+        .z-feature-desc {
+            font-family: var(--z-body);
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(240,240,240,0.4);
+            line-height: 1.7;
+        }
+
+        /* ── FOOTER ── */
+        .z-footer {
+            background: var(--z-black);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .z-footer-brand {
+            font-family: var(--z-font);
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--z-white);
+        }
+
+        .z-footer-brand span { color: var(--z-accent); }
+
+        .z-footer-copy {
+            font-family: var(--z-body);
+            font-size: 12px;
+            color: rgba(240,240,240,0.25);
+            letter-spacing: 1px;
+        }
+
+        .z-footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .z-footer-links a {
+            font-family: var(--z-font);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(240,240,240,0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .z-footer-links a:hover { color: var(--z-accent); }
+
+        /* ── ANIMACIONES ── */
+        @keyframes zFadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zTicker {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .z-nav { padding: 16px 20px; }
+            .z-nav-links { display: none; }
+            .z-hero-brand { letter-spacing: -1px; }
+            .z-coming { padding: 80px 24px; }
+            .z-features { grid-template-columns: 1fr; }
+            .z-feature { padding: 40px 24px; }
+            .z-footer { flex-direction: column; text-align: center; padding: 28px 24px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="z-nav">
+        <div class="z-nav-logos">
+            <a class="z-logo-text" href="index.html"><span>Z</span>WEAT</a>
+            <div class="z-nav-divider"></div>
+            <a class="z-nav-sant" href="../sant/index.html">SA/NT Activewear</a>
+        </div>
+        <ul class="z-nav-links">
+            <li><a href="#coleccion">Colección</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="z-hero">
+        <div class="z-hero-grid"></div>
+        <div class="z-hero-content">
+            <p class="z-hero-eyebrow">Flow Under Pressure</p>
+            <h1 class="z-hero-brand">ZWEAT</h1>
+            <p class="z-hero-tagline">Ropa deportiva de alto rendimiento</p>
+            <p class="z-hero-coords">19.4326° N &nbsp;·&nbsp; 99.1332° O</p>
+            <div class="z-hero-cta">
+                <a href="#coleccion" class="z-btn">Ver colección</a>
+                <a href="#contacto" class="z-btn z-btn-ghost">Contacto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="z-ticker">
+        <div class="z-ticker-track">
+            <span class="z-ticker-item">Flow Under Pressure</span>
+            <span class="z-ticker-item">Alto Rendimiento</span>
+            <span class="z-ticker-item">Zweat</span>
+            <span class="z-ticker-item">Flow Under Pressure</span>
+            <span class="z-ticker-item">Alto Rendimiento</span>
+            <span class="z-ticker-item">Zweat</span>
+            <span class="z-ticker-item">Flow Under Pressure</span>
+            <span class="z-ticker-item">Alto Rendimiento</span>
+            <span class="z-ticker-item">Zweat</span>
+            <span class="z-ticker-item">Flow Under Pressure</span>
+            <span class="z-ticker-item">Alto Rendimiento</span>
+            <span class="z-ticker-item">Zweat</span>
+        </div>
+    </div>
+
+    <!-- PRÓXIMAMENTE -->
+    <section id="coleccion" class="z-coming">
+        <p class="z-coming-label">Colección 2026</p>
+        <h2 class="z-coming-title">Próximamente</h2>
+        <p class="z-coming-sub">Estamos construyendo algo que te va a mover. La primera colección Zweat llega pronto — diseñada para quienes no paran.</p>
+        <a href="#contacto" class="z-btn">Avísame cuando llegue</a>
+    </section>
+
+    <!-- FEATURES -->
+    <div class="z-features">
+        <div class="z-feature">
+            <p class="z-feature-num">01</p>
+            <h3 class="z-feature-title">Rendimiento</h3>
+            <p class="z-feature-desc">Telas técnicas diseñadas para moverse contigo. Sin restricciones, sin excusas.</p>
+        </div>
+        <div class="z-feature">
+            <p class="z-feature-num">02</p>
+            <h3 class="z-feature-title">Durabilidad</h3>
+            <p class="z-feature-desc">Construidas para durar tanto como tú. Cada pieza resiste el ritmo de tu entrenamiento.</p>
+        </div>
+        <div class="z-feature">
+            <p class="z-feature-num">03</p>
+            <h3 class="z-feature-title">Identidad</h3>
+            <p class="z-feature-desc">No solo ropa — un statement. Zweat es para los que sudan sin pedir permiso.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="z-footer">
+        <span class="z-footer-brand"><span>Z</span>WEAT</span>
+        <span class="z-footer-copy">© 2026 · Todos los derechos reservados</span>
+        <div class="z-footer-links">
+            <a href="https://wa.me/5554705157" target="_blank">WhatsApp</a>
+            <a href="https://instagram.com/zweat" target="_blank">Instagram</a>
+            <a href="../sant/index.html">SA/NT Activewear</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -11,19 +11,68 @@ let modalTallaSeleccionada = null;
 let modalColorSeleccionado = null;
 
 const PRECIOS = {
-  'Top Deportivo': 350,
-  'Tank Top': 320,
-  'Top tirante ancho': 320,
-  'Top nudo': 320,
-  'Top asimétrico': 320,
-  'Legging Cintura V': 450,
-  'Legging Flare': 480,
-  'Legging Yoga': 480,
-  'Short': 280,
-  'Vestido': 520,
-  'Chamarra Básica': 650,
-  'Calceta Moda': 120,
+  'Calceta Moda': 60,
+  'Calceta Yoga': 65,
+  'Calceta Moda Lisa': 60,
+  'Tank Top': 249,
+  'Top Deportivo Largo': 289,
+  'Crop Top': 299,
+  'Top Atlético': 369,
+  'Short': 299,
+  'Biker': 389,
+  'Chamarra Básica': 449,
+  'Chamarra Polar': 499,
+  'Chamarra Premium': 499,
+  'Leggings': 499,
+  'Jumper': 499,
+  'Legging Acampanado': 549,
 };
+
+// Precio individual de cada tipo de calceta
+const CALCETAS_PRECIOS = {
+  'Calceta Yoga': 65,
+  'Calceta Moda': 60,
+  'Calceta Moda Lisa': 60,
+};
+
+// Nombres de calcetas que aplican la promo 2x$100
+const CALCETAS = Object.keys(CALCETAS_PRECIOS);
+
+// Calcula el total aplicando la promo de calcetas (precios individuales distintos)
+function calcularTotal(carrito) {
+  let totalOtros = 0;
+  // Lista de precios individuales de cada unidad de calceta
+  let unidades = [];
+
+  carrito.forEach(item => {
+    if (CALCETAS.includes(item.nombre)) {
+      for (let i = 0; i < item.cantidad; i++) {
+        unidades.push(CALCETAS_PRECIOS[item.nombre]);
+      }
+    } else {
+      totalOtros += item.precio * item.cantidad;
+    }
+  });
+
+  // Ordenar de mayor a menor para que el ahorro sea máximo al parear
+  unidades.sort((a, b) => b - a);
+
+  const totalCalcetas = unidades.length;
+  const pares = Math.floor(totalCalcetas / 2);
+  const precioNormal = unidades.reduce((s, p) => s + p, 0);
+
+  // Pares a $100, la calceta suelta (si hay) paga su precio individual
+  const precioSuelta = totalCalcetas % 2 === 1 ? unidades[unidades.length - 1] : 0;
+  const precioConPromo = (pares * 100) + precioSuelta;
+  const ahorro = precioNormal - precioConPromo;
+
+  return {
+    total: totalOtros + precioConPromo,
+    totalCalcetas,
+    pares,
+    ahorro: Math.max(0, ahorro)
+  };
+}
 
 
 // ── PANEL ──
@@ -54,20 +103,23 @@ function renderCarrito() {
     return;
   }
 
-  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-<<<<<<< HEAD
-  if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX') + ' MXN'}`;
-=======
+  const { total, pares, ahorro } = calcularTotal(carrito);
   if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX')}` + ' MXN';
->>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
+
+  // Nota de promo si aplica
+  const promoHtml = (pares > 0 && ahorro > 0)
+    ? `<div class="carrito-promo-nota">🎉 Promo calcetas 2x$100 aplicada · Ahorro: $${ahorro}</div>`
+    : '';
 
   btnWA.disabled = false;
-  cont.innerHTML = carrito.map((item, i) => `
+  cont.innerHTML = promoHtml + carrito.map((item, i) => {
+    const esCalceta = CALCETAS.includes(item.nombre);
+    return `
     <div class="carrito-item">
       <div class="carrito-item-info">
         <div class="carrito-item-nombre">${item.nombre}</div>
         <div class="carrito-item-codigo">${item.codigo}</div>
-        <div class="carrito-item-precio">$${item.precio} MXN</div>
+        <div class="carrito-item-precio">${esCalceta ? `1 x $${CALCETAS_PRECIOS[item.nombre]} · 2 x $100` : '$' + item.precio + ' MXN'}</div>
         <div class="carrito-item-detalle">Talla: ${item.talla} · Color: ${item.color}</div>
         <div class="carrito-item-acciones">
           <div class="carrito-item-cant">
@@ -79,7 +131,8 @@ function renderCarrito() {
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function cambiarCantidadItem(i, delta) {
@@ -105,17 +158,19 @@ function enviarWhatsApp() {
   if (carrito.length === 0) return;
   let msg = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
   carrito.forEach((item, i) => {
+    const esCalceta = CALCETAS.includes(item.nombre);
     msg += `${i + 1}. ${item.nombre}\n`;
     msg += `   Código: ${item.codigo}\n`;
-    msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad} · Precio: $${item.precio} c/u\n\n`;
+    msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad}`;
+    msg += esCalceta ? ` · Precio: 1x$60 / 2x$100` : ` · Precio: $${item.precio} c/u`;
+    msg += '\n\n';
   });
 
-  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-<<<<<<< HEAD
-  msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;  // ← agregar
-=======
-  msg += `Total: $${total.toLocaleString('es-MX' + ' MXN')}\n\n`;  // ← agregar
->>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
+  const { total, pares, ahorro } = calcularTotal(carrito);
+  if (pares > 0) {
+    msg += `Promo calcetas (2x$100) aplicada — Ahorro: $${ahorro}\n`;
+  }
+  msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;
 
   msg += '¿Pueden confirmarme disponibilidad? 🙏\n\n';
   msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
@@ -132,11 +187,7 @@ function abrirModal(nombre, codigo, tallas, colores) {
 
   document.getElementById('modalNombre').textContent = nombre;
   document.getElementById('modalCodigo').textContent = codigo;
-<<<<<<< HEAD
-  document.getElementById('modalPrecio').textContent = precio + ' MXN';
-=======
   document.getElementById('modalPrecio').textContent = `$ ${precio} MXN`;
->>>>>>> 282d7ee46c2207236b63cadb348f8745fac26668
   document.getElementById('modalCantidad').textContent = 1;
 
   document.getElementById('modalTallas').innerHTML = tallas.map(t =>

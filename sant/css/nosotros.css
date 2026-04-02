@@ -1,0 +1,235 @@
+        /* ── HERO NOSOTROS ── */
+        .nosotros-hero {
+            position: relative;
+            width: 100%;
+            height: 55vh;
+            min-height: 360px;
+            background: #e8e4df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .nosotros-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 40% at 50% 50%,
+                    rgba(232, 228, 223, 0.90) 0%,
+                    rgba(232, 228, 223, 0.30) 60%,
+                    transparent 100%);
+            z-index: 2;
+        }
+
+        .nosotros-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .nosotros-hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(26, 26, 26, 0.5);
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: heroFadeUp 1s 0.2s forwards;
+        }
+
+        .nosotros-hero-titulo {
+            font-family: 'Caviar Dreams', sans-serif;
+            font-size: clamp(28px, 5vw, 64px);
+            font-weight: 600;
+            letter-spacing: clamp(4px, 2vw, 16px);
+            color: #1a1a1a;
+            margin: 0;
+            opacity: 0;
+            animation: heroFadeUp 1.2s 0.4s cubic-bezier(.22, 1, .36, 1) forwards;
+        }
+
+        .nosotros-hero-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 18px;
+            opacity: 0;
+            animation: heroFadeUp 1.2s 0.7s cubic-bezier(.22, 1, .36, 1) forwards;
+        }
+
+        .nosotros-hero-divider span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            background: rgba(26, 26, 26, 0.25);
+        }
+
+        .nosotros-hero-star {
+            width: 10px;
+            height: 10px;
+            fill: rgba(26, 26, 26, 0.35);
+        }
+
+        /* ── SECCIÓN HISTORIA ── */
+        .historia-section {
+            padding: 80px 0;
+        }
+
+        .historia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .historia-foto {
+            aspect-ratio: 3/4;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #e8e4df;
+        }
+
+        .historia-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .historia-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #bbb;
+        }
+
+        .historia-placeholder svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .historia-placeholder span {
+            font-size: 13px;
+        }
+
+        .historia-texto .eyebrow {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 12px;
+        }
+
+        .historia-texto h2 {
+            margin-bottom: 28px;
+        }
+
+        .historia-texto p {
+            color: #555;
+            margin-bottom: 18px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ── VALORES ── */
+        .valores-section {
+            background: #f9f7f5;
+            padding: 72px 0;
+        }
+
+        .valores-titulo {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .valores-sub {
+            text-align: center;
+            color: #888;
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto 56px;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .valor-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
+        }
+
+        .valor-icono {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .valor-nombre {
+            font-family: 'Caviar Dreams', sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .valor-desc {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* ── FRASE ── */
+        .frase-section {
+            padding: 80px 0;
+            text-align: center;
+            background: #1a1a1a;
+        }
+
+        .frase-cita {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 3.5vw, 40px);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 720px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+        }
+
+        .frase-autor {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .historia-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .historia-foto {
+                aspect-ratio: 4/3;
+            }
+
+            .valores-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }

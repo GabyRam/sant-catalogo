@@ -1,0 +1,67 @@
+/* ══════════════════════════════════════════
+   navbar.css — Navbar, logos, menú hamburguesa
+   ══════════════════════════════════════════ */
+
+.navbar {
+    z-index: 290;
+}
+
+/* ── Logos agrupados ── */
+.navbar-logos {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.logo {
+    font-family: 'Caviar Dreams', serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+}
+
+.logo-img {
+    height: 100px;
+}
+
+/* ── Link Zweat ── */
+.navbar-zweat {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa !important;
+    border-left: 1px solid #e0ddd9;
+    padding-left: 20px !important;
+    margin-left: 8px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    align-self: center;
+}
+
+.navbar-zweat:hover {
+    color: #1a1a1a !important;
+}
+
+/* ── Alineación del menú ── */
+#navbarCatalogo .navbar-nav {
+    align-items: flex-end;
+}
+
+#navbarCatalogo .nav-link {
+    text-align: right;
+}
+
+/* ── Link "Nueva Colección" animado ── */
+.nav-nueva-coleccion {
+    position: relative;
+    font-weight: 500;
+    color: #9e4b55 !important;
+    animation: navBrillo 2.5s ease-in-out infinite;
+}
+
+@keyframes navBrillo {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 1; }
+}

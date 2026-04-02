@@ -1,0 +1,236 @@
+/* ══════════════════════════════════════════
+   productos.css — Cards, colores, botones de producto
+   ══════════════════════════════════════════ */
+
+/* ── Card de producto ── */
+.producto {
+    transition: transform .2s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+/* ── Imagen del producto ── */
+.producto-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+.producto-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+.img-espalda {
+    opacity: 0;
+}
+
+.img-detalle {
+    opacity: 0;
+}
+
+.producto:hover .img-espalda {
+    opacity: 1;
+}
+
+.producto:hover .img-detalle {
+    opacity: 1;
+}
+
+.producto:hover .img-frente {
+    opacity: 0;
+}
+
+/* ── Textos de producto ── */
+.descripcion {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.precio {
+    font-size: 16px;
+    font-weight: 600;
+    color: #616161;
+    margin: 4px 0 8px 0;
+}
+
+.ultimas-piezas {
+    color: #9e4b55;
+    font-size: 16px;
+}
+
+/* ── Precio promocional calcetas ── */
+.precio-promo {
+    font-size: 15px;
+    font-weight: 600;
+    color: #616161;
+    margin: 4px 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.precio-promo-oferta {
+    color: #9e4b55;
+    font-weight: 700;
+    background: rgba(158, 75, 85, 0.08);
+    padding: 1px 7px;
+    border-radius: 4px;
+}
+
+/* ── Colores (dots) ── */
+.colores {
+    margin-top: 10px;
+}
+
+.color {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.negro            { background: black; }
+.blanco           { background: white; }
+.azul             { background: #adc1f4; }
+.azul-calceta     { background: #b1c2d3; }
+.azul-marino      { background: #2a385b; }
+.azul-rey         { background: #0B7FF2; }
+.azul-bicolor     { background: #586D97; }
+.rojo             { background: #E2011B; }
+.gris             { background: #6f695b; }
+.gris-legging     { background: #60606c; }
+.gris-short       { background: #b4b1ac; }
+.lavanda          { background: #6e6482; }
+.esmeralda        { background: #4999B4; }
+.vino             { background: #682d4d; }
+.beige            { background: #d8c3a5; }
+.rosa             { background: #9e4b55; }
+.rosa-claro       { background: #c3aaa3; }
+.rosa-calceta     { background: #d7bdba; }
+.rosa-neon        { background: #fc53ae; }
+.palo-de-rosa     { background: #DFA6B5; }
+.durazno          { background: #ffddd4; }
+.gris-oxford      { background: #616161; }
+.verde-olivo      { background: #4c4e43; }
+.hueso            { background: #e7e2dc; }
+.ivory            { background: #bdab9f; }
+.cafe             { background: #61341f; }
+.amarillo-bicolor { background: #f6e7af; }
+
+/* ── Swipe hint (mobile) ── */
+@media (max-width: 640px) {
+    .producto-img.swipe-hint::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Cpath d='M64,216,34.68,166a20,20,0,0,1,34.64-20L88,176V68a20,20,0,0,1,40,0v56a20,20,0,0,1,40,0v16a20,20,0,0,1,40,0v36c0,24-8,40-8,40' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='176' y1='56' x2='248' y2='56' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='208 24 176 56 208 88' fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E") center/26px no-repeat;
+        border-radius: 50%;
+        z-index: 10;
+        pointer-events: none;
+        animation: swipeHint 2s ease forwards;
+    }
+
+    @keyframes swipeHint {
+        0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        20%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+}
+
+/* ── Nueva colección (banner inline) ── */
+.nueva-coleccion {
+    width: 100%;
+}
+
+.nueva-coleccion-banner {
+    width: 100%;
+    height: 40vh;
+    min-height: 380px;
+    background: #e8e4df url('../images/nueva-coleccion.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nueva-coleccion-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.nueva-coleccion-contenido {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 24px;
+}
+
+.nueva-coleccion-eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+}
+
+.nueva-coleccion-titulo {
+    font-family: 'Caviar Dreams', sans-serif;
+    font-size: clamp(32px, 6vw, 72px);
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.nueva-coleccion-sub {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 28px;
+}
+
+.nueva-coleccion-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nueva-coleccion-btn:hover {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+@media (max-width: 640px) {
+    .nueva-coleccion-banner {
+        height: 50vh;
+        min-height: 300px;
+    }
+}

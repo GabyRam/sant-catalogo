@@ -1,0 +1,63 @@
+/* ══════════════════════════════════════════
+   style.css — Estilos globales
+   Tipografía, colores base, scroll, btn-top
+   ══════════════════════════════════════════ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #ffffff;
+    font-weight: 400;
+}
+
+/* ── Títulos ── */
+h1, h2, h3 {
+    font-family: 'Caviar Dreams', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+h1 { font-size: 56px; }
+h2 { font-size: 36px; }
+h3 { font-size: 24px; }
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ── Botón volver arriba ── */
+#btn-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 95px;
+    right: 24px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 0;
+    background: whitesmoke;
+    color: #9e4b55;
+    font-size: 40px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+    z-index: 199;
+}
+
+#btn-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#btn-top:hover {
+    transform: scale(1.08);
+    background: #f0f0f0;
+}

@@ -1,5 +1,10 @@
-function cambiarImagen(id, frente, espalda) {
+/* ══════════════════════════════════════════
+   script.js — Lógica general de productos
+   Imágenes, swipe, hero collage, btn-top
+   ══════════════════════════════════════════ */
 
+// ── Cambiar imagen de producto ──
+function cambiarImagen(id, frente, espalda) {
     const imgFrente = document.getElementById(id);
     const producto = imgFrente.closest(".producto");
     const imgEspalda = producto.querySelector(".img-espalda, .img-detalle");
@@ -18,17 +23,16 @@ function cambiarImagen(id, frente, espalda) {
         productoImg.classList.add('swipe-hint');
         setTimeout(() => productoImg.classList.remove('swipe-hint'), 2100);
     }
-
 }
 
-// ── SWIPE EN PRODUCTOS (táctil + mouse) ──
+// ── Swipe en productos (táctil + mouse) ──
 document.querySelectorAll(".producto-img").forEach(container => {
 
     let startX = 0;
     let startY = 0;
     let isDragging = false;
 
-    // ── Touch ──
+    // Touch
     container.addEventListener("touchstart", e => {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
@@ -50,17 +54,11 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const frente = container.querySelector(".img-frente");
         const espalda = container.querySelector(".img-espalda, .img-detalle");
         if (!espalda) return;
-        if (dx < -40) {
-            espalda.style.opacity = "1";
-            frente.style.opacity = "0";
-        }
-        if (dx > 40) {
-            espalda.style.opacity = "0";
-            frente.style.opacity = "1";
-        }
+        if (dx < -40) { espalda.style.opacity = "1"; frente.style.opacity = "0"; }
+        if (dx > 40)  { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
     });
 
-    // ── Mouse (desktop modo móvil) ──
+    // Mouse (desktop)
     let mouseStartX = 0;
     let mouseDown = false;
 
@@ -76,70 +74,41 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const frente = container.querySelector(".img-frente");
         const espalda = container.querySelector(".img-espalda, .img-detalle");
         if (!espalda) return;
-        if (dx < -40) {
-            espalda.style.opacity = "1";
-            frente.style.opacity = "0";
-        }
-        if (dx > 40) {
-            espalda.style.opacity = "0";
-            frente.style.opacity = "1";
-        }
+        if (dx < -40) { espalda.style.opacity = "1"; frente.style.opacity = "0"; }
+        if (dx > 40)  { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
     });
 
     container.addEventListener("mouseleave", () => { mouseDown = false; });
-
 });
 
-// ── HERO COLLAGE ──
+// ── Hero Collage ──
 (function () {
-
     const heroSection = document.querySelector('.hero-collage');
     if (!heroSection) return;
 
     const collectionType = heroSection.dataset.collection;
 
     const HERO_IMAGES = [
-        'images/hero/img1.jpg',
-        'images/hero/img2.jpg',
-        'images/hero/img3.jpg',
-        'images/hero/img4.jpg',
-        'images/hero/img5.jpg',
-        'images/hero/img6.jpg',
-        'images/hero/img7.jpg',
-        'images/hero/img8.jpg',
-        'images/hero/img9.jpg',
-        'images/hero/img10.jpg',
-        'images/hero/img11.jpg',
-        'images/hero/img12.jpg',
-        'images/hero/img13.jpg',
-        'images/hero/img14.jpg',
-        'images/hero/img15.jpg',
-        'images/hero/img16.jpg',
-        'images/hero/img17.jpg'
+        'images/hero/img1.jpg',  'images/hero/img2.jpg',  'images/hero/img3.jpg',
+        'images/hero/img4.jpg',  'images/hero/img5.jpg',  'images/hero/img6.jpg',
+        'images/hero/img7.jpg',  'images/hero/img8.jpg',  'images/hero/img9.jpg',
+        'images/hero/img10.jpg', 'images/hero/img11.jpg', 'images/hero/img12.jpg',
+        'images/hero/img13.jpg', 'images/hero/img14.jpg', 'images/hero/img15.jpg',
+        'images/hero/img16.jpg', 'images/hero/img17.jpg'
     ];
 
     const NEW_COLLECTION_IMAGES = [
-        'images/hero/new-collection/img18.jpg',
-        'images/hero/new-collection/img19.jpg',
-        'images/hero/new-collection/img20.jpg',
-        'images/hero/new-collection/img21.jpg',
-        'images/hero/new-collection/img22.jpg',
-        'images/hero/new-collection/img23.jpg',
-        'images/hero/new-collection/img24.jpg',
-        'images/hero/new-collection/img25.jpg',
-        'images/hero/new-collection/img26.jpg',
-        'images/hero/new-collection/img27.jpg',
-        'images/hero/new-collection/img28.jpg',
-        'images/hero/new-collection/img29.jpg',
-        'images/hero/new-collection/img30.jpg',
-        'images/hero/new-collection/img31.jpg',
+        'images/hero/new-collection/img18.jpg', 'images/hero/new-collection/img19.jpg',
+        'images/hero/new-collection/img20.jpg', 'images/hero/new-collection/img21.jpg',
+        'images/hero/new-collection/img22.jpg', 'images/hero/new-collection/img23.jpg',
+        'images/hero/new-collection/img24.jpg', 'images/hero/new-collection/img25.jpg',
+        'images/hero/new-collection/img26.jpg', 'images/hero/new-collection/img27.jpg',
+        'images/hero/new-collection/img28.jpg', 'images/hero/new-collection/img29.jpg',
+        'images/hero/new-collection/img30.jpg', 'images/hero/new-collection/img31.jpg',
         'images/hero/new-collection/img32.jpg',
-
     ];
 
-    const IMAGES = collectionType === "new"
-        ? NEW_COLLECTION_IMAGES
-        : HERO_IMAGES;
+    const IMAGES = collectionType === "new" ? NEW_COLLECTION_IMAGES : HERO_IMAGES;
 
     const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 6 : 15;
     const STAY_MIN = 7000;
@@ -148,8 +117,6 @@ document.querySelectorAll(".producto-img").forEach(container => {
     const INTERVAL_MAX = 3200;
 
     const hero = document.querySelector('.hero-collage');
-    if (!hero) return;
-
     const COLS = window.innerWidth < 640 ? 3 : 5;
     const ROWS = window.innerWidth < 640 ? 5 : 4;
 
@@ -173,11 +140,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const cellH = 100 / ROWS;
         const x = col * cellW + Math.random() * Math.max(0, cellW - wPct);
         const y = row * cellH + Math.random() * Math.max(0, cellH - hPct);
-        return {
-            x: Math.min(x, 100 - wPct),
-            y: Math.min(y, 100 - hPct),
-            zoneKey
-        };
+        return { x: Math.min(x, 100 - wPct), y: Math.min(y, 100 - hPct), zoneKey };
     }
 
     let zCounter = 2;
@@ -202,12 +165,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const rot = (Math.random() * 8 - 4).toFixed(2);
         const div = document.createElement('div');
         div.className = 'hero-photo';
-        div.style.cssText = `
-      width:${wPct}%;aspect-ratio:9/12;
-      left:${x}%;top:${y}%;
-      transform:rotate(${rot}deg);
-      z-index:${(zCounter = zCounter >= Z_MAX ? 2 : zCounter + 1)};
-    `;
+        div.style.cssText = `width:${wPct}%;aspect-ratio:9/12;left:${x}%;top:${y}%;transform:rotate(${rot}deg);z-index:${(zCounter = zCounter >= Z_MAX ? 2 : zCounter + 1)};`;
         const img = document.createElement('img');
         img.src = pickImage();
         img.alt = '';
@@ -230,24 +188,12 @@ document.querySelectorAll(".producto-img").forEach(container => {
     }
 
     window.addEventListener('load', () => setTimeout(init, 300));
-
 })();
 
-// ── SWIPE HINT AL ENTRAR EN PANTALLA ──
-// Aplica a TODOS los .producto-img que tengan .img-espalda, con o sin clase tiene-espalda
+// ── Swipe hint al entrar en pantalla ──
 document.querySelectorAll('.producto-img').forEach(el => {
     if (!el.querySelector('.img-espalda, .img-detalle')) return;
-    el.classList.add('tiene-espalda'); // asegurar la clase aunque no esté en el HTML
-});
-
-document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        const navbarCollapse = document.getElementById('navbarCatalogo');
-        if (navbarCollapse.classList.contains('show')) {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) bsCollapse.hide();
-        }
-    });
+    el.classList.add('tiene-espalda');
 });
 
 const swipeObserver = new IntersectionObserver((entries) => {
@@ -266,12 +212,10 @@ document.querySelectorAll('.producto-img.tiene-espalda').forEach(el => {
     swipeObserver.observe(el);
 });
 
+// ── Botón volver arriba ──
 const btnTop = document.getElementById('btn-top');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
-    } else {
-        btnTop.classList.remove('visible');
-    }
-});
+if (btnTop) {
+    window.addEventListener('scroll', () => {
+        btnTop.classList.toggle('visible', window.scrollY > 300);
+    });
+}

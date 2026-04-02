@@ -113,6 +113,19 @@
   font-size: 14px;
 }
 
+/* ── NOTA PROMO CALCETAS ── */
+.carrito-promo-nota {
+  background: linear-gradient(135deg, rgba(158, 75, 85, 0.08), rgba(195, 170, 163, 0.12));
+  border: 1px solid rgba(158, 75, 85, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9e4b55;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
 .carrito-item {
   display: flex;
   align-items: flex-start;
@@ -131,9 +144,9 @@
   margin-bottom: 4px;
 }
 
-,carrito-item-precio {
+.carrito-item-precio {
   font-size: 14px;
-  align-self: right;
+  color: #555;
 }
 
 .carrito-item-detalle {
