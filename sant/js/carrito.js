@@ -1,7 +1,3 @@
-// ════════════════════════════════════════════════════════════
-// js/carrito.js — reemplaza el archivo completo
-// ════════════════════════════════════════════════════════════
-
 const WA_NUMERO = '5554705157';
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -12,10 +8,12 @@ let modalColorSeleccionado = null;
 
 const PRECIOS = {
   'Top': 369,
+  'Crop Top': 299,
   'Playera': 299,
   'Short': 299,
   'Biker': 389,
   'Leggings': 499,
+  'Legging Yoga': 499,
   'Chamarra': 499,
   'Jumper': 499,
   'Falda': 499,
@@ -28,8 +26,9 @@ const PRECIOS = {
 // Precio individual de cada tipo de calceta
 const CALCETAS_PRECIOS = {
   'Calceta Yoga': 65,
-  'Calceta Moda': 60,
+  'Calceta Moda Blanca': 60,
   'Calceta Moda Lisa': 60,
+  'Calceta Moda Diseño': 60,
 };
 
 // Nombres de calcetas que aplican la promo 2x$100
@@ -286,6 +285,10 @@ function vaciarCarrito() {
 function obtenerPrecio(nombre) {
   // Buscar coincidencia exacta primero
   if (PRECIOS[nombre]) return PRECIOS[nombre];
+
+  // Buscar en precios de calcetas si aplica
+  if (CALCETAS_PRECIOS[nombre]) return CALCETAS_PRECIOS[nombre];
+  if (nombre.includes('Calceta')) return CALCETAS_PRECIOS['Calceta Moda'] || 60;
 
   // Buscar por categoría si no hay coincidencia exacta
   if (nombre.includes('Top') || nombre.includes('Tank') || nombre.includes('Crop')) return PRECIOS['Top'];
