@@ -2,9 +2,9 @@
         .nosotros-hero {
             position: relative;
             width: 100%;
-            height: 55vh;
+            height: 80vh;
             min-height: 360px;
-            background: #e8e4df;
+            background: #e8e4df url('../images/hero/us.jpg') right center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -85,7 +85,7 @@
         }
 
         .historia-foto {
-            aspect-ratio: 3/4;
+            aspect-ratio: 1/1;
             border-radius: 4px;
             overflow: hidden;
             background: #e8e4df;
@@ -225,11 +225,72 @@
             }
 
             .historia-foto {
-                aspect-ratio: 4/3;
+                aspect-ratio: 1/1;
             }
 
             .valores-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+            }
+        }
+
+        /* ── EQUIPO ── */
+        .equipo-section {
+            padding: 80px 0;
+            background: #faf9f7;
+        }
+
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .equipo-card {
+            text-align: center;
+        }
+
+        .equipo-foto {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background: #e8e4df;
+        }
+
+        .equipo-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .equipo-nombre {
+            font-family: 'Caviar Dreams', sans-serif;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .equipo-rol {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #9e4b55;
+            margin-bottom: 10px;
+        }
+
+        .equipo-bio {
+            font-size: 14px;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .equipo-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
             }
         }

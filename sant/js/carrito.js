@@ -11,22 +11,18 @@ let modalTallaSeleccionada = null;
 let modalColorSeleccionado = null;
 
 const PRECIOS = {
-  'Calceta Moda': 60,
-  'Calceta Yoga': 65,
-  'Calceta Moda Lisa': 60,
-  'Tank Top': 249,
-  'Top Deportivo Largo': 289,
-  'Top Deportivo': 289,
-  'Crop Top': 299,
-  'Top Atlético': 369,
+  'Top': 369,
+  'Playera': 299,
   'Short': 299,
   'Biker': 389,
-  'Chamarra Básica': 449,
-  'Chamarra Polar': 499,
-  'Chamarra Premium': 499,
   'Leggings': 499,
+  'Chamarra': 499,
   'Jumper': 499,
-  'Legging Acampanado': 549,
+  'Falda': 499,
+  'Legging Flare': 549,
+  'Calceta Yoga': 65,
+  'Calceta Moda': 60,
+  'Vestido': 549
 };
 
 // Precio individual de cada tipo de calceta
@@ -180,7 +176,7 @@ function enviarWhatsApp() {
 
 // ── MODAL ──
 function abrirModal(nombre, codigo, tallas, colores) {
-  const precio = PRECIOS[nombre] || 0;
+  const precio = obtenerPrecio(nombre);
   modalActual = { nombre, codigo, precio, tallas, colores };
   modalCantidad = 1;
   modalTallaSeleccionada = null;
@@ -285,6 +281,25 @@ function vaciarCarrito() {
   guardarCarrito();
   renderCarrito();
   actualizarBadge();
+}
+
+function obtenerPrecio(nombre) {
+  // Buscar coincidencia exacta primero
+  if (PRECIOS[nombre]) return PRECIOS[nombre];
+
+  // Buscar por categoría si no hay coincidencia exacta
+  if (nombre.includes('Top') || nombre.includes('Tank') || nombre.includes('Crop')) return PRECIOS['Top'];
+  if (nombre.includes('Legging') && !nombre.includes('Flare')) return PRECIOS['Leggings'];
+  if (nombre.includes('Legging Flare') || nombre.includes('Flare')) return PRECIOS['Legging Flare'];
+  if (nombre.includes('Short')) return PRECIOS['Short'];
+  if (nombre.includes('Chamarra')) return PRECIOS['Chamarra'];
+  if (nombre.includes('Falda')) return PRECIOS['Falda'];
+  if (nombre.includes('Playera')) return PRECIOS['Playera'];
+  if (nombre.includes('Vestido')) return PRECIOS['Vestido'];
+  if (nombre.includes('Jumper')) return PRECIOS['Jumper'];
+  if (nombre.includes('Biker')) return PRECIOS['Biker'];
+
+  return 0;
 }
 
 // ── INIT ──
