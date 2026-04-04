@@ -5,6 +5,19 @@
 /* ── Card de producto ── */
 .producto {
     transition: transform .2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.producto .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.producto .card-body .btn-agregar-carrito {
+    margin-top: auto;
 }
 
 .producto:hover {
@@ -91,6 +104,7 @@
 /* ── Colores (dots) ── */
 .colores {
     margin-top: 10px;
+    margin-bottom: 18px;
 }
 
 .color {
@@ -103,33 +117,113 @@
     border: 1px solid #ddd;
 }
 
-.negro            { background: black; }
-.blanco           { background: white; }
-.azul             { background: #adc1f4; }
-.azul-calceta     { background: #b1c2d3; }
-.azul-marino      { background: #2a385b; }
-.azul-rey         { background: #0B7FF2; }
-.azul-bicolor     { background: #586D97; }
-.rojo             { background: #E2011B; }
-.gris             { background: #6f695b; }
-.gris-legging     { background: #60606c; }
-.gris-short       { background: #b4b1ac; }
-.lavanda          { background: #6e6482; }
-.esmeralda        { background: #4999B4; }
-.vino             { background: #682d4d; }
-.beige            { background: #d8c3a5; }
-.rosa             { background: #9e4b55; }
-.rosa-claro       { background: #c3aaa3; }
-.rosa-calceta     { background: #d7bdba; }
-.rosa-neon        { background: #fc53ae; }
-.palo-de-rosa     { background: #DFA6B5; }
-.durazno          { background: #ffddd4; }
-.gris-oxford      { background: #616161; }
-.verde-olivo      { background: #4c4e43; }
-.hueso            { background: #e7e2dc; }
-.ivory            { background: #bdab9f; }
-.cafe             { background: #61341f; }
-.amarillo-bicolor { background: #f6e7af; }
+.negro {
+    background: black;
+}
+
+.blanco {
+    background: white;
+}
+
+.azul {
+    background: #adc1f4;
+}
+
+.azul-calceta {
+    background: #b1c2d3;
+}
+
+.azul-marino {
+    background: #2a385b;
+}
+
+.azul-rey {
+    background: #0B7FF2;
+}
+
+.azul-bicolor {
+    background: #586D97;
+}
+
+.rojo {
+    background: #E2011B;
+}
+
+.gris {
+    background: #6f695b;
+}
+
+.gris-legging {
+    background: #60606c;
+}
+
+.gris-short {
+    background: #b4b1ac;
+}
+
+.lavanda {
+    background: #6e6482;
+}
+
+.esmeralda {
+    background: #4999B4;
+}
+
+.vino {
+    background: #682d4d;
+}
+
+.beige {
+    background: #d8c3a5;
+}
+
+.rosa {
+    background: #9e4b55;
+}
+
+.rosa-claro {
+    background: #c3aaa3;
+}
+
+.rosa-calceta {
+    background: #d7bdba;
+}
+
+.rosa-neon {
+    background: #fc53ae;
+}
+
+.palo-de-rosa {
+    background: #DFA6B5;
+}
+
+.durazno {
+    background: #ffddd4;
+}
+
+.gris-oxford {
+    background: #616161;
+}
+
+.verde-olivo {
+    background: #4c4e43;
+}
+
+.hueso {
+    background: #e7e2dc;
+}
+
+.ivory {
+    background: #bdab9f;
+}
+
+.cafe {
+    background: #61341f;
+}
+
+.amarillo-bicolor {
+    background: #f6e7af;
+}
 
 /* ── Swipe hint (mobile) ── */
 @media (max-width: 640px) {
@@ -149,10 +243,25 @@
     }
 
     @keyframes swipeHint {
-        0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        20%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        20% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        70% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
     }
 }
 
