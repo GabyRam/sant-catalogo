@@ -7,6 +7,15 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ── Offset dinámico: JS mide la navbar real y actualiza --navbar-height ── */
+:root {
+    --navbar-height: 120px;
+}
+
+section[id] {
+    scroll-margin-top: var(--navbar-height);
+}
+
 body {
     font-family: "Montserrat", sans-serif;
     background: #ffffff;

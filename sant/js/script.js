@@ -219,3 +219,43 @@ if (btnTop) {
         btnTop.classList.toggle('visible', window.scrollY > 300);
     });
 }
+
+// ── Offset dinámico de navbar para scroll-margin-top ──
+function actualizarNavbarHeight() {
+    const navbar = document.querySelector('nav.navbar');
+    if (navbar) {
+        const altura = navbar.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--navbar-height', altura + 'px');
+    }
+}
+
+actualizarNavbarHeight();
+window.addEventListener('resize', actualizarNavbarHeight);
+window.addEventListener('load', actualizarNavbarHeight);
+const logoImg = document.querySelector('nav.navbar .logo-img');
+if (logoImg) logoImg.addEventListener('load', actualizarNavbarHeight);
+
+// ── Scroll suave manual con offset de navbar ──
+// Intercepta todos los links del menú que apunten a #sección
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href').slice(1);
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const navbar = document.querySelector('nav.navbar');
+        const navbarH = navbar ? navbar.getBoundingClientRect().height : 0;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarH;
+
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+        // Cerrar menú móvil de Bootstrap si está abierto
+        const navCollapse = document.getElementById('navbarCatalogo');
+        if (navCollapse && navCollapse.classList.contains('show')) {
+            navCollapse.classList.remove('show');
+        }
+    });
+});
