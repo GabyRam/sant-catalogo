@@ -1,8 +1,3 @@
-/* ══════════════════════════════════════════════════════════════
-   carrito.js — SA/NT Activewear
-   Versión con Supabase para control de stock en tiempo real
-   ══════════════════════════════════════════════════════════════ */
-
 const SUPABASE_URL = 'https://voplgacjzhxyyythvugo.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvcGxnYWNqemh4eXl5dGh2dWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NjM5ODYsImV4cCI6MjA5MTMzOTk4Nn0.b2OI5C2biWZlii4Comz7AFIvTmeh-8aBFYpt8bZ3OYQ';
 
@@ -17,28 +12,16 @@ let modalColorSeleccionado = null;
 
 // ── Precios ────────────────────────────────────────────────────
 const PRECIOS = {
-  'Top': 369,
-  'Crop Top': 299,
-  'Playera': 299,
-  'Short': 299,
-  'Biker': 389,
-  'Leggings': 499,
-  'Legging Yoga': 499,
-  'Pantalón Yoga': 499,
-  'Chamarra': 499,
-  'Jumper': 499,
-  'Falda': 499,
-  'Legging Flare': 549,
-  'Calceta Yoga': 65,
-  'Calceta Moda': 60,
-  'Vestido': 549
+  'Top': 369, 'Crop Top': 299, 'Playera': 299, 'Short': 299,
+  'Biker': 389, 'Leggings': 499, 'Legging Yoga': 499,
+  'Pantalón Yoga': 499, 'Chamarra': 499, 'Jumper': 499,
+  'Falda': 499, 'Legging Flare': 549, 'Calceta Yoga': 65,
+  'Calceta Moda': 60, 'Vestido': 549
 };
 
 const CALCETAS_PRECIOS = {
-  'Calceta Yoga': 65,
-  'Calceta Moda Blanca': 60,
-  'Calceta Moda Lisa': 60,
-  'Calceta Moda Diseño': 60,
+  'Calceta Yoga': 65, 'Calceta Moda Blanca': 60,
+  'Calceta Moda Lisa': 60, 'Calceta Moda Diseño': 60,
 };
 const CALCETAS = Object.keys(CALCETAS_PRECIOS);
 
@@ -47,16 +30,35 @@ async function consultarStock(sku) {
   try {
     const url = `${SUPABASE_URL}/rest/v1/stock?sku=eq.${encodeURIComponent(sku)}&select=talla,color,cantidad`;
     const res = await fetch(url, {
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-      }
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
     });
     if (!res.ok) throw new Error('Error al consultar stock');
-    const data = await res.json();
-    return data;
+    return await res.json();
   } catch (e) {
     console.warn('No se pudo consultar stock:', e);
+    return null;
+  }
+}
+
+// ── Supabase: guardar pedido ───────────────────────────────────
+async function guardarPedido(nombre, telefono) {
+  try {
+    const { total } = calcularTotal(carrito);
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({ nombre, telefono, items: carrito, total })
+    });
+    if (!res.ok) throw new Error('Error al guardar pedido');
+    const data = await res.json();
+    return data[0]?.numero_pedido || null;
+  } catch (e) {
+    console.warn('No se pudo guardar el pedido:', e);
     return null;
   }
 }
@@ -75,55 +77,44 @@ function todosAgotados(stockData, tallas, colores) {
 
 // ── Mensaje de disponibilidad ──────────────────────────────────
 function actualizarMensajeStock() {
-  // Quitar mensaje anterior
   const prevMsg = document.getElementById('stock-mensaje');
   if (prevMsg) prevMsg.remove();
-
   if (!modalActual.stockData || (!modalTallaSeleccionada && !modalColorSeleccionado)) return;
 
   const stockData = modalActual.stockData;
   let cantidad = null;
 
   if (modalTallaSeleccionada && modalColorSeleccionado) {
-    // Combinación exacta seleccionada
     const v = stockData.find(s => s.talla === modalTallaSeleccionada && s.color === modalColorSeleccionado);
     cantidad = v ? v.cantidad : 0;
   } else if (modalTallaSeleccionada) {
-    // Solo talla seleccionada — buscar el mínimo entre sus colores disponibles
     const variantes = stockData.filter(s => s.talla === modalTallaSeleccionada && s.cantidad > 0);
     if (variantes.length > 0) cantidad = Math.min(...variantes.map(v => v.cantidad));
   } else if (modalColorSeleccionado) {
-    // Solo color seleccionado — buscar el mínimo entre sus tallas disponibles
     const variantes = stockData.filter(s => s.color === modalColorSeleccionado && s.cantidad > 0);
     if (variantes.length > 0) cantidad = Math.min(...variantes.map(v => v.cantidad));
   }
 
   if (cantidad === null) return;
 
-  let msg = '';
-  let estilo = '';
-
+  let msg = '', estilo = '';
   if (cantidad === 0) {
     msg = 'Agotado, elige otra talla/color';
-    estilo = 'color:#c0392b; background:#fdf0f0; border:1px solid #f5c6cb;';
+    estilo = 'color:#c0392b;background:#fdf0f0;border:1px solid #f5c6cb;';
   } else if (cantidad <= LIMITE_ULTIMAS_PIEZAS && cantidad > 1) {
     msg = `¡Últimas ${cantidad} piezas disponibles!`;
-    estilo = 'color:#856404; background:#fff8e1; border:1px solid #ffe08a;';
+    estilo = 'color:#856404;background:#fff8e1;border:1px solid #ffe08a;';
   } else if (cantidad === 1) {
     msg = '¡Última pieza disponible!';
-    estilo = 'color:#c0392b; background:#fdf0f0; border:1px solid #f5c6cb;';
+    estilo = 'color:#c0392b;background:#fdf0f0;border:1px solid #f5c6cb;';
   }
-
   if (!msg) return;
 
   const el = document.createElement('p');
   el.id = 'stock-mensaje';
   el.textContent = msg;
-  el.style.cssText = `${estilo} font-size:12px; letter-spacing:0.5px; padding:8px 12px; border-radius:6px; margin:10px 0 0 0; font-family:'Montserrat',sans-serif;`;
-
-  // Insertarlo después de los colores
-  const coloresCont = document.getElementById('modalColoresSel');
-  coloresCont.insertAdjacentElement('afterend', el);
+  el.style.cssText = `${estilo}font-size:12px;letter-spacing:0.5px;padding:8px 12px;border-radius:6px;margin:10px 0 0 0;font-family:'Montserrat',sans-serif;`;
+  document.getElementById('modalColoresSel').insertAdjacentElement('afterend', el);
 }
 
 // ── Modal ──────────────────────────────────────────────────────
@@ -139,7 +130,6 @@ async function abrirModal(nombre, codigo, tallas, colores) {
   document.getElementById('modalPrecio').textContent = `$ ${precio} MXN`;
   document.getElementById('modalCantidad').textContent = 1;
 
-  // Resetear botón a estado normal al abrir el modal
   const btnAgregar = document.getElementById('modalBtnAgregar');
   if (btnAgregar) {
     btnAgregar.disabled = false;
@@ -153,7 +143,6 @@ async function abrirModal(nombre, codigo, tallas, colores) {
   requestAnimationFrame(() => modal.classList.add('abierto'));
   document.getElementById('modalBackdrop').classList.add('visible');
 
-  // Render inicial mientras carga
   renderTallas(tallas, null, null);
   renderColores(colores, null, null);
 
@@ -161,7 +150,6 @@ async function abrirModal(nombre, codigo, tallas, colores) {
   tallasCont.insertAdjacentHTML('beforeend', '<span class="stock-cargando" style="font-size:11px;color:#aaa;letter-spacing:1px;display:block;margin-top:6px;">Verificando disponibilidad…</span>');
 
   const stockData = await consultarStock(codigo);
-
   const cargando = tallasCont.querySelector('.stock-cargando');
   if (cargando) cargando.remove();
 
@@ -170,19 +158,15 @@ async function abrirModal(nombre, codigo, tallas, colores) {
     renderTallas(tallas, stockData, null);
     renderColores(colores, stockData, null);
 
-    // Si TODAS las combinaciones tienen stock 0 → deshabilitar botón
-    if (todosAgotados(stockData, tallas, colores)) {
-      const btnConfirmar = document.getElementById('modalBtnAgregar');
-      if (btnConfirmar) {
+    const btnConfirmar = document.getElementById('modalBtnAgregar');
+    if (btnConfirmar) {
+      if (todosAgotados(stockData, tallas, colores)) {
         btnConfirmar.disabled = true;
         btnConfirmar.textContent = 'Sin stock';
         btnConfirmar.style.backgroundColor = '#f5c6cb';
         btnConfirmar.style.opacity = '0.45';
         btnConfirmar.style.cursor = 'not-allowed';
-      }
-    } else {
-      const btnConfirmar = document.getElementById('modalBtnAgregar');
-      if (btnConfirmar) {
+      } else {
         btnConfirmar.disabled = false;
         btnConfirmar.textContent = '+ Agregar a la bolsa';
         btnConfirmar.style.opacity = '';
@@ -207,13 +191,11 @@ function renderTallas(tallas, stockData, colorSeleccionado) {
         });
       }
     }
-    return `<button
-      class="talla-btn${agotada ? ' agotado' : ''}"
+    return `<button class="talla-btn${agotada ? ' agotado' : ''}"
       ${agotada ? 'disabled title="Agotado"' : `onclick="seleccionarTalla(this,'${t}')"`}
     >${t}${agotada ? ' ✕' : ''}</button>`;
   }).join('');
 
-  // Restaurar selección previa si sigue disponible
   if (modalTallaSeleccionada) {
     const btn = [...document.querySelectorAll('.talla-btn')].find(b => b.textContent.trim().startsWith(modalTallaSeleccionada));
     if (btn && !btn.disabled) btn.classList.add('selected');
@@ -235,8 +217,7 @@ function renderColores(colores, stockData, tallaSeleccionada) {
         });
       }
     }
-    return `<button
-      class="modal-color-btn${agotado ? ' agotado' : ''}"
+    return `<button class="modal-color-btn${agotado ? ' agotado' : ''}"
       style="${c.img
         ? `background-image:url('${c.img}');background-size:cover;background-position:center;`
         : `background:${c.bg};`}${agotado ? 'opacity:0.35;cursor:not-allowed;' : ''}"
@@ -245,7 +226,6 @@ function renderColores(colores, stockData, tallaSeleccionada) {
     ></button>`;
   }).join('');
 
-  // Restaurar selección previa si sigue disponible
   if (modalColorSeleccionado) {
     const btn = [...document.querySelectorAll('.modal-color-btn')].find(b => b.title === modalColorSeleccionado);
     if (btn && !btn.disabled) btn.classList.add('selected');
@@ -259,9 +239,7 @@ function seleccionarTalla(btn, talla) {
   modalTallaSeleccionada = talla;
   modalCantidad = 1;
   document.getElementById('modalCantidad').textContent = 1;
-  if (modalActual.stockData) {
-    renderColores(modalActual.colores, modalActual.stockData, talla);
-  }
+  if (modalActual.stockData) renderColores(modalActual.colores, modalActual.stockData, talla);
   actualizarMensajeStock();
   actualizarBtnMas();
 }
@@ -273,18 +251,14 @@ function seleccionarColor(btn, nombre) {
   modalColorSeleccionado = nombre;
   modalCantidad = 1;
   document.getElementById('modalCantidad').textContent = 1;
-  if (modalActual.stockData) {
-    renderTallas(modalActual.tallas, modalActual.stockData, nombre);
-  }
+  if (modalActual.stockData) renderTallas(modalActual.tallas, modalActual.stockData, nombre);
   actualizarMensajeStock();
   actualizarBtnMas();
 }
 
 function cerrarModal() {
-  const modal = document.getElementById('modalAgregar');
-  modal.classList.remove('abierto');
+  document.getElementById('modalAgregar').classList.remove('abierto');
   document.getElementById('modalBackdrop').classList.remove('visible');
-  // Limpiar mensaje de stock
   const msg = document.getElementById('stock-mensaje');
   if (msg) msg.remove();
 }
@@ -299,8 +273,7 @@ function obtenerStockCombo() {
 function actualizarBtnMas() {
   const btnMas = document.getElementById('modalBtnMas');
   if (!btnMas) return;
-  const maxStock = obtenerStockCombo();
-  const limite = maxStock === Infinity ? Infinity : maxStock;
+  const limite = obtenerStockCombo();
   if (modalCantidad >= limite) {
     btnMas.disabled = true;
     btnMas.style.opacity = '0.35';
@@ -321,24 +294,13 @@ function cambiarCantidad(delta) {
 
 function confirmarAgregar() {
   if (!modalTallaSeleccionada) { alert('Por favor selecciona una talla'); return; }
-  if (modalActual.colores.length > 0 && !modalColorSeleccionado) {
-    alert('Por favor selecciona un color'); return;
-  }
+  if (modalActual.colores.length > 0 && !modalColorSeleccionado) { alert('Por favor selecciona un color'); return; }
 
-  // Verificar límite de stock
   if (modalActual.stockData) {
     const v = modalActual.stockData.find(s => s.talla === modalTallaSeleccionada && s.color === modalColorSeleccionado);
-    if (v && v.cantidad === 0) {
-      alert('Esta combinación está agotada. Por favor elige otra talla o color.');
-      return;
-    }
+    if (v && v.cantidad === 0) { alert('Esta combinación está agotada. Por favor elige otra talla o color.'); return; }
     if (v && v.cantidad > 0) {
-      // Contar cuántas ya hay en el carrito para esta combo
-      const enCarrito = carrito.find(item =>
-        item.nombre === modalActual.nombre &&
-        item.talla === modalTallaSeleccionada &&
-        item.color === (modalColorSeleccionado || '—')
-      );
+      const enCarrito = carrito.find(item => item.nombre === modalActual.nombre && item.talla === modalTallaSeleccionada && item.color === (modalColorSeleccionado || '—'));
       const yaEnCarrito = enCarrito ? enCarrito.cantidad : 0;
       if (yaEnCarrito + modalCantidad > v.cantidad) {
         const disponible = v.cantidad - yaEnCarrito;
@@ -352,27 +314,21 @@ function confirmarAgregar() {
     }
   }
 
-  const existe = carrito.find(item =>
-    item.nombre === modalActual.nombre &&
-    item.talla === modalTallaSeleccionada &&
-    item.color === (modalColorSeleccionado || '—')
-  );
+  // Obtener stock disponible para guardar en el item
+  let stockDisponible = null;
+  if (modalActual.stockData) {
+    const v = modalActual.stockData.find(s => s.talla === modalTallaSeleccionada && s.color === (modalColorSeleccionado || '—'));
+    if (v) stockDisponible = v.cantidad;
+  }
+
+  const existe = carrito.find(item => item.nombre === modalActual.nombre && item.talla === modalTallaSeleccionada && item.color === (modalColorSeleccionado || '—'));
   if (existe) {
     existe.cantidad += modalCantidad;
+    if (stockDisponible !== null) existe.stock = stockDisponible;
   } else {
-    carrito.push({
-      nombre: modalActual.nombre,
-      codigo: modalActual.codigo,
-      precio: modalActual.precio,
-      talla: modalTallaSeleccionada,
-      color: modalColorSeleccionado || '—',
-      cantidad: modalCantidad
-    });
+    carrito.push({ nombre: modalActual.nombre, codigo: modalActual.codigo, precio: modalActual.precio, talla: modalTallaSeleccionada, color: modalColorSeleccionado || '—', cantidad: modalCantidad, stock: stockDisponible });
   }
-  guardarCarrito();
-  cerrarModal();
-  renderCarrito();
-  actualizarBadge();
+  guardarCarrito(); cerrarModal(); renderCarrito(); actualizarBadge();
   setTimeout(() => {
     if (!document.getElementById('carritoPanel').classList.contains('abierto')) {
       document.getElementById('carritoPanel').classList.add('abierto');
@@ -383,14 +339,11 @@ function confirmarAgregar() {
 
 // ── Calcular total con promo calcetas ─────────────────────────
 function calcularTotal(carrito) {
-  let totalOtros = 0;
-  let unidades = [];
+  let totalOtros = 0, unidades = [];
   carrito.forEach(item => {
     if (CALCETAS.includes(item.nombre)) {
       for (let i = 0; i < item.cantidad; i++) unidades.push(CALCETAS_PRECIOS[item.nombre]);
-    } else {
-      totalOtros += item.precio * item.cantidad;
-    }
+    } else { totalOtros += item.precio * item.cantidad; }
   });
   unidades.sort((a, b) => b - a);
   const totalCalcetas = unidades.length;
@@ -398,12 +351,7 @@ function calcularTotal(carrito) {
   const precioNormal = unidades.reduce((s, p) => s + p, 0);
   const precioSuelta = totalCalcetas % 2 === 1 ? unidades[unidades.length - 1] : 0;
   const precioConPromo = (pares * 100) + precioSuelta;
-  return {
-    total: totalOtros + precioConPromo,
-    totalCalcetas,
-    pares,
-    ahorro: Math.max(0, precioNormal - precioConPromo)
-  };
+  return { total: totalOtros + precioConPromo, totalCalcetas, pares, ahorro: Math.max(0, precioNormal - precioConPromo) };
 }
 
 // ── Panel carrito ──────────────────────────────────────────────
@@ -432,33 +380,31 @@ function renderCarrito() {
   }
   const { total, pares, ahorro } = calcularTotal(carrito);
   if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-MX')} MXN`;
-  const promoHtml = (pares > 0 && ahorro > 0)
-    ? `<div class="carrito-promo-nota">Promo calcetas 2x$100 aplicada · Ahorro: $${ahorro}</div>` : '';
+  const promoHtml = (pares > 0 && ahorro > 0) ? `<div class="carrito-promo-nota">Promo calcetas 2x$100 aplicada · Ahorro: $${ahorro}</div>` : '';
   btnWA.disabled = false;
   cont.innerHTML = promoHtml + carrito.map((item, i) => {
     const esCalceta = CALCETAS.includes(item.nombre);
-    return `
-    <div class="carrito-item">
-      <div class="carrito-item-info">
-        <div class="carrito-item-nombre">${item.nombre}</div>
-        <div class="carrito-item-codigo">${item.codigo}</div>
-        <div class="carrito-item-precio">${esCalceta ? `1 x $${CALCETAS_PRECIOS[item.nombre]} · 2 x $100` : '$' + item.precio + ' MXN'}</div>
-        <div class="carrito-item-detalle">Talla: ${item.talla} · Color: ${item.color}</div>
-        <div class="carrito-item-acciones">
-          <div class="carrito-item-cant">
-            <button onclick="cambiarCantidadItem(${i}, -1)">−</button>
-            <span>${item.cantidad}</span>
-            <button onclick="cambiarCantidadItem(${i}, 1)">+</button>
-          </div>
-          <button class="carrito-item-eliminar" onclick="eliminarItem(${i})">✕</button>
+    return `<div class="carrito-item"><div class="carrito-item-info">
+      <div class="carrito-item-nombre">${item.nombre}</div>
+      <div class="carrito-item-codigo">${item.codigo}</div>
+      <div class="carrito-item-precio">${esCalceta ? `1 x $${CALCETAS_PRECIOS[item.nombre]} · 2 x $100` : '$' + item.precio + ' MXN'}</div>
+      <div class="carrito-item-detalle">Talla: ${item.talla} · Color: ${item.color}</div>
+      <div class="carrito-item-acciones">
+        <div class="carrito-item-cant">
+          <button onclick="cambiarCantidadItem(${i}, -1)">−</button>
+          <span>${item.cantidad}</span>
+          <button onclick="cambiarCantidadItem(${i}, 1)" ${item.stock !== null && item.stock !== undefined && item.cantidad >= item.stock ? 'disabled style="opacity:0.35;cursor:not-allowed;"' : ''}>+</button>
         </div>
+        <button class="carrito-item-eliminar" onclick="eliminarItem(${i})">✕</button>
       </div>
-    </div>`;
+    </div></div>`;
   }).join('');
 }
 
 function cambiarCantidadItem(i, delta) {
-  carrito[i].cantidad = Math.max(1, carrito[i].cantidad + delta);
+  const item = carrito[i];
+  const maxStock = (item.stock !== null && item.stock !== undefined) ? item.stock : Infinity;
+  item.cantidad = Math.min(maxStock, Math.max(1, item.cantidad + delta));
   guardarCarrito(); renderCarrito(); actualizarBadge();
 }
 
@@ -467,9 +413,7 @@ function eliminarItem(i) {
   guardarCarrito(); renderCarrito(); actualizarBadge();
 }
 
-function guardarCarrito() {
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-}
+function guardarCarrito() { localStorage.setItem('carrito', JSON.stringify(carrito)); }
 
 function vaciarCarrito() {
   if (carrito.length === 0) return;
@@ -477,10 +421,26 @@ function vaciarCarrito() {
   carrito = []; guardarCarrito(); renderCarrito(); actualizarBadge();
 }
 
-// ── WhatsApp ───────────────────────────────────────────────────
-function enviarWhatsApp() {
+// ── WhatsApp + guardar pedido ──────────────────────────────────
+async function enviarWhatsApp() {
   if (carrito.length === 0) return;
-  let msg = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
+
+  // Pedir nombre y teléfono
+  const nombre = prompt('¿Cuál es tu nombre?')?.trim();
+  if (!nombre) { alert('Por favor ingresa tu nombre para continuar.'); return; }
+
+  const telefono = prompt('¿Cuál es tu número de teléfono?')?.trim();
+  if (!telefono) { alert('Por favor ingresa tu teléfono para continuar.'); return; }
+
+  // Guardar en Supabase
+  const numeroPedido = await guardarPedido(nombre, telefono);
+
+  // Armar mensaje
+  const { total, pares, ahorro } = calcularTotal(carrito);
+  let msg = `¡Hola! Me gustaría hacer el siguiente pedido:\n`;
+  if (numeroPedido) msg += `📋 Pedido: ${numeroPedido}\n`;
+  msg += `👤 Nombre: ${nombre}\n📱 Teléfono: ${telefono}\n\n`;
+
   carrito.forEach((item, i) => {
     const esCalceta = CALCETAS.includes(item.nombre);
     msg += `${i + 1}. ${item.nombre}\n`;
@@ -489,12 +449,17 @@ function enviarWhatsApp() {
     msg += esCalceta ? ` · Precio: 1x$60 / 2x$100` : ` · Precio: $${item.precio} c/u`;
     msg += '\n\n';
   });
-  const { total, pares, ahorro } = calcularTotal(carrito);
+
   if (pares > 0) msg += `Promo calcetas (2x$100) aplicada — Ahorro: $${ahorro}\n`;
   msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;
   msg += '¿Pueden confirmarme disponibilidad? 🙏\n\n';
   msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
+
   window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`, '_blank');
+
+  // Vaciar carrito tras enviar
+  carrito = []; guardarCarrito(); renderCarrito(); actualizarBadge();
+  toggleCarrito();
 }
 
 // ── Helpers ────────────────────────────────────────────────────
@@ -520,7 +485,6 @@ async function verificarStockBotones() {
   const botones = document.querySelectorAll('.btn-agregar-carrito');
   const checks = [...botones].map(async btn => {
     const onclick = btn.getAttribute('onclick') || '';
-    // Extraer el SKU (segundo argumento de abrirModal)
     const match = onclick.match(/abrirModal\s*\([^,]+,\s*'([^']+)'/);
     if (!match) return;
     const sku = match[1];
@@ -547,6 +511,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const precio = PRECIOS[el.dataset.nombre];
     if (precio) el.textContent = `$${precio} MXN`;
   });
-  // Deshabilitar botones sin stock desde el inicio
   verificarStockBotones();
 });
