@@ -391,6 +391,27 @@
   border-color: #1a1a1a;
 }
 
+.talla-btn.agotado {
+  opacity: 0.4;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.talla-btn.agotado::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 45%,
+    rgba(180,0,0,0.65) 45%,
+    rgba(180,0,0,0.65) 55%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
 .modal-colores-sel {
   display: flex;
   gap: 10px;
@@ -415,6 +436,28 @@
 .modal-color-btn.selected {
   outline: none;
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9e4b55;
+}
+
+/* Color agotado: semi-transparente con línea diagonal */
+.modal-color-btn.agotado {
+  opacity: 0.35;
+  cursor: pointer;
+  position: relative;
+}
+
+.modal-color-btn.agotado::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 45%,
+    rgba(180,0,0,0.75) 45%,
+    rgba(180,0,0,0.75) 55%,
+    transparent 55%
+  );
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .modal-cantidad {

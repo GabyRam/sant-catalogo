@@ -200,22 +200,7 @@ async function abrirModal(nombre, codigo, tallas, colores) {
         modalActual.stockData = stockData;
         renderTallas(tallas, stockData, null);
         renderColores(colores, stockData, null);
-
-        const btnConfirmar = document.getElementById('modalBtnAgregar');
-        if (btnConfirmar) {
-            if (todosAgotados(stockData, tallas, colores)) {
-                btnConfirmar.disabled = true;
-                btnConfirmar.textContent = 'Sin stock';
-                btnConfirmar.style.backgroundColor = '#f5c6cb';
-                btnConfirmar.style.opacity = '0.45';
-                btnConfirmar.style.cursor = 'not-allowed';
-            } else {
-                btnConfirmar.disabled = false;
-                btnConfirmar.textContent = '+ Agregar a la bolsa';
-                btnConfirmar.style.opacity = '';
-                btnConfirmar.style.cursor = '';
-            }
-        }
+        actualizarBtnAgregar();
     }
 }
 
@@ -235,13 +220,13 @@ function renderTallas(tallas, stockData, colorSeleccionado) {
             }
         }
         return `<button class="talla-btn${agotada ? ' agotado' : ''}"
-      ${agotada ? 'disabled title="Agotado"' : `onclick="seleccionarTalla(this,'${t}')"`}
-    >${t}${agotada ? ' ✕' : ''}</button>`;
+      onclick="${agotada ? `tallaAgotadaClick(this,'${t}')` : `seleccionarTalla(this,'${t}')`}"
+    >${t}</button>`;
     }).join('');
 
     if (modalTallaSeleccionada) {
-        const btn = [...document.querySelectorAll('.talla-btn')].find(b => b.textContent.trim().startsWith(modalTallaSeleccionada));
-        if (btn && !btn.disabled) btn.classList.add('selected');
+        const btn = [...document.querySelectorAll('.talla-btn')].find(b => b.textContent.trim() === modalTallaSeleccionada);
+        if (btn && !btn.classList.contains('agotado')) btn.classList.add('selected');
     }
 }
 
@@ -263,19 +248,50 @@ function renderColores(colores, stockData, tallaSeleccionada) {
         return `<button class="modal-color-btn${agotado ? ' agotado' : ''}"
       style="${c.img
                 ? `background-image:url('${c.img}');background-size:cover;background-position:center;`
-                : `background:${c.bg};`}${agotado ? 'opacity:0.35;cursor:not-allowed;' : ''}"
-      title="${c.nombre}${agotado ? ' (Agotado)' : ''}"
-      ${agotado ? 'disabled' : `onclick="seleccionarColor(this,'${c.nombre}')"`}
+                : `background:${c.bg};`}"
+      title="${c.nombre}"
+      onclick="${agotado ? `colorAgotadoClick(this)` : `seleccionarColor(this,'${c.nombre}')`}"
     ></button>`;
     }).join('');
 
     if (modalColorSeleccionado) {
         const btn = [...document.querySelectorAll('.modal-color-btn')].find(b => b.title === modalColorSeleccionado);
-        if (btn && !btn.disabled) btn.classList.add('selected');
+        if (btn && !btn.classList.contains('agotado')) btn.classList.add('selected');
     }
 }
 
-// ── Seleccionar talla ──────────────────────────────────────────
+// ── Talla agotada: mostrar mensaje ─────────────────────────────
+function tallaAgotadaClick(btn, talla) {
+    const prev = document.getElementById('talla-agotada-msg');
+    if (prev) prev.remove();
+
+    const msg = document.createElement('p');
+    msg.id = 'talla-agotada-msg';
+    msg.textContent = `Talla ${talla} no está disponible${modalColorSeleccionado ? ' en color ' + modalColorSeleccionado : ''}`;
+    msg.style.cssText = 'font-size:11px;color:#888;font-family:\'Montserrat\',sans-serif;margin:6px 0 0 0;letter-spacing:0.3px;';
+    document.getElementById('modalTallas').insertAdjacentElement('afterend', msg);
+
+    setTimeout(() => { const el = document.getElementById('talla-agotada-msg'); if (el) el.remove(); }, 5000);
+}
+
+// ── Color agotado: mostrar mensaje ────────────────────────────
+function colorAgotadoClick(btn) {
+    // Quitar mensaje anterior
+    const prev = document.getElementById('color-agotado-msg');
+    if (prev) prev.remove();
+
+    const nombre = btn.title || 'Este color';
+    const msg = document.createElement('p');
+    msg.id = 'color-agotado-msg';
+    msg.textContent = `${nombre} no está disponible${modalTallaSeleccionada ? ' en talla ' + modalTallaSeleccionada : ''}`;
+    msg.style.cssText = 'font-size:11px;color:#888;font-family:\'Montserrat\',sans-serif;margin:8px 0 0 0;letter-spacing:0.3px;';
+    document.getElementById('modalColoresSel').insertAdjacentElement('afterend', msg);
+
+    // Auto-eliminar tras 2.5s
+    setTimeout(() => { const el = document.getElementById('color-agotado-msg'); if (el) el.remove(); }, 2500);
+}
+
+// ── Seleccionar talla ──────────────────────────────────────────────
 function seleccionarTalla(btn, talla) {
     document.querySelectorAll('.talla-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -285,6 +301,7 @@ function seleccionarTalla(btn, talla) {
     if (modalActual.stockData) renderColores(modalActual.colores, modalActual.stockData, talla);
     actualizarMensajeStock();
     actualizarBtnMas();
+    actualizarBtnAgregar();
 }
 
 // ── Seleccionar color ──────────────────────────────────────────
@@ -297,6 +314,43 @@ function seleccionarColor(btn, nombre) {
     if (modalActual.stockData) renderTallas(modalActual.tallas, modalActual.stockData, nombre);
     actualizarMensajeStock();
     actualizarBtnMas();
+    actualizarBtnAgregar();
+}
+
+// ── Actualizar botón Agregar según disponibilidad ───────────────────
+function actualizarBtnAgregar() {
+    const btn = document.getElementById('modalBtnAgregar');
+    if (!btn) return;
+
+    // Reset estilos de color
+    btn.style.backgroundColor = '';
+    btn.style.opacity = '';
+    btn.style.cursor = '';
+
+    // Todos agotados
+    if (modalActual.stockData && todosAgotados(modalActual.stockData, modalActual.tallas, modalActual.colores)) {
+        btn.disabled = true;
+        btn.textContent = 'Sin stock disponible';
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'not-allowed';
+        return;
+    }
+
+    // Combo seleccionada y agotada
+    if (modalTallaSeleccionada && modalColorSeleccionado && modalActual.stockData) {
+        const v = modalActual.stockData.find(s => s.talla === modalTallaSeleccionada && s.color === modalColorSeleccionado);
+        if (v && v.cantidad === 0) {
+            btn.disabled = true;
+            btn.textContent = 'No disponible en esta talla/color';
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'not-allowed';
+            return;
+        }
+    }
+
+    // Disponible
+    btn.disabled = false;
+    btn.textContent = '+ Agregar a la bolsa';
 }
 
 function cerrarModal() {
@@ -545,10 +599,7 @@ async function verificarStockBotones() {
         if (stockData && stockData.length > 0 && stockData.every(s => s.cantidad === 0)) {
             btn.disabled = true;
             btn.textContent = 'Sin stock';
-            btn.style.backgroundColor = '#f5c6cb';
-            btn.style.color = '#721c24';
-            btn.style.border = 'none';
-            btn.style.opacity = '0.45';
+            btn.style.opacity = '0.5';
             btn.style.cursor = 'not-allowed';
         }
     });
