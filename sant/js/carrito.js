@@ -122,7 +122,8 @@ function todosAgotados(stockData, tallas, colores) {
 function actualizarMensajeStock() {
     const prevMsg = document.getElementById('stock-mensaje');
     if (prevMsg) prevMsg.remove();
-    if (!modalActual.stockData || (!modalTallaSeleccionada && !modalColorSeleccionado)) return;
+    const requiereColor = modalActual.colores?.length > 0;
+    if (!modalActual.stockData || !modalTallaSeleccionada || (requiereColor && !modalColorSeleccionado)) return;
 
     const stockData = modalActual.stockData;
     let cantidad = null;
@@ -180,6 +181,8 @@ async function abrirModal(nombre, codigo, tallas, colores) {
         btnAgregar.style.opacity = '';
         btnAgregar.style.cursor = '';
     }
+    // El botón + arranca deshabilitado hasta que se elija talla y color
+    actualizarBtnMas();
 
     const modal = document.getElementById('modalAgregar');
     modal.style.visibility = 'visible';
@@ -370,6 +373,14 @@ function obtenerStockCombo() {
 function actualizarBtnMas() {
     const btnMas = document.getElementById('modalBtnMas');
     if (!btnMas) return;
+    // Bloquear si no se ha completado la selección de talla y color
+    const requiereColor = modalActual?.colores?.length > 0;
+    if (!modalTallaSeleccionada || (requiereColor && !modalColorSeleccionado)) {
+        btnMas.disabled = true;
+        btnMas.style.opacity = '0.35';
+        btnMas.style.cursor = 'not-allowed';
+        return;
+    }
     const limite = obtenerStockCombo();
     if (modalCantidad >= limite) {
         btnMas.disabled = true;
@@ -383,6 +394,9 @@ function actualizarBtnMas() {
 }
 
 function cambiarCantidad(delta) {
+    // No permitir cambiar cantidad si aún falta talla o color
+    const requiereColor = modalActual?.colores?.length > 0;
+    if (!modalTallaSeleccionada || (requiereColor && !modalColorSeleccionado)) return;
     const maxStock = obtenerStockCombo();
     modalCantidad = Math.min(maxStock, Math.max(1, modalCantidad + delta));
     document.getElementById('modalCantidad').textContent = modalCantidad;

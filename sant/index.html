@@ -238,7 +238,7 @@
                                 onclick="cambiarImagen('crop1','images/crop-tops/crop-vino.jpg')"></span>
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Crop Top','CROPKW-001', ['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
+                            onclick="abrirModal('Crop Top Cuello Redondo','CROPTOPKW-001', ['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
                             {nombre:'Blanco',bg:'#ffffff'},{nombre:'Lavanda',bg:'#A799BC'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},
                             {nombre:'Gris',bg:'#b4b1ac'},{nombre:'Gris oxford',bg:'#808080'},{nombre:'Esmeralda',bg:'#4999B4'},{nombre:'Vino',bg:'#682d4d'}])">+
                             Agregar a la bolsa</button>
@@ -753,13 +753,15 @@
                 <p class="footer-consulta-label">¿Ya hiciste tu pedido?</p>
                 <h3 class="footer-consulta-titulo">Consulta el estatus de tu pedido</h3>
                 <div class="footer-consulta-form">
-                    <input id="inputNumeroPedido" type="text" placeholder="Ej. SANT-0001" class="footer-consulta-input" />
+                    <input id="inputNumeroPedido" type="text" placeholder="Ej. SANT-0001"
+                        class="footer-consulta-input" />
                     <button onclick="consultarPedido()" class="footer-consulta-btn">Consultar</button>
                 </div>
             </div>
         </div>
         <!-- Bottom bar -->
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3" style="padding-top:24px;padding-bottom:4px;">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+            style="padding-top:24px;padding-bottom:4px;">
             <span class="sant-footer-logo">SA/NT ACTIVEWEAR</span>
             <span class="sant-footer-copy">© 2026 · Todos los derechos reservados</span>
             <div class="sant-footer-links">
@@ -773,7 +775,10 @@
     <div class="pedido-modal-backdrop" id="pedidoModalBackdrop" onclick="cerrarConsultaPedido()"></div>
     <div class="pedido-modal" id="pedidoModal">
         <button class="pedido-modal-close" onclick="cerrarConsultaPedido()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
         </button>
         <div id="pedidoModalContent"></div>
     </div>

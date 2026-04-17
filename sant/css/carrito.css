@@ -480,8 +480,15 @@
   justify-content: center;
 }
 
-.modal-cantidad button:hover {
+.modal-cantidad button:hover:not(:disabled) {
   background: #f5f3f0;
+}
+
+.modal-cantidad button:disabled {
+  color: #ccc;
+  border-color: #e8e8e8;
+  cursor: not-allowed;
+  background: #fff;
 }
 
 .modal-cantidad span {
