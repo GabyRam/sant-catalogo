@@ -532,56 +532,272 @@ function vaciarCarrito() {
     carrito = []; guardarCarrito(); renderCarrito(); actualizarBadge();
 }
 
-// ── WhatsApp + guardar pedido ──────────────────────────────────
-async function enviarWhatsApp() {
+let cpTimer = null;
+
+function onCPInput(input) {
+    const cp = input.value.replace(/\D/g, '');
+    input.value = cp;
+
+    const hint = document.getElementById('envioCPHint');
+    const spinner = document.getElementById('envioSpinnerCP');
+
+    if (cp.length < 5) {
+        clearTimeout(cpTimer);
+        spinner.classList.remove('activo');
+        hint.textContent = '';
+        hint.className = 'envio-cp-hint';
+        resetCamposCP();
+        return;
+    }
+
+    clearTimeout(cpTimer);
+    spinner.classList.add('activo');
+    hint.textContent = '';
+    hint.className = 'envio-cp-hint';
+    cpTimer = setTimeout(() => buscarCP(cp), 400);
+}
+
+async function buscarCP(cp) {
+    const hint = document.getElementById('envioCPHint');
+    const spinner = document.getElementById('envioSpinnerCP');
+
+    // Intentar APIs en orden: icalialabs (Sepomex) → zippopotam
+    const resultado = await intentarBuscarCP_icalialabs(cp)
+        || await intentarBuscarCP_zippopotam(cp);
+
+    spinner.classList.remove('activo');
+
+    if (!resultado) {
+        hint.textContent = 'No se encontró el CP. Verifica e intenta de nuevo';
+        hint.className = 'envio-cp-hint err';
+        resetCamposCP();
+        return;
+    }
+
+    // Autollenar municipio y estado
+    document.getElementById('envioCiudad').value = resultado.ciudad;
+    document.getElementById('envioEstado').value = resultado.estado;
+
+    // Poblar select de colonias (ordenadas alfabéticamente)
+    const select = document.getElementById('envioColonia');
+    const coloniasOrdenadas = [...resultado.colonias].sort((a, b) => a.localeCompare(b, 'es'));
+    select.innerHTML = '<option value="">— Selecciona tu colonia —</option>';
+    coloniasOrdenadas.forEach(col => {
+        const opt = document.createElement('option');
+        opt.value = col;
+        opt.textContent = col;
+        select.appendChild(opt);
+    });
+    select.disabled = false;
+    if (coloniasOrdenadas.length === 1) select.value = coloniasOrdenadas[0];
+
+    const n = coloniasOrdenadas.length;
+    hint.textContent = `${n} colonia${n !== 1 ? 's' : ''} encontrada${n !== 1 ? 's' : ''}`;
+    hint.className = 'envio-cp-hint ok';
+}
+
+// API 1: icalialabs/Sepomex — colonias reales de toda la república
+async function intentarBuscarCP_icalialabs(cp) {
+    try {
+        const res = await fetch(
+            `https://sepomex.icalialabs.com/api/v1/zip_codes?zip_code=${cp}`,
+            { headers: { 'Accept': 'application/json' }, signal: AbortSignal.timeout(5000) }
+        );
+        if (!res.ok) return null;
+        const data = await res.json();
+        const registros = data?.zip_codes;
+        if (!registros || registros.length === 0) return null;
+        return {
+            ciudad: registros[0].d_mnpio || '',
+            estado: registros[0].d_estado || '',
+            colonias: registros.map(r => r.d_asenta).filter(Boolean)
+        };
+    } catch { return null; }
+}
+
+// API 3: zippopotam.us — último recurso (solo ciudad, sin colonias detalladas)
+async function intentarBuscarCP_zippopotam(cp) {
+    try {
+        const res = await fetch(
+            `https://api.zippopotam.us/mx/${cp}`,
+            { signal: AbortSignal.timeout(5000) }
+        );
+        if (!res.ok) return null;
+        const data = await res.json();
+        const places = data?.places;
+        if (!places || places.length === 0) return null;
+        return {
+            ciudad: places[0]['place name'] || '',
+            estado: places[0]['state'] || '',
+            colonias: places.map(p => p['place name']).filter(Boolean)
+        };
+    } catch { return null; }
+}
+
+function resetCamposCP() {
+    const select = document.getElementById('envioColonia');
+    select.innerHTML = '<option value="">— Ingresa tu CP —</option>';
+    select.disabled = true;
+    document.getElementById('envioCiudad').value = '';
+    document.getElementById('envioEstado').value = '';
+}
+
+// ── Abrir modal ─────────────────────────────────────────────────
+function enviarWhatsApp() {
     if (carrito.length === 0) return;
 
-    // Pedir nombre y teléfono
-    const nombre = prompt('¿Cuál es tu nombre?')?.trim();
-    if (!nombre) { alert('Por favor ingresa tu nombre para continuar.'); return; }
+    const { total, pares, ahorro } = calcularTotal(carrito);
+    const resumenEl = document.getElementById('envioResumenItems');
 
-    const telefono = prompt('¿Cuál es tu número de teléfono?')?.trim();
-    if (!telefono) { alert('Por favor ingresa tu teléfono para continuar.'); return; }
+    resumenEl.innerHTML = carrito.map(item => {
+        const esCalceta = CALCETAS.includes(item.nombre);
+        const subtotal = esCalceta
+            ? CALCETAS_PRECIOS[item.nombre] * item.cantidad
+            : item.precio * item.cantidad;
+        return `<div class="envio-resumen-item">
+      <span>${item.cantidad}x ${item.nombre} — T.${item.talla}${item.color !== '—' ? ' / ' + item.color : ''}</span>
+      <span>$${subtotal.toLocaleString('es-MX')}</span>
+    </div>`;
+    }).join('');
 
-    // Abrir ventana ANTES del await para evitar bloqueo de popup del navegador
+    if (pares > 0 && ahorro > 0) {
+        resumenEl.innerHTML += `<div class="envio-resumen-item" style="color:#856404;">
+      <span>Promo calcetas 2x$100</span><span>-$${ahorro}</span>
+    </div>`;
+    }
+
+    document.getElementById('envioResumenTotal').textContent =
+        `$${total.toLocaleString('es-MX')} MXN`;
+
+    document.getElementById('envioBackdrop').classList.add('visible');
+    document.getElementById('envioModal').classList.add('visible');
+    setTimeout(() => document.getElementById('envioNombre')?.focus(), 300);
+}
+
+// ── Cerrar modal ────────────────────────────────────────────────
+function cerrarEnvioModal() {
+    document.getElementById('envioBackdrop').classList.remove('visible');
+    document.getElementById('envioModal').classList.remove('visible');
+    limpiarErroresEnvio();
+}
+
+// ── Validación ──────────────────────────────────────────────────
+function validarEnvio() {
+    limpiarErroresEnvio();
+    let valido = true;
+
+    ['envioNombre', 'envioTelefono', 'envioCP', 'envioColonia', 'envioCalle'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+            if (el) el.classList.add('error');
+            valido = false;
+        }
+    });
+
+    const tel = document.getElementById('envioTelefono');
+    if (tel && tel.value.trim() && !/^\d{10}$/.test(tel.value.trim())) {
+        tel.classList.add('error');
+        valido = false;
+    }
+
+    const cp = document.getElementById('envioCP');
+    if (cp && cp.value.trim() && !/^\d{5}$/.test(cp.value.trim())) {
+        cp.classList.add('error');
+        valido = false;
+    }
+
+    return valido;
+}
+
+function limpiarErroresEnvio() {
+    document.querySelectorAll('#envioModal .error').forEach(el => el.classList.remove('error'));
+}
+
+// ── Submit ──────────────────────────────────────────────────────
+async function submitEnvioYWhatsApp() {
+    if (!validarEnvio()) {
+        const primerError = document.querySelector('#envioModal .error');
+        if (primerError) primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    const nombre = document.getElementById('envioNombre').value.trim();
+    const telefono = document.getElementById('envioTelefono').value.trim();
+    const cp = document.getElementById('envioCP').value.trim();
+    const colonia = document.getElementById('envioColonia').value.trim();
+    const calle = document.getElementById('envioCalle').value.trim();
+    const ciudad = document.getElementById('envioCiudad').value.trim();
+    const estado = document.getElementById('envioEstado').value.trim();
+    const referencias = document.getElementById('envioReferencias').value.trim();
+
+    const btn = document.getElementById('envioBtnSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+
     const waWindow = window.open('', '_blank');
 
-    // Guardar en Supabase y reservar stock
     const numeroPedido = await guardarPedido(nombre, telefono);
-    await reservarStock(carrito); // bloquea el stock hasta que el admin confirme
+    await reservarStock(carrito);
 
-    // Armar mensaje
     const { total, pares, ahorro } = calcularTotal(carrito);
-    let msg = `¡Hola! Me gustaría hacer el siguiente pedido:\n\n`;
+    let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
     if (numeroPedido) msg += `*Pedido: ${numeroPedido}*\n\n`;
-    msg += `Nombre: ${nombre}\nTeléfono: ${telefono}\n\n`;
 
+    msg += `*Datos de contacto*\n`;
+    msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
+
+    msg += `*Direccion de envio*\n`;
+    msg += `${calle}\nCol. ${colonia}\n`;
+    if (ciudad || estado) msg += `${ciudad}${ciudad && estado ? ', ' : ''}${estado} CP ${cp}\n`;
+    else msg += `CP ${cp}\n`;
+    if (referencias) msg += `Ref: ${referencias}\n`;
+    msg += '\n';
+
+    msg += `*Productos*\n`;
     carrito.forEach((item, i) => {
         const esCalceta = CALCETAS.includes(item.nombre);
         msg += `${i + 1}. ${item.nombre}\n`;
-        msg += `   Código: ${item.codigo}\n`;
-        msg += `   Talla: ${item.talla} · Color: ${item.color} · Cantidad: ${item.cantidad}`;
-        msg += esCalceta ? ` · Precio: 1x$60 / 2x$100` : ` · Precio: $${item.precio} c/u`;
+        msg += `   Codigo: ${item.codigo}\n`;
+        msg += `   Talla: ${item.talla} - Color: ${item.color} - Cantidad: ${item.cantidad}`;
+        msg += esCalceta
+            ? ` - Precio: 1x$${CALCETAS_PRECIOS[item.nombre]} / 2x$100`
+            : ` - Precio: $${item.precio} c/u`;
         msg += '\n\n';
     });
 
-    if (pares > 0) msg += `Promo calcetas (2x$100) aplicada — Ahorro: $${ahorro}\n`;
-    msg += `Total: $${total.toLocaleString('es-MX')} MXN\n\n`;
-    msg += '¿Pueden confirmarme disponibilidad?\n\n';
-    msg += '_*Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final será confirmado por el equipo de SA/NT Activewear.*_';
+    if (pares > 0 && ahorro > 0)
+        msg += `Promo calcetas (2x$100) aplicada - Ahorro: $${ahorro}\n`;
 
-    // Redirigir la ventana ya abierta a WhatsApp
-    if (waWindow) {
-        waWindow.location.href = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    } else {
-        // Fallback si el navegador bloqueó el popup
-        window.location.href = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    }
+    msg += `*Total: $${total.toLocaleString('es-MX')} MXN*\n\n`;
+    msg += 'Pueden confirmarme disponibilidad?\n\n';
+    msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
 
-    // Vaciar carrito tras enviar
-    carrito = []; guardarCarrito(); renderCarrito(); actualizarBadge();
+    const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
+    if (waWindow) { waWindow.location.href = waUrl; }
+    else { window.location.href = waUrl; }
+
+    carrito = [];
+    guardarCarrito();
+    renderCarrito();
+    actualizarBadge();
+    cerrarEnvioModal();
     toggleCarrito();
+
+    ['envioNombre', 'envioTelefono', 'envioCalle', 'envioReferencias'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+    document.getElementById('envioCP').value = '';
+    document.getElementById('envioCPHint').textContent = '';
+    document.getElementById('envioCPHint').className = 'envio-cp-hint';
+    resetCamposCP();
 }
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('envioModal')?.classList.contains('visible')) {
+        cerrarEnvioModal();
+    }
+});
 
 // ── Helpers ────────────────────────────────────────────────────
 function obtenerPrecio(nombre) {
