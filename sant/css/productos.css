@@ -225,6 +225,64 @@
     background: #f6e7af;
 }
 
+/* ── Etiqueta "Nuevo" para productos de nueva colección ── */
+.producto-nuevo {
+    position: relative;
+}
+
+.badge-nuevo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    background: linear-gradient(135deg, #9e4b55, #c0667330);
+    background: #9e4b55;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35);
+    animation: badgePulse 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes badgePulse {
+    0%   { box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35); }
+    50%  { box-shadow: 0 2px 16px rgba(158, 75, 85, 0.65); }
+    100% { box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35); }
+}
+
+/* ── Separador visual entre nueva y vieja colección ── */
+.separador-coleccion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0 24px 0;
+    grid-column: 1 / -1;
+}
+
+.separador-coleccion::before,
+.separador-coleccion::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0ddd9;
+}
+
+.separador-coleccion span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
 /* ── Swipe hint (mobile) ── */
 @media (max-width: 640px) {
     .producto-img.swipe-hint::after {
