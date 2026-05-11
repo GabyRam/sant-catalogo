@@ -785,20 +785,12 @@ async function submitEntregaPersonal() {
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
-    const waWindow = window.open('', '_blank');
-
-    const numeroPedido = await guardarPedido(nombre, telefono);
-    await reservarStock(carrito);
-
+    // Construir mensaje ANTES de los awaits para poder abrir WhatsApp sin que el navegador bloquee el popup
     const { total, pares, ahorro } = calcularTotal(carrito);
     let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
-    if (numeroPedido) msg += `*Pedido: ${numeroPedido}*\n\n`;
-
     msg += `*Tipo de entrega: Entrega personal*\n\n`;
-
     msg += `*Datos de contacto*\n`;
     msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
-
     msg += `*Productos*\n`;
     carrito.forEach((item, i) => {
         const esCalceta = CALCETAS.includes(item.nombre);
@@ -810,17 +802,19 @@ async function submitEntregaPersonal() {
             : ` - Precio: $${item.precio} c/u`;
         msg += '\n\n';
     });
-
     if (pares > 0 && ahorro > 0)
         msg += `Promo calcetas (2x$100) aplicada - Ahorro: $${ahorro}\n`;
-
     msg += `*Total: $${total.toLocaleString('es-MX')} MXN*\n\n`;
     msg += 'Pueden confirmarme disponibilidad y acordar punto de entrega?\n\n';
     msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
 
+    // Abrir WhatsApp ANTES de los awaits (evita bloqueo de popup)
     const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    if (waWindow) { waWindow.location.href = waUrl; }
-    else { window.location.href = waUrl; }
+    window.open(waUrl, '_blank');
+
+    // Guardar pedido y reservar stock en segundo plano
+    const numeroPedido = await guardarPedido(nombre, telefono);
+    await reservarStock(carrito);
 
     carrito = [];
     guardarCarrito();
@@ -856,27 +850,18 @@ async function submitEnvioYWhatsApp() {
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
-    const waWindow = window.open('', '_blank');
-
-    const numeroPedido = await guardarPedido(nombre, telefono);
-    await reservarStock(carrito);
-
+    // Construir mensaje ANTES de los awaits para poder abrir WhatsApp sin que el navegador bloquee el popup
     const { total, pares, ahorro } = calcularTotal(carrito);
     let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
-    if (numeroPedido) msg += `*Pedido: ${numeroPedido}*\n\n`;
-
     msg += `*Tipo de entrega: Envío a domicilio*\n\n`;
-
     msg += `*Datos de contacto*\n`;
     msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
-
     msg += `*Direccion de envio*\n`;
     msg += `${calle}\nCol. ${colonia}\n`;
     if (ciudad || estado) msg += `${ciudad}${ciudad && estado ? ', ' : ''}${estado} CP ${cp}\n`;
     else msg += `CP ${cp}\n`;
     if (referencias) msg += `Ref: ${referencias}\n`;
     msg += '\n';
-
     msg += `*Productos*\n`;
     carrito.forEach((item, i) => {
         const esCalceta = CALCETAS.includes(item.nombre);
@@ -888,17 +873,19 @@ async function submitEnvioYWhatsApp() {
             : ` - Precio: $${item.precio} c/u`;
         msg += '\n\n';
     });
-
     if (pares > 0 && ahorro > 0)
         msg += `Promo calcetas (2x$100) aplicada - Ahorro: $${ahorro}\n`;
-
     msg += `*Total: $${total.toLocaleString('es-MX')} MXN*\n\n`;
     msg += 'Pueden confirmarme disponibilidad?\n\n';
     msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
 
+    // Abrir WhatsApp ANTES de los awaits (evita bloqueo de popup)
     const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    if (waWindow) { waWindow.location.href = waUrl; }
-    else { window.location.href = waUrl; }
+    window.open(waUrl, '_blank');
+
+    // Guardar pedido y reservar stock en segundo plano
+    const numeroPedido = await guardarPedido(nombre, telefono);
+    await reservarStock(carrito);
 
     carrito = [];
     guardarCarrito();
