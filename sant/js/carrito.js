@@ -669,9 +669,37 @@ function enviarWhatsApp() {
     document.getElementById('envioResumenTotal').textContent =
         `$${total.toLocaleString('es-MX')} MXN`;
 
+    // Mostrar siempre el Paso 1 (selección de tipo de entrega)
+    document.getElementById('envioPaso1').style.display = '';
+    document.getElementById('envioPaso2Personal').style.display = 'none';
+    document.getElementById('envioPaso2Envio').style.display = 'none';
+    document.getElementById('envioTituloModal').textContent = '¿Cómo recibes tu pedido?';
+
     document.getElementById('envioBackdrop').classList.add('visible');
     document.getElementById('envioModal').classList.add('visible');
-    setTimeout(() => document.getElementById('envioNombre')?.focus(), 300);
+}
+
+// ── Seleccionar tipo de entrega ─────────────────────────────────
+function seleccionarTipoEntrega(tipo) {
+    document.getElementById('envioPaso1').style.display = 'none';
+    if (tipo === 'personal') {
+        document.getElementById('envioPaso2Personal').style.display = '';
+        document.getElementById('envioTituloModal').textContent = 'Entrega personal';
+        setTimeout(() => document.getElementById('envioNombreP')?.focus(), 200);
+    } else {
+        document.getElementById('envioPaso2Envio').style.display = '';
+        document.getElementById('envioTituloModal').textContent = 'Datos de envío';
+        setTimeout(() => document.getElementById('envioNombre')?.focus(), 200);
+    }
+}
+
+// ── Volver al paso 1 ───────────────────────────────────────────
+function volverPaso1() {
+    document.getElementById('envioPaso2Personal').style.display = 'none';
+    document.getElementById('envioPaso2Envio').style.display = 'none';
+    document.getElementById('envioPaso1').style.display = '';
+    document.getElementById('envioTituloModal').textContent = '¿Cómo recibes tu pedido?';
+    limpiarErroresEnvio();
 }
 
 // ── Cerrar modal ────────────────────────────────────────────────
@@ -679,9 +707,16 @@ function cerrarEnvioModal() {
     document.getElementById('envioBackdrop').classList.remove('visible');
     document.getElementById('envioModal').classList.remove('visible');
     limpiarErroresEnvio();
+    // Resetear al paso 1 para la próxima apertura
+    setTimeout(() => {
+        document.getElementById('envioPaso1').style.display = '';
+        document.getElementById('envioPaso2Personal').style.display = 'none';
+        document.getElementById('envioPaso2Envio').style.display = 'none';
+        document.getElementById('envioTituloModal').textContent = '¿Cómo recibes tu pedido?';
+    }, 300);
 }
 
-// ── Validación ──────────────────────────────────────────────────
+// ── Validación (envío a domicilio) ─────────────────────────────
 function validarEnvio() {
     limpiarErroresEnvio();
     let valido = true;
@@ -709,14 +744,101 @@ function validarEnvio() {
     return valido;
 }
 
+// ── Validación (entrega personal) ──────────────────────────────
+function validarEntregaPersonal() {
+    limpiarErroresEnvio();
+    let valido = true;
+
+    ['envioNombreP', 'envioTelefonoP'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+            if (el) el.classList.add('error');
+            valido = false;
+        }
+    });
+
+    const tel = document.getElementById('envioTelefonoP');
+    if (tel && tel.value.trim() && !/^\d{10}$/.test(tel.value.trim())) {
+        tel.classList.add('error');
+        valido = false;
+    }
+
+    return valido;
+}
+
 function limpiarErroresEnvio() {
     document.querySelectorAll('#envioModal .error').forEach(el => el.classList.remove('error'));
 }
 
-// ── Submit ──────────────────────────────────────────────────────
+// ── Submit: Entrega personal ────────────────────────────────────
+async function submitEntregaPersonal() {
+    if (!validarEntregaPersonal()) {
+        const primerError = document.querySelector('#envioPaso2Personal .error');
+        if (primerError) primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    const nombre = document.getElementById('envioNombreP').value.trim();
+    const telefono = document.getElementById('envioTelefonoP').value.trim();
+
+    const btn = document.getElementById('envioBtnSubmitPersonal');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+
+    const waWindow = window.open('', '_blank');
+
+    const numeroPedido = await guardarPedido(nombre, telefono);
+    await reservarStock(carrito);
+
+    const { total, pares, ahorro } = calcularTotal(carrito);
+    let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
+    if (numeroPedido) msg += `*Pedido: ${numeroPedido}*\n\n`;
+
+    msg += `*Tipo de entrega: Entrega personal*\n\n`;
+
+    msg += `*Datos de contacto*\n`;
+    msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
+
+    msg += `*Productos*\n`;
+    carrito.forEach((item, i) => {
+        const esCalceta = CALCETAS.includes(item.nombre);
+        msg += `${i + 1}. ${item.nombre}\n`;
+        msg += `   Codigo: ${item.codigo}\n`;
+        msg += `   Talla: ${item.talla} - Color: ${item.color} - Cantidad: ${item.cantidad}`;
+        msg += esCalceta
+            ? ` - Precio: 1x$${CALCETAS_PRECIOS[item.nombre]} / 2x$100`
+            : ` - Precio: $${item.precio} c/u`;
+        msg += '\n\n';
+    });
+
+    if (pares > 0 && ahorro > 0)
+        msg += `Promo calcetas (2x$100) aplicada - Ahorro: $${ahorro}\n`;
+
+    msg += `*Total: $${total.toLocaleString('es-MX')} MXN*\n\n`;
+    msg += 'Pueden confirmarme disponibilidad y acordar punto de entrega?\n\n';
+    msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
+
+    const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
+    if (waWindow) { waWindow.location.href = waUrl; }
+    else { window.location.href = waUrl; }
+
+    carrito = [];
+    guardarCarrito();
+    renderCarrito();
+    actualizarBadge();
+    cerrarEnvioModal();
+    toggleCarrito();
+
+    ['envioNombreP', 'envioTelefonoP'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+}
+
+// ── Submit: Envío a domicilio ───────────────────────────────────
 async function submitEnvioYWhatsApp() {
     if (!validarEnvio()) {
-        const primerError = document.querySelector('#envioModal .error');
+        const primerError = document.querySelector('#envioPaso2Envio .error');
         if (primerError) primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
     }
@@ -742,6 +864,8 @@ async function submitEnvioYWhatsApp() {
     const { total, pares, ahorro } = calcularTotal(carrito);
     let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
     if (numeroPedido) msg += `*Pedido: ${numeroPedido}*\n\n`;
+
+    msg += `*Tipo de entrega: Envío a domicilio*\n\n`;
 
     msg += `*Datos de contacto*\n`;
     msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;

@@ -916,4 +916,123 @@
   font-weight: 600;
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
+}
+
+/* ── SELECCIÓN TIPO DE ENTREGA ── */
+.entrega-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entrega-opcion-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1.5px solid #e8e4df;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.entrega-opcion-btn:hover {
+  border-color: #1a1a1a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.entrega-opcion-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.entrega-opcion-icono {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.entrega-opcion-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.entrega-opcion-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+}
+
+.entrega-opcion-desc {
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.2px;
+}
+
+.entrega-opcion-arrow {
+  width: 18px;
+  height: 18px;
+  color: #ccc;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.entrega-opcion-btn:hover .entrega-opcion-arrow {
+  color: #1a1a1a;
+  transform: translateX(3px);
+}
+
+/* ── BOTÓN VOLVER ── */
+.envio-volver {
+  background: none;
+  border: none;
+  color: #888;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.envio-volver:hover {
+  color: #1a1a1a;
+}
+
+/* ── BADGE TIPO DE ENTREGA ── */
+.entrega-tipo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.entrega-tipo-badge.personal {
+  background: #f0f9f4;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.entrega-tipo-badge.envio {
+  background: #f0f4ff;
+  color: #1a3a9e;
+  border: 1px solid #c5d0f5;
 }
