@@ -785,9 +785,17 @@ async function submitEntregaPersonal() {
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
-    // Construir mensaje ANTES de los awaits para poder abrir WhatsApp sin que el navegador bloquee el popup
+    // Abrir ventana en blanco INMEDIATAMENTE (antes de cualquier await) para evitar bloqueo de popup
+    const waVentana = window.open('', '_blank');
+
+    // Guardar pedido en Supabase para obtener el número de pedido
+    const numeroPedido = await guardarPedido(nombre, telefono);
+    await reservarStock(carrito);
+
+    // Construir mensaje con el número de pedido incluido
     const { total, pares, ahorro } = calcularTotal(carrito);
     let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
+    if (numeroPedido) msg += `*Numero de pedido: ${numeroPedido}*\n\n`;
     msg += `*Tipo de entrega: Entrega personal*\n\n`;
     msg += `*Datos de contacto*\n`;
     msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
@@ -808,13 +816,9 @@ async function submitEntregaPersonal() {
     msg += 'Pueden confirmarme disponibilidad y acordar punto de entrega?\n\n';
     msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
 
-    // Abrir WhatsApp ANTES de los awaits (evita bloqueo de popup)
+    // Redirigir la ventana ya abierta a WhatsApp
     const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
-
-    // Guardar pedido y reservar stock en segundo plano
-    const numeroPedido = await guardarPedido(nombre, telefono);
-    await reservarStock(carrito);
+    if (waVentana) waVentana.location.href = waUrl;
 
     carrito = [];
     guardarCarrito();
@@ -850,9 +854,17 @@ async function submitEnvioYWhatsApp() {
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
-    // Construir mensaje ANTES de los awaits para poder abrir WhatsApp sin que el navegador bloquee el popup
+    // Abrir ventana en blanco INMEDIATAMENTE (antes de cualquier await) para evitar bloqueo de popup
+    const waVentana = window.open('', '_blank');
+
+    // Guardar pedido en Supabase para obtener el número de pedido
+    const numeroPedido = await guardarPedido(nombre, telefono);
+    await reservarStock(carrito);
+
+    // Construir mensaje con el número de pedido incluido
     const { total, pares, ahorro } = calcularTotal(carrito);
     let msg = `Hola! Me gustaria hacer el siguiente pedido:\n\n`;
+    if (numeroPedido) msg += `*Numero de pedido: ${numeroPedido}*\n\n`;
     msg += `*Tipo de entrega: Envío a domicilio*\n\n`;
     msg += `*Datos de contacto*\n`;
     msg += `Nombre: ${nombre}\nTelefono: ${telefono}\n\n`;
@@ -879,13 +891,9 @@ async function submitEnvioYWhatsApp() {
     msg += 'Pueden confirmarme disponibilidad?\n\n';
     msg += '_Nota: Los precios mostrados son de referencia y pueden estar sujetos a cambios. El total final sera confirmado por el equipo de SANT Activewear._';
 
-    // Abrir WhatsApp ANTES de los awaits (evita bloqueo de popup)
+    // Redirigir la ventana ya abierta a WhatsApp
     const waUrl = `https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
-
-    // Guardar pedido y reservar stock en segundo plano
-    const numeroPedido = await guardarPedido(nombre, telefono);
-    await reservarStock(carrito);
+    if (waVentana) waVentana.location.href = waUrl;
 
     carrito = [];
     guardarCarrito();
