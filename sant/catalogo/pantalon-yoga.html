@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pantalón Yoga · SANT Activewear</title>
+
+    <link rel="icon" href="../images/sant-activewear.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/hero.css">
+    <link rel="stylesheet" href="../css/productos.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar bg-white sticky-top shadow-sm">
+        <div class="container">
+
+            <div class="navbar-logos">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/logo-horizontal.png" alt="SANT Activewear" class="logo-img">
+                </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCatalogo">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Nueva
+                            Colección ✦</a></li>
+                            <li class="nav-item"><a class="nav-link" href="bikers.html">Bikers</a></li>
+                            <li class="nav-item"><a class="nav-link" href="calcetas.html">Calcetas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="chamarras.html">Chamarras</a></li>
+                            <li class="nav-item"><a class="nav-link" href="crop-tops.html">Crop Tops</a></li>
+                            <li class="nav-item"><a class="nav-link" href="falda-teniss.html">Falda Tenis</a></li>
+                            <li class="nav-item"><a class="nav-link" href="jumper.html">Jumper</a></li>
+                            <li class="nav-item"><a class="nav-link" href="leggings.html">Leggings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pantalon-yoga.html">Pantalón Yoga</a></li>
+                            <li class="nav-item"><a class="nav-link" href="playeras.html">Playeras</a></li>
+                            <li class="nav-item"><a class="nav-link" href="shorts.html">Shorts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tops.html">Tops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="vestidos.html">Vestidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-collage" data-collection="yoga">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="brand-name">PANTALÓN YOGA</h1>
+            <div class="brand-divider">
+                <span></span>
+                <svg class="brand-star" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 0 L10.9 9.1 L20 10 L10.9 10.9 L10 20 L9.1 10.9 L0 10 L9.1 9.1 Z" />
+                </svg>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANTALÓN YOGA -->
+    <section id="pantalon-yoga" class="container py-5">
+        <h2 class="text-center mb-5">Pantalón Yoga</h2>
+        <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0">
+                    <img id="pantayoga1" src="../images/pantalones/pantalon-yoga-negro.jpg" class="card-img-top"
+                        alt="Pantalón yoga negro">
+                    <div class="card-body">
+                        <h5>Pantalón Yoga</h5>
+                        <p class="precio" data-nombre="Pantalón"></p>
+                        <p class="descripcion">Cintura alta · Tela stretch suave · Corte ajustado con libertad de
+                            movimiento · Tejido de secado rápido.</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-negro.jpg')"></span>
+                            <span class="color gris-oxford"
+                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-gris-oxford.jpg')"></span>
+                            <span class="color azul"
+                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-azul.jpg')"></span>
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Pantalón Yoga','YOGAPAN-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris Oxford',bg:'#808080'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
+                            Agregar a la bolsa</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="text-center mt-5 pt-2" id="nav-productos" style="display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <a onclick="history.back()" class="btn-volver-inicio" style="cursor:pointer;">
+            ← Regresar
+        </a>
+        <a id="btn-siguiente" href="#" class="btn-volver-inicio" style="cursor:pointer;">
+            Siguiente →
+        </a>
+    </div>
+    <script>
+        (function() {
+            const orden = ['bikers.html', 'calcetas.html', 'chamarras.html', 'crop-tops.html', 'falda-teniss.html', 'jumper.html', 'leggings.html', 'pantalon-yoga.html', 'playeras.html', 'shorts.html', 'tops.html', 'vestidos.html'];
+            const current = window.location.pathname.split('/').pop();
+            const currentIndex = orden.indexOf(current);
+            const nextIndex = (currentIndex + 1) % orden.length;
+            const nextFile = orden[nextIndex];
+            document.getElementById('btn-siguiente').href = nextFile;
+        })();
+    </script>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sant-footer">
+        <div class="footer-consulta">
+            <div class="container">
+                <p class="footer-consulta-label">¿Ya hiciste tu pedido?</p>
+                <h3 class="footer-consulta-titulo">Consulta el estatus de tu pedido</h3>
+                <div class="footer-consulta-form">
+                    <input id="inputNumeroPedido" type="text" placeholder="Ej. SANT-0001"
+                        class="footer-consulta-input" />
+                    <button onclick="consultarPedido()" class="footer-consulta-btn">Consultar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+            style="padding-top:24px;padding-bottom:4px;">
+            <span class="sant-footer-logo">SANT ACTIVEWEAR</span>
+            <span class="sant-footer-copy">© 2026 · Todos los derechos reservados</span>
+            <div class="sant-footer-links">
+                <a href="https://wa.me/5554705157" target="_blank">WhatsApp</a>
+                <a href="https://instagram.com/sant.activewear" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="pedido-modal-backdrop" id="pedidoModalBackdrop" onclick="cerrarConsultaPedido()"></div>
+    <div class="pedido-modal" id="pedidoModal">
+        <button class="pedido-modal-close" onclick="cerrarConsultaPedido()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <div id="pedidoModalContent"></div>
+    </div>
+
+    <button id="btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="width:26px; height:26px;">
+            <path d="M8 6L12 2L16 6" />
+            <path d="M12 2V22" />
+        </svg>
+    </button>
+
+    <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
+        <div style="position: relative; width: 36px; height: 36px;">
+            <img src="../images/amor.png" alt="Carrito" style="width:36px; height:36px;">
+            <span class="carrito-badge" id="carritoBadge">0</span>
+        </div>
+    </button>
+
+    <div class="carrito-panel" id="carritoPanel">
+        <div class="carrito-header">
+            <h3>Tu pedido</h3>
+            <button class="carrito-close" onclick="toggleCarrito()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="carrito-items" id="carritoItems">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+        <div class="carrito-footer">
+            <div class="carrito-total">
+                <span>Total</span>
+                <span id="carritoTotal">$0</span>
+            </div>
+            <button class="carrito-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+            <button class="carrito-whatsapp" onclick="enviarWhatsApp()">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.136.559 4.14 1.535 5.874L.057 23.886l6.188-1.453A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 0 1-5.032-1.388l-.36-.214-3.733.877.945-3.642-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z" />
+                </svg>
+                Enviar por WhatsApp
+            </button>
+        </div>
+    </div>
+    <div class="carrito-backdrop" id="carritoBackdrop" onclick="toggleCarrito()"></div>
+
+    <!-- MODAL AGREGAR AL CARRITO -->
+    <div class="modal-agregar" id="modalAgregar">
+        <button class="modal-agregar-close" onclick="cerrarModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <h4 id="modalNombre"></h4>
+        <p id="modalCodigo" style="font-size:11px; letter-spacing:2px; color:#aaa; margin:0 0 4px 0;"></p>
+        <p id="modalPrecio" style="font-size:20px; font-weight:600; color:#1a1a1a; margin:0 0 16px 0;"></p>
+        <label>Talla</label>
+        <div class="modal-tallas" id="modalTallas"></div>
+        <label>Color</label>
+        <div class="modal-colores-sel" id="modalColoresSel"></div>
+        <label>Cantidad</label>
+        <div class="modal-cantidad">
+            <button onclick="cambiarCantidad(-1)">−</button>
+            <span id="modalCantidad">1</span>
+            <button id="modalBtnMas" onclick="cambiarCantidad(1)">+</button>
+        </div>
+        <button id="modalBtnAgregar" class="modal-agregar-btn" onclick="confirmarAgregar()">Agregar a la bolsa</button>
+    </div>
+    <div class="modal-backdrop" id="modalBackdrop" onclick="cerrarModal()"></div>
+
+    <script src="../js/carrito.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

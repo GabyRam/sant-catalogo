@@ -458,3 +458,31 @@ p {
         grid-column: 1;
     }
 }
+
+.btn-volver-inicio {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background: #111111;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.btn-volver-inicio:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.btn-volver-inicio:active {
+    transform: translateY(0);
+}

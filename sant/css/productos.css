@@ -251,9 +251,17 @@
 }
 
 @keyframes badgePulse {
-    0%   { box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35); }
-    50%  { box-shadow: 0 2px 16px rgba(158, 75, 85, 0.65); }
-    100% { box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35); }
+    0% {
+        box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35);
+    }
+
+    50% {
+        box-shadow: 0 2px 16px rgba(158, 75, 85, 0.65);
+    }
+
+    100% {
+        box-shadow: 0 2px 8px rgba(158, 75, 85, 0.35);
+    }
 }
 
 /* ── Separador visual entre nueva y vieja colección ── */
@@ -399,5 +407,104 @@
     .nueva-coleccion-banner {
         height: 50vh;
         min-height: 300px;
+    }
+}
+
+/* Badge NUEVO */
+.producto-nuevo {
+    position: relative;
+}
+
+.producto-nuevo::before {
+    content: 'NUEVO';
+    position: absolute;
+    border-radius: 5px;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    background: #a86e6e;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    padding: 5px 10px;
+    pointer-events: none;
+}
+
+/* ══════════════════════════════════════════
+   NUEVOS COLORES — Glow especial
+   Solo aplica a colores marcados
+   ══════════════════════════════════════════ */
+
+.color-nuevo {
+    position: relative;
+    animation: nuevoColorPulse 2.5s ease-in-out infinite;
+}
+
+/* Glow exterior */
+.color-nuevo::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(8px);
+    opacity: .75;
+    z-index: -1;
+    animation: nuevoColorGlow 2.5s ease-in-out infinite;
+}
+
+/* Hover premium */
+.color-nuevo:hover {
+    transform: scale(1.12);
+    transition: transform .25s ease;
+}
+
+/* Animaciones */
+@keyframes nuevoColorPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes nuevoColorGlow {
+
+    0%,
+    100% {
+        opacity: .45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .95;
+        transform: scale(1.18);
+    }
+}
+
+/* Glow especial para la leyenda */
+.badge-nuevos-colores {
+    animation: badgeNuevosGlow 3s ease-in-out infinite;
+}
+
+@keyframes badgeNuevosGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 18px rgba(0,0,0,0.06),
+            0 0 0 rgba(255,255,255,0);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 24px rgba(0,0,0,0.10),
+            0 0 22px rgba(255,255,255,0.75);
     }
 }

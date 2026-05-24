@@ -55,7 +55,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const espalda = container.querySelector(".img-espalda, .img-detalle");
         if (!espalda) return;
         if (dx < -40) { espalda.style.opacity = "1"; frente.style.opacity = "0"; }
-        if (dx > 40)  { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
+        if (dx > 40) { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
     });
 
     // Mouse (desktop)
@@ -75,7 +75,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         const espalda = container.querySelector(".img-espalda, .img-detalle");
         if (!espalda) return;
         if (dx < -40) { espalda.style.opacity = "1"; frente.style.opacity = "0"; }
-        if (dx > 40)  { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
+        if (dx > 40) { espalda.style.opacity = "0"; frente.style.opacity = "1"; }
     });
 
     container.addEventListener("mouseleave", () => { mouseDown = false; });
@@ -88,27 +88,203 @@ document.querySelectorAll(".producto-img").forEach(container => {
 
     const collectionType = heroSection.dataset.collection;
 
+    // Detecta si la página está en una subcarpeta (ej. /catalogo/) para ajustar las rutas
+    const base = window.location.pathname.includes('/catalogo/') ? '../' : '';
+
     const HERO_IMAGES = [
-        'images/hero/img1.jpg',  'images/hero/img2.jpg',  'images/hero/img3.jpg',
-        'images/hero/img4.jpg',  'images/hero/img5.jpg',  'images/hero/img6.jpg',
-        'images/hero/img7.jpg',  'images/hero/img8.jpg',  'images/hero/img9.jpg',
-        'images/hero/img10.jpg', 'images/hero/img11.jpg', 'images/hero/img12.jpg',
-        'images/hero/img13.jpg', 'images/hero/img14.jpg', 'images/hero/img15.jpg',
-        'images/hero/img16.jpg', 'images/hero/img17.jpg'
+        base+'images/hero/img1.jpg',  base+'images/hero/img2.jpg',  base+'images/hero/img3.jpg',
+        base+'images/hero/img4.jpg',  base+'images/hero/img5.jpg',  base+'images/hero/img6.jpg',
+        base+'images/hero/img7.jpg',  base+'images/hero/img8.jpg',  base+'images/hero/img9.jpg',
+        base+'images/hero/img10.jpg', base+'images/hero/img11.jpg', base+'images/hero/img12.jpg',
+        base+'images/hero/img13.jpg', base+'images/hero/img14.jpg', base+'images/hero/img15.jpg',
+        base+'images/hero/img16.jpg', base+'images/hero/img17.jpg'
     ];
 
     const NEW_COLLECTION_IMAGES = [
-        'images/hero/new-collection/img18.jpg', 'images/hero/new-collection/img19.jpg',
-        'images/hero/new-collection/img20.jpg', 'images/hero/new-collection/img21.jpg',
-        'images/hero/new-collection/img22.jpg', 'images/hero/new-collection/img23.jpg',
-        'images/hero/new-collection/img24.jpg', 'images/hero/new-collection/img25.jpg',
-        'images/hero/new-collection/img26.jpg', 'images/hero/new-collection/img27.jpg',
-        'images/hero/new-collection/img28.jpg', 'images/hero/new-collection/img29.jpg',
-        'images/hero/new-collection/img30.jpg', 'images/hero/new-collection/img31.jpg',
-        'images/hero/new-collection/img32.jpg',
+        base+'images/hero/new-collection/img18.jpg', base+'images/hero/new-collection/img19.jpg',
+        base+'images/hero/new-collection/img20.jpg', base+'images/hero/new-collection/img21.jpg',
+        base+'images/hero/new-collection/img22.jpg', base+'images/hero/new-collection/img23.jpg',
+        base+'images/hero/new-collection/img24.jpg', base+'images/hero/new-collection/img25.jpg',
+        base+'images/hero/new-collection/img26.jpg', base+'images/hero/new-collection/img27.jpg',
+        base+'images/hero/new-collection/img28.jpg', base+'images/hero/new-collection/img29.jpg',
+        base+'images/hero/new-collection/img30.jpg', base+'images/hero/new-collection/img31.jpg',
+        base+'images/hero/new-collection/img32.jpg',
     ];
 
-    const IMAGES = collectionType === "new" ? NEW_COLLECTION_IMAGES : HERO_IMAGES;
+    const TOPS_IMAGES = [
+        base+'images/tops/top-rosa-claro.jpg',
+        base+'images/tops/top-rosa-claro-espalda.jpg',
+        base+'images/tops/top-negro.jpg',
+        base+'images/tops/top-negro-espalda.jpg',
+        base+'images/tops/top-largo-negro.jpg',
+        base+'images/tops/top-largo-negro-espalda.jpg',
+        base+'images/tops/top-atletico-negro.jpg',
+        base+'images/tops/top-atletico-negro-espalda.jpg',
+        base+'images/tops/top-nudo-negro.jpg',
+        base+'images/tops/top-nudo-negro-espalda.jpg',
+        base+'images/tops/top-nudo-azul-marino.jpg',
+        base+'images/tops/top-nudo-azul-marino-espalda.jpg',
+        base+'images/tops/top-tirante-ancho-negro.jpg',
+        base+'images/tops/top-tirante-ancho-azul-marino.jpg',
+        base+'images/tops/top-asimetrico-negro.jpg',
+        base+'images/tops/top-asimetrico-rojo.jpg',
+        base+'images/tops/top-asimetrico-azul.jpg',
+        base+'images/tops/top-bra-negro.jpg',
+        base+'images/tops/top-bra-negro-espalda.jpg',
+        base+'images/tops/top-bra-rosa.jpg',
+        base+'images/tops/top-bra-rosa-espalda.jpg',
+        base+'images/tops/tank-bicolor-negro.jpg',
+        base+'images/tops/tank-bicolor-negro-espalda.jpg',
+        base+'images/tops/top-rojo.jpg',
+        base+'images/tops/top-azul-rey.jpg',
+        base+'images/tops/top-rosa-neon.jpg',
+        base+'images/tops/top-bicolor-azul.jpg',
+        base+'images/tops/top-bicolor-azul-espalda.jpg',
+        base+'images/tops/top-bicolor-amarillo.jpg',
+        base+'images/tops/top-blanco.jpg',
+        base+'images/tops/top-rosa.jpg',
+    ];
+
+    const LEGGINGS_IMAGES = [
+        base+'images/leggings/legging-azul-marino.jpg',
+        base+'images/leggings/legging-azul-rey.jpeg',
+        base+'images/leggings/legging-azul.jpg',
+        base+'images/leggings/legging-colombiano-gris.jpg',
+        base+'images/leggings/legging-colombiano-negro.jpg',
+        base+'images/leggings/legging-flare-cafe.jpeg',
+        base+'images/leggings/legging-flare-esmeralda.jpeg',
+        base+'images/leggings/legging-flare-negro.jpeg',
+        base+'images/leggings/legging-flare-vino.jpeg',
+        base+'images/leggings/legging-gris.jpg',
+        base+'images/leggings/legging-lavanda.jpg',
+        base+'images/leggings/legging-negro-v.jpg',
+        base+'images/leggings/legging-negro.jpg',
+        base+'images/leggings/legging-rojo.jpeg',
+        base+'images/leggings/legging-rosa.jpg',
+        base+'images/leggings/legging-yoga-cafe-bolsa.jpg',
+        base+'images/leggings/legging-yoga-cafe.jpg',
+        base+'images/leggings/legging-yoga-hueso-bolsa.jpg',
+        base+'images/leggings/legging-yoga-hueso.jpg',
+    ];
+
+    const CROPTOPS_IMAGES = [
+        base+'images/crop-tops/crop-negro.jpg',
+        base+'images/crop-tops/crop-blanco.jpg',
+        base+'images/crop-tops/crop-lavanda.png',
+        base+'images/crop-tops/crop-azul.jpg',
+        base+'images/crop-tops/crop-azul-marino.jpg',
+        base+'images/crop-tops/crop-gris.jpg',
+        base+'images/crop-tops/crop-gris-oxford.jpg',
+        base+'images/crop-tops/crop-esmeralda.jpg',
+        base+'images/crop-tops/crop-vino.jpg'
+    ];
+
+    const BIKERS_IMAGES = [
+        base+'images/bikers/biker-negro.jpg',
+        base+'images/bikers/biker-lavanda.jpg',
+        base+'images/bikers/biker-azul.jpg'
+    ];
+
+    const SHORTS_IMAGES = [
+        base+'images/shorts/short-azul-rey.jpg',
+        base+'images/shorts/short-azul.jpg',
+        base+'images/shorts/short-bicolor-negro.jpg',
+        base+'images/shorts/short-gris.jpg',
+        base+'images/shorts/short-lavanda.jpg',
+        base+'images/shorts/short-negro.jpg',
+        base+'images/shorts/short-rojo.jpg',
+        base+'images/shorts/short-rosa-neon.jpg',
+    ];
+
+    const VESTIDOS_IMAGES = [
+        base+'images/vestidos/vestido-negro.jpg',
+        base+'images/vestidos/vestido-rosa.jpg'
+    ];
+
+    const PLAYERAS_IMAGES = [
+        base+'images/playeras/aura-runner-blanca.jpg',
+        base+'images/playeras/aura-runner-blanca-espalda.jpg',
+        base+'images/playeras/aura-runner-azul.jpg',
+        base+'images/playeras/aura-runner-azul-espalda.jpg',
+        base+'images/playeras/aura-runner-durazno.jpg',
+        base+'images/playeras/aura-runner-durazno-espalda.jpg'
+    ];
+
+    const FALDAS_IMAGES = [
+        base+'images/faldas/falda-bicolor-amarilla-detalle.jpg',
+        base+'images/faldas/falda-bicolor-amarilla.jpg',
+        base+'images/faldas/falda-bicolor-azul-detalle.jpg',
+        base+'images/faldas/falda-bicolor-azul.jpg',
+        base+'images/faldas/falda-tenis-azul-bolsa.jpg',
+        base+'images/faldas/falda-tenis-azul.jpg',
+        base+'images/faldas/falda-tenis-negra-bolsa.jpg',
+        base+'images/faldas/falda-tenis-negra.jpg',
+    ];
+
+    const YOGA_IMAGES = [
+        base+'images/pantalones/pantalon-yoga-azul.jpg',
+        base+'images/pantalones/pantalon-yoga-gris-oxford.jpg',
+        base+'images/pantalones/pantalon-yoga-negro.jpg',
+    ];
+
+    const CHAMARRA_IMAGES = [
+        base+'images/chamarras/chamarra-basica-azul-marino-detalle.jpg',
+        base+'images/chamarras/chamarra-basica-azul-marino.jpg',
+        base+'images/chamarras/chamarra-basica-cafe-detalle.jpg',
+        base+'images/chamarras/chamarra-basica-cafe.jpg',
+        base+'images/chamarras/chamarra-basica-negra-detalle.jpg',
+        base+'images/chamarras/chamarra-basica-negra.jpg',
+        base+'images/chamarras/chamarra-deportiva-hueso.jpg',
+        base+'images/chamarras/chamarra-deportiva-ivory.jpg',
+        base+'images/chamarras/chamarra-deportiva-verde.jpg',
+        base+'images/chamarras/chamarra-gris.jpg',
+        base+'images/chamarras/chamarra-negra.jpg',
+        base+'images/chamarras/chamarra-polar-blanca.jpg',
+        base+'images/chamarras/chamarra-polar-negra.jpg',        
+    ];
+
+    const JUMPER_IMAGES = [
+        base+'images/jumpers/jumper-cafe.jpg',
+        base+'images/jumpers/jumper-cafe-espalda.jpg',
+        base+'images/jumpers/jumper-negro.jpg',
+        base+'images/jumpers/jumper-negro-espalda.jpg'
+    ];
+
+    const CALCETAS_IMAGES = [
+        base+'images/calcetas/calceta-1966.jpg',
+        base+'images/calcetas/calceta-azul.jpg',
+        base+'images/calcetas/calceta-beige.jpg',
+        base+'images/calcetas/calceta-blanca.jpg',
+        base+'images/calcetas/calceta-caritas-cafe.jpg',
+        base+'images/calcetas/calceta-caritas-rosa.jpg',
+        base+'images/calcetas/calceta-free-mind.jpg',
+        base+'images/calcetas/calceta-grateful.jpg',
+        base+'images/calcetas/calceta-have.jpg',
+        base+'images/calcetas/calceta-hueso.jpg',
+        base+'images/calcetas/calceta-lisa-negra.jpg',
+        base+'images/calcetas/calceta-live-smile.jpg',
+        base+'images/calcetas/calceta-mind-rosa.jpg',
+        base+'images/calcetas/calceta-negra.jpg',
+        base+'images/calcetas/calceta-rosa.jpg',
+        base+'images/calcetas/calceta-smile-out.jpg',
+        base+'images/calcetas/calceta-waht.jpg',
+        
+    ];
+
+    const IMAGES = collectionType === "new" ? NEW_COLLECTION_IMAGES
+                 : collectionType === "tops" ? TOPS_IMAGES
+                 : collectionType === "leggings" ? LEGGINGS_IMAGES
+                 : collectionType === "crop-tops" ? CROPTOPS_IMAGES
+                 : collectionType === "bikers" ? BIKERS_IMAGES
+                 : collectionType === "shorts" ? SHORTS_IMAGES
+                 : collectionType === "vestidos" ? VESTIDOS_IMAGES
+                 : collectionType === "playeras" ? PLAYERAS_IMAGES
+                 : collectionType === "faldas" ? FALDAS_IMAGES
+                 : collectionType === "yoga" ? YOGA_IMAGES
+                 : collectionType === "chamarras" ? CHAMARRA_IMAGES
+                 : collectionType === "jumper" ? JUMPER_IMAGES
+                 : collectionType === "calcetas" ? CALCETAS_IMAGES
+                 : HERO_IMAGES;
 
     const VISIBLE_AT_ONCE = window.innerWidth < 640 ? 6 : 15;
     const STAY_MIN = 7000;
