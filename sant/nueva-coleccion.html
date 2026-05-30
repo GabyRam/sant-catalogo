@@ -28,6 +28,10 @@
     <nav class="navbar bg-white sticky-top shadow-sm">
         <div class="container">
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="navbar-logos">
                 <a class="navbar-brand" href="index.html">
                     <img src="images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
@@ -37,24 +41,25 @@
                 </a> -->
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
-                <span class="navbar-toggler-icon"></span>
+            <button class="carrito-navbar-btn" onclick="toggleCarrito()">
+                <img src="images/bolsa.png" alt="Carrito">
+                <span class="carrito-badge" id="carritoBadge">0</span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarCatalogo">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse" id="navbarCatalogo">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="nueva-coleccion.html">✦ Nueva
                             Colección ✦</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/bikers.html">Bikers</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/calcetas.html">Calcetas</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/chamarras.html">Chamarras</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/crop-tops.html">Crop Tops</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/falda-teniss.html">Falda Tenis</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/jumper.html">Jumper</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/leggings.html">Leggings</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/pantalon-yoga.html">Pantalón Yoga</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/playeras.html">Playeras</a></li>
-                            <li class="nav-item"><a class="nav-link" href="catalogo/shorts.html">Shorts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/bikers.html">Bikers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/calcetas.html">Calcetas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/chamarras.html">Chamarras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/crop-tops.html">Crop Tops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/falda-teniss.html">Falda Tenis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/jumper.html">Jumper</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/leggings.html">Leggings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/pantalon-yoga.html">Pantalón Yoga</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/playeras.html">Playeras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo/shorts.html">Shorts</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalogo/tops.html">Tops</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalogo/vestidos.html">Vestidos</a></li>
                     <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
@@ -559,15 +564,6 @@
         </svg>
     </button>
 
-    <!-- BOTÓN FLOTANTE CARRITO -->
-
-    <button class="carrito-fab" id="carritoBtn" onclick="toggleCarrito()" aria-label="Carrito">
-        <div style="position: relative; width: 36px; height: 36px;">
-            <img src="images/amor.png" alt="Carrito" style="width:36px; height:36px;">
-            <span class="carrito-badge" id="carritoBadge">0</span>
-        </div>
-    </button>
-
     <!-- PANEL CARRITO -->
     <div class="carrito-panel" id="carritoPanel">
         <div class="carrito-header">
@@ -822,7 +818,18 @@
         </div>
     </div>
 
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
 
+            if (window.scrollY > 40) {
+                navbar.classList.add('shrink');
+            } else {
+                navbar.classList.remove('shrink');
+            }
+        });
+    </script>
+    
     <!-- SCRIPTS — siempre al final, en este orden -->
     <script src="js/carrito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,6 +4,20 @@
 
 .navbar {
     z-index: 290;
+    transition:
+        padding 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+    padding: 20px 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+}
+
+.navbar-custom {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* ── Logos agrupados ── */
@@ -13,6 +27,14 @@
     gap: 0;
 }
 
+.navbar-collapse {
+    text-align: left;
+}
+
+.navbar-nav {
+    align-items: flex-start;
+}
+
 .logo {
     font-family: 'Caviar Dreams', serif;
     font-size: 28px;
@@ -20,7 +42,44 @@
 }
 
 .logo-img {
-    height: 100px;
+    height: 70px;
+    transition: height 0.3s ease;
+}
+
+/* Navbar pequeño al hacer scroll */
+.navbar.shrink {
+    padding: 6px 0;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.95);
+}
+
+/* Logo pequeño */
+.navbar.shrink .logo-img {
+    height: 45px;
+}
+
+.navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0;
+    background: transparent;
+    z-index: 5;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+.navbar-toggler:active {
+    outline: none;
+    box-shadow: none !important;
+}
+
+/* CENTRAR LOGO REAL */
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 /* ── Link Zweat ── */
@@ -45,11 +104,11 @@
 
 /* ── Alineación del menú ── */
 #navbarCatalogo .navbar-nav {
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 #navbarCatalogo .nav-link {
-    text-align: right;
+    text-align: left;
 }
 
 /* ── Link "Nueva Colección" animado ── */
