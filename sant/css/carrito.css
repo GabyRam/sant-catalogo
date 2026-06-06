@@ -1,9 +1,3 @@
-/* ════════════════════════════════════════
-   REEMPLAZA tu css/carrito.css completo
-   ════════════════════════════════════════ */
-
-/* ── BOTÓN FLOTANTE CARRITO ── */
-
 /* ── BOTÓN CARRITO NAVBAR ── */
 .carrito-navbar-btn {
   position: relative;
@@ -1038,4 +1032,385 @@
   background: #f0f4ff;
   color: #1a3a9e;
   border: 1px solid #c5d0f5;
+}
+
+.btn-notificar-card {
+  background: transparent !important;
+  color: #9e4b55 !important;
+  border: 1.5px solid #9e4b55 !important;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-notificar-card:hover {
+  background: #9e4b55 !important;
+  color: #fff !important;
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL NOTIFICACIÓN DE RESTOCK
+═══════════════════════════════════════════════ */
+
+.restock-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 600;
+  backdrop-filter: blur(2px);
+}
+
+.restock-backdrop.visible {
+  display: block;
+}
+
+.restock-modal {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  width: min(480px, 100vw);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 36px 32px 40px;
+  z-index: 601;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 -8px 48px rgba(0, 0, 0, 0.18);
+}
+
+.restock-modal.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (min-width: 520px) {
+  .restock-modal {
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    border-radius: 20px;
+    padding: 40px 36px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .restock-modal.visible {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Botón cerrar */
+.restock-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f5f3f0;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #888;
+  transition: background 0.2s, color 0.2s;
+}
+
+.restock-close:hover {
+  background: #ede9e5;
+  color: #1a1a1a;
+}
+
+.restock-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ícono campana */
+.restock-icono {
+  font-size: 36px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+/* Título y subtítulo */
+.restock-titulo {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  font-weight: 400;
+}
+
+.restock-subtitulo {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+/* Info del producto */
+.restock-producto-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f9f7f5;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.restock-prod-nombre {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+}
+
+.restock-prod-tag {
+  font-size: 11px;
+  color: #888;
+  background: #fff;
+  border: 1px solid #e8e4df;
+  border-radius: 20px;
+  padding: 2px 10px;
+  letter-spacing: 0.3px;
+}
+
+/* Label "¿Cómo quieres...?" */
+.restock-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 0 0 12px;
+}
+
+/* Métodos de notificación */
+.restock-metodos {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.restock-metodo-opcion {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1.5px solid #e8e4df;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+}
+
+.restock-metodo-opcion input[type="radio"] {
+  display: none;
+}
+
+.restock-metodo-opcion:hover {
+  border-color: #c3aaa3;
+  background: #fdf9f8;
+}
+
+.restock-metodo-opcion.activo {
+  border-color: #9e4b55;
+  background: #fdf4f5;
+  box-shadow: 0 0 0 3px rgba(158, 75, 85, 0.08);
+}
+
+.restock-metodo-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f5f3f0;
+  flex-shrink: 0;
+  color: #555;
+  transition: background 0.2s, color 0.2s;
+}
+
+.restock-metodo-opcion.activo .restock-metodo-icono {
+  background: #9e4b55;
+  color: #fff;
+}
+
+/* Especial WA: color verde cuando activo */
+#restockLabelWA.activo .restock-metodo-icono {
+  background: #25d366;
+  color: #fff;
+}
+
+.restock-metodo-nombre {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: 0.2px;
+}
+
+/* Input de contacto */
+.restock-input-wrap {
+  margin-bottom: 6px;
+}
+
+.restock-input {
+  width: 100%;
+  border: 1.5px solid #e8e4df;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  background: #fafaf9;
+}
+
+.restock-input:focus {
+  border-color: #9e4b55;
+  box-shadow: 0 0 0 3px rgba(158, 75, 85, 0.1);
+  background: #fff;
+}
+
+.restock-input.restock-input-error {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12) !important;
+  animation: restock-shake 0.35s ease;
+}
+
+@keyframes restock-shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-5px); }
+  60%      { transform: translateX(5px); }
+}
+
+.restock-input-hint {
+  font-size: 11px;
+  color: #aaa;
+  margin: 0 0 18px;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+
+/* Botón principal */
+.restock-btn-guardar {
+  width: 100%;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-bottom: 14px;
+}
+
+.restock-btn-guardar:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.restock-btn-guardar:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+/* Nota privacidad */
+.restock-privacidad {
+  font-size: 11px;
+  color: #bbb;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+/* ── Estado de ÉXITO ── */
+.restock-exito {
+  text-align: center;
+  padding: 20px 0 10px;
+  animation: restock-fade-in 0.4s ease;
+}
+
+@keyframes restock-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.restock-exito-icono {
+  font-size: 52px;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.restock-exito-titulo {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.restock-exito-texto {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+.restock-btn-cerrar-exito {
+  background: transparent;
+  border: 1.5px solid #e8e4df;
+  border-radius: 10px;
+  padding: 12px 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.restock-btn-cerrar-exito:hover {
+  background: #f5f3f0;
+  border-color: #ccc;
+}
+
+/* ── Botón "Notifícame cuando vuelva" en el modal de producto ── */
+.modal-agregar-btn.btn-notificar {
+  background: transparent;
+  color: #9e4b55;
+  border: 1.5px solid #9e4b55;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-agregar-btn.btn-notificar:hover {
+  background: #9e4b55;
+  color: #fff;
 }
