@@ -1,148 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Pantalón Yoga · SANT Activewear</title>
-
-        <link rel="icon" href="../images/logos/sant-fondo-blanco.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/hero.css">
-    <link rel="stylesheet" href="../css/productos.css">
-    <link rel="stylesheet" href="../css/carrito.css">
-    <link rel="stylesheet" href="../css/banner.css">
-    <link rel="stylesheet" href="../css/nosotros.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arma tu look — SANT Activewear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/logos/sant-fondo-blanco.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/looks.css?v=6">
+  <link rel="stylesheet" href="css/carrito.css">
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar bg-white sticky-top shadow-sm">
-        <div class="container">
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-logos">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
-                </a>
-                <!-- <a class="navbar-zweat" href="../zweat/index.html">
-                    zweat
-                </a> -->
-            </div>
-
-            <button class="carrito-navbar-btn" onclick="toggleCarrito()">
-                <img src="../images/carrito.png" alt="Carrito">
-                <span class="carrito-badge" id="carritoBadge">0</span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarCatalogo">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Nueva
-                            Colección ✦</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bikers.html">Bikers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="calcetas.html">Calcetas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="chamarras.html">Chamarras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="crop-tops.html">Crop Tops</a></li>
-                    <li class="nav-item"><a class="nav-link" href="falda-teniss.html">Falda Tenis</a></li>
-                    <li class="nav-item"><a class="nav-link" href="jumper.html">Jumper</a></li>
-                    <li class="nav-item"><a class="nav-link" href="leggings.html">Leggings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pantalon-yoga.html">Pantalón Yoga</a></li>
-                    <li class="nav-item"><a class="nav-link" href="playeras.html">Playeras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="shorts.html">Shorts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tops.html">Tops</a></li>
-                    <li class="nav-item"><a class="nav-link" href="vestidos.html">Vestidos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../nosotros.html">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../nosotros.html#contacto">Contacto</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero-collage" data-collection="yoga">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="brand-name">PANTALÓN YOGA</h1>
-            <div class="brand-divider">
-                <span></span>
-                <svg class="brand-star" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 0 L10.9 9.1 L20 10 L10.9 10.9 L10 20 L9.1 10.9 L0 10 L9.1 9.1 Z" />
-                </svg>
-                <span></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- PANTALÓN YOGA -->
-    <section id="pantalon-yoga" class="container py-5">
-        <h2 class="text-center mb-5">Pantalón Yoga</h2>
-        <div class="row g-4">
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card producto border-0">
-                    <img id="pantayoga1" src="../images/pantalones/pantalon-yoga-negro.jpg" class="card-img-top"
-                        alt="Pantalón yoga negro">
-                    <div class="card-body">
-                        <h5>Pantalón Yoga</h5>
-                        <p class="precio" data-nombre="Pantalón Yoga"></p>
-                        <p class="descripcion">Cintura alta · Tela stretch suave · Corte ajustado con libertad de
-                            movimiento · Tejido de secado rápido.</p>
-                        <p><strong>Tallas:</strong> CH - L</p>
-                        <div class="colores">
-                            <span class="color negro"
-                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-negro.jpg')"></span>
-                            <span class="color gris-oxford"
-                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-gris-oxford.jpg')"></span>
-                            <span class="color azul-marino"
-                                onclick="cambiarImagen('pantayoga1','../images/pantalones/pantalon-yoga-azul.jpg')"></span>
-                        </div>
-                        <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Pantalón Yoga','YOGAPAN-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Gris Oxford',bg:'#808080'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
-                            Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="text-center mt-5 pt-2" id="nav-productos" style="display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap;">
-        <a onclick="history.back()" class="btn-volver-inicio" style="cursor:pointer;">
-            ← Regresar
+  <!-- NAVBAR (igual que el resto del sitio) -->
+  <nav class="navbar bg-white sticky-top shadow-sm">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatalogo">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-logos">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
         </a>
-        <a id="btn-siguiente" href="#" class="btn-volver-inicio" style="cursor:pointer;">
-            Siguiente →
-        </a>
+      </div>
+      <button class="carrito-navbar-btn" onclick="toggleCarrito()">
+        <img src="images/carrito.png" alt="Carrito">
+        <span class="carrito-badge" id="carritoBadge">0</span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCatalogo">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="nueva-coleccion.html">✦ Nueva Colección ✦</a></li>
+          <li class="nav-item"><a class="nav-link" href="lifestyle.html">Lifestyle</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/bikers.html">Bikers</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/calcetas.html">Calcetas</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/chamarras.html">Chamarras</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/crop-tops.html">Crop Tops</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/falda-teniss.html">Falda Tenis</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/jumper.html">Jumper</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/leggings.html">Leggings</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/pantalon-yoga.html">Pantalón Yoga</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/playeras.html">Playeras</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/shorts.html">Shorts</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo/tops.html">Tops</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+        </ul>
+      </div>
     </div>
-    <script>
-        (function() {
-            const orden = ['bikers.html', 'calcetas.html', 'chamarras.html', 'crop-tops.html', 'falda-teniss.html', 'jumper.html', 'leggings.html', 'pantalon-yoga.html', 'playeras.html', 'shorts.html', 'tops.html', 'vestidos.html'];
-            const current = window.location.pathname.split('/').pop();
-            const currentIndex = orden.indexOf(current);
-            const nextIndex = (currentIndex + 1) % orden.length;
-            const nextFile = orden[nextIndex];
-            document.getElementById('btn-siguiente').href = nextFile;
-        })();
-    </script>
-    </section>
+  </nav>
 
-    <!-- FOOTER -->
+  <!-- CONTENIDO DINÁMICO -->
+  <div id="lookContenido"></div>
+
+  <!-- FOOTER -->
     <footer class="sant-footer">
+        <!-- Consulta tu pedido -->
         <div class="footer-consulta">
             <div class="container">
                 <p class="footer-consulta-label">¿Ya hiciste tu pedido?</p>
@@ -154,6 +69,7 @@
                 </div>
             </div>
         </div>
+        <!-- Bottom bar -->
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
             style="padding-top:24px;padding-bottom:4px;">
             <span class="sant-footer-logo">SANT ACTIVEWEAR</span>
@@ -165,6 +81,7 @@
         </div>
     </footer>
 
+    <!-- MODAL CONSULTA PEDIDO -->
     <div class="pedido-modal-backdrop" id="pedidoModalBackdrop" onclick="cerrarConsultaPedido()"></div>
     <div class="pedido-modal" id="pedidoModal">
         <button class="pedido-modal-close" onclick="cerrarConsultaPedido()">
@@ -184,6 +101,7 @@
         </svg>
     </button>
 
+    <!-- PANEL CARRITO -->
     <div class="carrito-panel" id="carritoPanel">
         <div class="carrito-header">
             <h3>Tu pedido</h3>
@@ -447,13 +365,16 @@
             </svg>
         </button>
 
+        <!-- Ícono de campana -->
         <div class="restock-icono">🔔</div>
 
         <h3 id="restockTitulo" class="restock-titulo">Avísame cuando vuelva</h3>
         <p class="restock-subtitulo">Te notificaremos en cuanto este producto esté disponible de nuevo.</p>
 
+        <!-- Info del producto seleccionado -->
         <div class="restock-producto-info" id="restockProductoInfo"></div>
 
+        <!-- Formulario -->
         <div id="restockFormulario">
             <p class="restock-label">¿Cómo quieres que te avisemos?</p>
 
@@ -496,6 +417,7 @@
             <p class="restock-privacidad">Solo te avisaremos cuando el producto vuelva a estar disponible. Sin spam.</p>
         </div>
 
+        <!-- Estado de éxito -->
         <div id="restockExito" class="restock-exito" style="display:none;">
             <div class="restock-exito-icono">✅</div>
             <p class="restock-exito-titulo">¡Listo!</p>
@@ -505,24 +427,10 @@
 
     </div>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-
-            if (window.scrollY > 40) {
-                navbar.classList.add('shrink');
-            } else {
-                navbar.classList.remove('shrink');
-            }
-        });
-    </script>
-    
-    <!-- SCRIPTS — siempre al final, en este orden -->
-    <script src="../js/carrito.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/script.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/looks.js?v=2"></script>
 </body>
-
 </html>

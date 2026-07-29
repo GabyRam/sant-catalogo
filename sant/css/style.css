@@ -60,8 +60,8 @@ p {
     height: 48px;
     border-radius: 50%;
     border: 0;
-    background: whitesmoke;
-    color: #9e4b55;
+    background: #e4dad0;
+    color: #6c757d;
     font-size: 32px;
     cursor: pointer;
     opacity: 0;
@@ -485,4 +485,163 @@ p {
 
 .btn-volver-inicio:active {
     transform: translateY(0);
+}
+/* Refactored Inline Styles */
+.sant-style-1 {
+    margin-top: 36px;
+}
+.sant-style-2 {
+    width:26px;
+    height:26px;
+}
+.sant-style-3 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.sant-style-4 {
+    cursor:pointer;
+}
+.sant-style-5 {
+    padding-top:24px;
+    padding-bottom:4px;
+}
+.sant-style-6 {
+    font-size:11px;
+    letter-spacing:2px;
+    color:#aaa;
+    margin:0 0 4px 0;
+}
+.sant-style-7 {
+    font-size:20px;
+    font-weight:600;
+    color:#1a1a1a;
+    margin:0 0 16px 0;
+}
+.sant-style-8 {
+    margin-bottom:16px;
+}
+.sant-style-9 {
+    margin-top:20px;
+}
+.sant-style-10 {
+    display:none;
+}
+.sant-style-11 {
+    margin-bottom:24px;
+}
+.sant-style-12 {
+    resize:none;
+}
+.sant-style-13 {
+    background-image: url('../images/calcetas/calceta-have-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-14 {
+    background-image: url('../images/calcetas/calceta-1966-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-15 {
+    background-image: url('../images/calcetas/calceta-waht-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-16 {
+    background-image: url('../images/calcetas/calceta-grateful-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-17 {
+    background-image: url('../images/calcetas/calceta-free-mind-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-18 {
+    background-image: url('../images/calcetas/calceta-smile-out-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-19 {
+    background-image: url('../images/calcetas/calceta-live-smile-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-20 {
+    background-image: url('../images/calcetas/calceta-caritas-cafe-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-21 {
+    background-image: url('../images/calcetas/calceta-mind-rosa-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-22 {
+    background-image: url('../images/calcetas/calceta-caritas-rosa-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-23 {
+    background-image: url('images/calcetas/calceta-have-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-24 {
+    background-image: url('images/calcetas/calceta-1966-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-25 {
+    background-image: url('images/calcetas/calceta-waht-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-26 {
+    background-image: url('images/calcetas/calceta-grateful-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-27 {
+    background-image: url('images/calcetas/calceta-free-mind-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-28 {
+    background-image: url('images/calcetas/calceta-smile-out-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-29 {
+    background-image: url('images/calcetas/calceta-live-smile-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-30 {
+    background-image: url('images/calcetas/calceta-caritas-cafe-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-31 {
+    background-image: url('images/calcetas/calceta-mind-rosa-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-32 {
+    background-image: url('images/calcetas/calceta-caritas-rosa-thumb.png');
+    background-size: cover;
+    background-position: center;
+}
+.sant-style-33 {
+    display:block;
+    text-decoration:none;
+}
+.sant-style-34 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 100px;
 }

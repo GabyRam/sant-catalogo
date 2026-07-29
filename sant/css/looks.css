@@ -1,0 +1,857 @@
+@import url('https://fonts.cdnfonts.com/css/caviar-dreams');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --beige: #e8e4df;
+    --stone: #c3aaa3;
+    --slate: #6c757d;
+    --ink: #1a1a1a;
+    --white: #ffffff;
+    --offwhite: #f7f5f2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--offwhite);
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+/* ── BREADCRUMB ─────────────────────────────────────────── */
+.look-breadcrumb {
+    padding: 20px 32px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.look-breadcrumb a {
+    color: var(--slate);
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.look-breadcrumb a:hover {
+    color: var(--ink);
+}
+
+.look-breadcrumb span {
+    color: var(--stone);
+}
+
+/* ── HERO DEL LOOK ──────────────────────────────────────── */
+.look-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+    gap: 0;
+}
+
+/* Imagen izquierda */
+.look-hero__img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--beige);
+}
+
+.look-hero__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform .6s ease;
+}
+
+.look-hero__img-wrap:hover img {
+    transform: scale(1.02);
+}
+
+/* Etiqueta "Look N" flotante */
+.look-hero__tag {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    background: rgba(255, 255, 255, .9);
+    backdrop-filter: blur(6px);
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+/* Panel derecho */
+.look-hero__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 56px;
+    background: var(--white);
+    gap: 0;
+}
+
+.look-hero__eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 12px;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+/* Título principal — Caviar Dreams como los headings del sitio */
+.look-hero__title {
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.look-hero__title em {
+    font-style: italic;
+    color: var(--stone);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.look-hero__desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--slate);
+    max-width: 380px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Divisor */
+.look-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--beige);
+    margin-bottom: 32px;
+}
+
+/* ── TARJETAS DE PRENDAS ────────────────────────────────── */
+.look-prendas {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.prenda-card {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--offwhite);
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: border-color .2s, box-shadow .2s;
+    cursor: default;
+}
+
+.prenda-card:hover {
+    border-color: var(--beige);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+}
+
+.prenda-card__img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: var(--beige);
+    display: block;
+}
+
+.prenda-card__img-placeholder {
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    background: var(--beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--stone);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.3;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+.prenda-card__info {
+    min-width: 0;
+}
+
+.prenda-card__nombre {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: var(--ink);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.prenda-card__sku {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--stone);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.prenda-card__precio {
+    font-size: 13px;
+    color: var(--slate);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estado de stock en tarjeta */
+.prenda-card__stock {
+    font-size: 10px;
+    letter-spacing: .5px;
+    margin-top: 3px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.prenda-card__stock.agotado {
+    color: #c0392b;
+}
+
+.prenda-card__stock.ultimas {
+    color: #856404;
+}
+
+.prenda-card__btn {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s, transform .15s;
+}
+
+.prenda-card__btn:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.prenda-card__btn.agotado {
+    background: transparent;
+    color: var(--slate);
+    border: 1px solid var(--beige);
+    cursor: default;
+}
+
+.prenda-card__btn.notificar {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    font-size: 9px;
+}
+
+.prenda-card__btn.notificar:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
+/* Total del look */
+.look-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 16px 0;
+    border-top: 1px solid var(--beige);
+    margin-top: 8px;
+}
+
+.look-total__label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+.look-total__precio {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.look-total__precio span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--stone);
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 4px;
+}
+
+/* Cargando estado */
+.look-loading {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--stone);
+    text-align: center;
+    padding: 16px 0;
+    animation: pulse 1.4s ease-in-out infinite;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: .4 }
+    50%       { opacity: 1  }
+}
+
+/* ── LOOKS RELACIONADOS ─────────────────────────────────── */
+.looks-related {
+    padding: 80px 32px;
+    background: var(--white);
+    overflow: hidden;
+}
+
+.looks-related__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.looks-related__title {
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.looks-related__ver-todos {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    border-bottom: 1px solid var(--beige);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.looks-related__ver-todos:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+.looks-related__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.look-thumb {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--beige);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.look-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.look-thumb:hover img {
+    transform: scale(1.04);
+}
+
+.look-thumb__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 26, 26, .6) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.look-thumb:hover .look-thumb__overlay {
+    opacity: 1;
+}
+
+.look-thumb__label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 700;
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+.look-thumb--static {
+    cursor: default;
+}
+
+.look-thumb--static img {
+    transition: none;
+}
+
+.look-thumb--static:hover img {
+    transform: none;
+}
+
+.look-thumb--static .look-thumb__overlay {
+    display: none;
+}
+
+#inspiration-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+#inspiration-grid::-webkit-scrollbar {
+    display: none;
+}
+
+#inspiration-grid .look-thumb {
+    flex: 0 0 calc(25% - 15px);
+    scroll-snap-align: start;
+}
+
+/* Fix for Bootstrap carousel blurriness on images */
+/* .carousel-item {
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+}
+.carousel-item img {
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+ */
+
+/* ── INSPIRATION OVERLAY ────────────────────────────────── */
+.insp-plus-btn {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--ink);
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s, transform 0.2s;
+    z-index: 2;
+    padding-bottom: 2px;
+}
+
+.insp-plus-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.insp-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 15;
+    animation: fadeIn 0.2s ease;
+    min-width: 100px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 4px)); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+
+.insp-cat-title {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-family: 'Caviar Dreams', 'Montserrat', sans-serif;
+}
+
+.insp-cat-link {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.2s;
+    text-transform: uppercase;
+}
+
+.insp-cat-link:hover {
+    color: var(--slate);
+}
+
+/* ── MOBILE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .look-breadcrumb {
+        padding: 16px 20px 0;
+    }
+
+    .look-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .look-hero__img-wrap {
+        height: 55vw;
+        min-height: 280px;
+    }
+
+    .look-hero__info {
+        padding: 36px 24px 40px;
+    }
+
+    .look-hero__title {
+        font-size: 28px;
+    }
+
+    .look-hero__desc {
+        margin-bottom: 28px;
+    }
+
+    .prenda-card {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .prenda-card__img,
+    .prenda-card__img-placeholder {
+        width: 60px;
+        height: 60px;
+    }
+
+    .prenda-card__btn {
+        grid-column: 1 / -1;
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .looks-related {
+        padding: 48px 20px;
+    }
+
+    .looks-related__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    #inspiration-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+    
+    #inspiration-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    #inspiration-grid .look-thumb {
+        flex: 0 0 calc(50% - 6px);
+        scroll-snap-align: start;
+    }
+
+    .looks-related__next-btn {
+        display: none !important;
+    }
+}
+
+/* ── HOTSPOT Y TARJETAS INSPIRATION ─────────────────────── */
+.hotspot-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insp-plus-btn {
+    position: relative;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.6);
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.insp-plus-btn:hover,
+.insp-plus-btn.active {
+    background: #1a1a1a;
+    color: #ffffff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+}
+
+.insp-pulse {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    animation: sant-pulse 2.4s ease-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes sant-pulse {
+    0%   { transform: scale(1); opacity: 0.7; }
+    70%  { transform: scale(2); opacity: 0; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.insp-plus-btn.active ~ .insp-pulse {
+    animation: none;
+    opacity: 0;
+}
+
+.insp-card {
+    position: absolute;
+    top: 50%;
+    z-index: 20;
+    display: none;
+    flex-direction: row;
+    align-items: stretch;
+    width: 248px;
+    background: #ffffff;
+    border: 1px solid #e8e4df;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.07);
+    /* Remove overflow: hidden from here so it can pop out cleanly if needed, though we moved it */
+}
+
+.insp-card--left {
+    left: 38px;
+    transform: translateY(-50%);
+    animation: sant-popup-in 0.18s ease-out;
+}
+
+.insp-card--right {
+    right: 38px;
+    transform: translateY(-50%);
+    animation: sant-popup-in 0.18s ease-out;
+}
+
+@keyframes sant-popup-in {
+    from { opacity: 0; transform: translateY(calc(-50% - 6px)); }
+    to   { opacity: 1; transform: translateY(-50%); }
+}
+
+.insp-card__img-wrap {
+    width: 72px;
+    flex-shrink: 0;
+    background: #f5f3f0;
+    overflow: hidden;
+}
+
+.insp-card__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.insp-card__img-fallback {
+    width: 100%;
+    height: 100%;
+    background: #e8e4df;
+}
+
+.insp-card__body {
+    flex: 1;
+    padding: 12px 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    border-left: 1px solid #f0ede9;
+}
+
+.insp-card__categoria {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a39c94;
+    margin: 0;
+}
+
+.insp-card__nombre {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.insp-card__swatches {
+    display: flex;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.insp-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.12);
+    flex-shrink: 0;
+}
+
+.insp-card__precio {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 2px 0 0;
+    letter-spacing: 0.3px;
+}
+
+.insp-card__precio span {
+    font-weight: 400;
+    font-size: 9px;
+    color: #a39c94;
+    margin-left: 2px;
+}
+
+.insp-card__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-left: 1px solid #f0ede9;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+}
+
+.insp-card__link:hover {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.look-thumb__img-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .insp-card {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
+        width: 95% !important;
+        max-width: 260px;
+        z-index: 9999;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        animation: sant-popup-center 0.2s ease-out !important;
+    }
+    .insp-card--left, .insp-card--right {
+        transform: translate(-50%, -50%) !important;
+    }
+    .insp-card__img-wrap { 
+        width: 72px; 
+    }
+    .insp-card__body {
+        padding: 12px 12px;
+    }
+    @keyframes sant-popup-center {
+        from { opacity: 0; transform: translate(-50%, calc(-50% + 20px)); }
+        to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+}

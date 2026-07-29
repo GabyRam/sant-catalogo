@@ -1003,7 +1003,9 @@ function obtenerPrecio(nombre) {
     if (PRECIOS[nombre]) return PRECIOS[nombre];
     if (CALCETAS_PRECIOS[nombre]) return CALCETAS_PRECIOS[nombre];
     if (nombre.includes('Calceta')) return 60;
-    if (nombre.includes('Top') || nombre.includes('Tank') || nombre.includes('Crop')) return PRECIOS['Top'];
+    if (nombre.includes('Crop Top')) return PRECIOS['Crop Top'];
+    if (nombre.includes('Bra')) return PRECIOS['Top'];
+    if (nombre.includes('Top') || nombre.includes('Tank')) return PRECIOS['Top'];
     if (nombre.includes('Legging') && !nombre.includes('Flare')) return PRECIOS['Leggings'];
     if (nombre.includes('Flare')) return PRECIOS['Legging Flare'];
     if (nombre.includes('Short')) return PRECIOS['Short'];
@@ -1013,6 +1015,8 @@ function obtenerPrecio(nombre) {
     if (nombre.includes('Vestido')) return PRECIOS['Vestido'];
     if (nombre.includes('Jumper')) return PRECIOS['Jumper'];
     if (nombre.includes('Biker')) return PRECIOS['Biker'];
+    if (nombre.includes('Pantalón Yoga')) return PRECIOS['Pantalón Yoga'];
+
     return 0;
 }
 

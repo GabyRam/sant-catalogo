@@ -435,3 +435,86 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         }
     });
 });
+
+// ── Highlight efecto para páginas de catálogo hardcodeadas (si no usa render-catalogo) ──
+window.addEventListener('load', () => {
+    if (window.location.hash) {
+        const sku = window.location.hash.substring(1);
+        
+        // Evitamos si el hash no parece un SKU o es muy corto
+        if (sku.length < 5) return;
+
+        // Intentar encontrar el elemento por ID (en caso de que sí tenga ID, ej. por render-catalogo.js)
+        let targetElement = document.getElementById(sku);
+        let targetCard = targetElement ? targetElement.querySelector('.producto') || targetElement : null;
+
+        // Si no se encuentra por ID, buscar en los botones hardcodeados
+        if (!targetCard) {
+            const buttons = document.querySelectorAll('.btn-agregar-carrito');
+            for (const btn of buttons) {
+                const onclickStr = btn.getAttribute('onclick') || '';
+                // Busca el SKU exacto dentro del onclick, por ejemplo: 'LEGGINGKW-001'
+                if (onclickStr.includes(`'${sku}'`) || onclickStr.includes(`"${sku}"`)) {
+                    targetCard = btn.closest('.producto');
+                    break;
+                }
+            }
+        }
+
+        if (targetCard) {
+            // Función para enfocar el producto (hace scroll e ilumina)
+            const enfocarProducto = () => {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (!targetCard.classList.contains('glow-effect')) {
+                    targetCard.classList.add('glow-effect');
+                    setTimeout(() => targetCard.classList.remove('glow-effect'), 3000);
+                }
+            };
+
+            // Intentos para compensar lazy loading
+            setTimeout(enfocarProducto, 100);
+            setTimeout(enfocarProducto, 800);
+            setTimeout(enfocarProducto, 2000);
+        }
+    }
+});
+// --- Event Delegator for Refactored HTML ---
+document.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-action]');
+    if (!el) return;
+    const action = el.dataset.action;
+    const argsStr = el.dataset.args;
+    let args = [];
+    if (argsStr) {
+        try {
+            args = (new Function("return [" + argsStr + "]"))();
+        } catch (err) {
+            console.error('Error parsing args for', action, argsStr, err);
+        }
+    }
+    const actions = {
+        'cambiarImagen': typeof cambiarImagen !== 'undefined' ? cambiarImagen : null,
+        'abrirModal': typeof abrirModal !== 'undefined' ? abrirModal : null,
+        'cerrarModal': typeof cerrarModal !== 'undefined' ? cerrarModal : null,
+        'toggleCarrito': typeof toggleCarrito !== 'undefined' ? toggleCarrito : null,
+        'vaciarCarrito': typeof vaciarCarrito !== 'undefined' ? vaciarCarrito : null,
+        'enviarWhatsApp': typeof enviarWhatsApp !== 'undefined' ? enviarWhatsApp : null,
+        'cambiarCantidad': typeof cambiarCantidad !== 'undefined' ? cambiarCantidad : null,
+        'confirmarAgregar': typeof confirmarAgregar !== 'undefined' ? confirmarAgregar : null,
+        'consultarPedido': typeof consultarPedido !== 'undefined' ? consultarPedido : null,
+        'cerrarConsultaPedido': typeof cerrarConsultaPedido !== 'undefined' ? cerrarConsultaPedido : null,
+        'seleccionarTipoEntrega': typeof seleccionarTipoEntrega !== 'undefined' ? seleccionarTipoEntrega : null,
+        'volverPaso1': typeof volverPaso1 !== 'undefined' ? volverPaso1 : null,
+        'cerrarEnvioModal': typeof cerrarEnvioModal !== 'undefined' ? cerrarEnvioModal : null,
+        'submitEntregaPersonal': typeof submitEntregaPersonal !== 'undefined' ? submitEntregaPersonal : null,
+        'submitEnvioYWhatsApp': typeof submitEnvioYWhatsApp !== 'undefined' ? submitEnvioYWhatsApp : null,
+        'guardarRestock': typeof guardarRestock !== 'undefined' ? guardarRestock : null,
+        'cerrarModalRestock': typeof cerrarModalRestock !== 'undefined' ? cerrarModalRestock : null,
+        'scrollToTop': function() { window.scrollTo({top:0, behavior:'smooth'}) },
+        'goBack': function() { history.back() }
+    };
+    if (actions[action]) {
+        actions[action].apply(null, args);
+        if (el.tagName === 'A') e.preventDefault();
+    }
+});

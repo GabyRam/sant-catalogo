@@ -508,3 +508,30 @@
             0 0 22px rgba(255,255,255,0.75);
     }
 }
+
+/* ══════════════════════════════════════════
+   HIGHLIGHT EFECTO (Desde página de Looks)
+   ══════════════════════════════════════════ */
+.glow-effect {
+    animation: targetGlow 3.5s ease-out forwards;
+    border-radius: 15px;
+}
+
+@keyframes targetGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(163, 156, 148, 0);
+        transform: scale(1);
+    }
+    15% {
+        box-shadow: 0 0 0 4px rgba(195, 170, 163, 0.3), 0 0 25px rgba(195, 170, 163, 0.4);
+        transform: scale(1.03);
+    }
+    30% {
+        box-shadow: 0 0 0 8px rgba(195, 170, 163, 0), 0 0 20px rgba(195, 170, 163, 0.2);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(195, 170, 163, 0);
+        transform: scale(1);
+    }
+}
