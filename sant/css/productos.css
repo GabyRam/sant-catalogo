@@ -141,8 +141,8 @@
     background: #0B7FF2;
 }
 
-.azul-bicolor {
-    background: #586D97;
+.azul-grisaceo {
+    background: #445581;
 }
 
 .rojo {
@@ -165,12 +165,12 @@
     background: #A799BC;
 }
 
-.esmeralda {
-    background: #4999B4;
+.verde-jade {
+    background: #2A6C7E;
 }
 
 .vino {
-    background: #682d4d;
+    background: #591A2D;
 }
 
 .beige {
@@ -181,15 +181,15 @@
     background: #CA6E7B;
 }
 
-.rosa-claro {
-    background: #c3aaa3;
+.rosa-bronce {
+    background: #E9CDC0;
 }
 
 .rosa-calceta {
     background: #d7bdba;
 }
 
-.rosa-neon {
+.fucsia {
     background: #fc53ae;
 }
 
@@ -205,15 +205,15 @@
     background: #616161;
 }
 
-.verde-olivo {
-    background: #4c4e43;
-}
-
-.hueso {
-    background: #e7e2dc;
+.verde-militar {
+    background: #555849;
 }
 
 .ivory {
+    background: #e7e2dc;
+}
+
+.topo {
     background: #bdab9f;
 }
 
@@ -221,7 +221,7 @@
     background: #61341f;
 }
 
-.amarillo-bicolor {
+.amarillo-claro {
     background: #f6e7af;
 }
 

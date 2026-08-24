@@ -152,7 +152,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         base+'images/leggings/legging-colombiano-gris.jpg',
         base+'images/leggings/legging-colombiano-negro.jpg',
         base+'images/leggings/legging-flare-cafe.jpeg',
-        base+'images/leggings/legging-flare-esmeralda.jpeg',
+        base+'images/leggings/legging-flare-verde-jade.jpeg',
         base+'images/leggings/legging-flare-negro.jpeg',
         base+'images/leggings/legging-flare-vino.jpeg',
         base+'images/leggings/legging-gris.jpg',
@@ -175,7 +175,7 @@ document.querySelectorAll(".producto-img").forEach(container => {
         base+'images/crop-tops/crop-azul-marino.jpg',
         base+'images/crop-tops/crop-gris.jpg',
         base+'images/crop-tops/crop-gris-oxford.jpg',
-        base+'images/crop-tops/crop-esmeralda.jpg',
+        base+'images/crop-tops/crop-verde-jade.jpg',
         base+'images/crop-tops/crop-vino.jpg'
     ];
 

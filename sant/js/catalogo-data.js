@@ -76,14 +76,14 @@ const PRODUCTO_META = {
       'Azul':  '../images/calcetas/calceta-lisa-azul.jpg',
       'Rosa':  '../images/calcetas/calceta-lisa-rosa.jpg',
       'Beige': '../images/calcetas/calceta-lisa-beige.jpg',
-      'Hueso': '../images/calcetas/calceta-lisa-hueso.jpg',
+      'ivory': '../images/calcetas/calceta-lisa-hueso.jpg',
     },
     coloresMeta: {
       'Negro': { bg: '#1a1a1a' },
       'Azul':  { bg: '#adc1f4' },
       'Rosa':  { bg: '#f0a8b8' },
       'Beige': { bg: '#e8c9a0' },
-      'Hueso': { bg: '#e7e2dc' },
+      'ivory': { bg: '#e7e2dc' },
     }
   },
   'CALCETAMODADISENO': {
@@ -126,12 +126,12 @@ const PRODUCTO_META = {
     imagenBase:  '../images/chamarras/chamarra-deportiva-hueso.jpg',
     imagenesPorColor: {
       'Hueso':       '../images/chamarras/chamarra-deportiva-hueso.jpg',
-      'Ivory':       '../images/chamarras/chamarra-deportiva-ivory.jpg',
+      'topo':       '../images/chamarras/chamarra-deportiva-ivory.jpg',
       'Verde olivo': '../images/chamarras/chamarra-deportiva-verde.jpg',
     },
     coloresMeta: {
-      'Hueso':       { bg: '#e7e2dc' },
-      'Ivory':       { bg: '#f5f0e8' },
+      'ivory':       { bg: '#e7e2dc' },
+      'topo':       { bg: '#f5f0e8' },
       'Verde olivo': { bg: '#6b7c5c' },
     }
   },
@@ -175,7 +175,7 @@ const PRODUCTO_META = {
       'Lavanda':     '../images/crop-tops/crop-lavanda.jpg',
       'Azul':        '../images/crop-tops/crop-azul.jpg',
       'Azul marino': '../images/crop-tops/crop-azul-marino.jpg',
-      'Esmeralda':   '../images/crop-tops/crop-esmeralda.jpg',
+      'verde-jade':   '../images/crop-tops/crop-verde-jade.jpg',
       'Vino':        '../images/crop-tops/crop-vino.jpg',
       'Gris':        '../images/crop-tops/crop-gris.jpg',
       'Gris oxford': '../images/crop-tops/crop-gris-oxford.jpg',
@@ -186,7 +186,7 @@ const PRODUCTO_META = {
       'Lavanda':     { bg: '#c4b0d9' },
       'Azul':        { bg: '#adc1f4' },
       'Azul marino': { bg: '#2a385b' },
-      'Esmeralda':   { bg: '#4999B4' },
+      'verde-jade':   { bg: '#4999B4' },
       'Vino':        { bg: '#682d4d' },
       'Gris':        { bg: '#9e9e9e' },
       'Gris oxford': { bg: '#6e7a8a' },
@@ -265,15 +265,15 @@ const PRODUCTO_META = {
     categoria:   'leggings',
     descripcion: 'Legging acampanado · Cintura V · Tela súper soft · Estiliza la figura',
     badge:       'NUEVOS COLORES',
-    imagenBase:  '../images/leggings/legging-flare-esmeralda.jpeg',
+    imagenBase:  '../images/leggings/legging-flare-verde-jade.jpeg',
     imagenesPorColor: {
-      'Esmeralda': '../images/leggings/legging-flare-esmeralda.jpeg',
+      'verde-jade': '../images/leggings/legging-flare-verde-jade.jpeg',
       'Vino':      '../images/leggings/legging-flare-vino.jpeg',
       'Cafe':      '../images/leggings/legging-flare-cafe.jpeg',
       'Negro':     '../images/leggings/legging-flare-negro.jpeg',
     },
     coloresMeta: {
-      'Esmeralda': { bg: '#4999B4' },
+      'verde-jade': { bg: '#4999B4' },
       'Vino':      { bg: '#682d4d' },
       'Cafe':      { bg: '#61341f' },
       'Negro':     { bg: '#1a1a1a' },
@@ -314,11 +314,11 @@ const PRODUCTO_META = {
     imagenBase:  '../images/leggings/legging-yoga-cafe.jpg',
     imagenesPorColor: {
       'Cafe':  '../images/leggings/legging-yoga-cafe.jpg',
-      'Hueso': '../images/leggings/legging-yoga-hueso.jpg',
+      'ivory': '../images/leggings/legging-yoga-hueso.jpg',
     },
     coloresMeta: {
       'Cafe':  { bg: '#61341f' },
-      'Hueso': { bg: '#e7e2dc' },
+      'ivory': { bg: '#e7e2dc' },
     }
   },
 

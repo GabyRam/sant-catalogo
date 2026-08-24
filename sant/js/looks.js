@@ -141,7 +141,7 @@ const LOOKS_DATA = {
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Blanco', bg: '#ffffff' }, { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' },
                     { nombre: 'Azul marino', bg: '#2a385b' }, { nombre: 'Gris', bg: '#b4b1ac' }, { nombre: 'Gris oxford', bg: '#808080' },
-                    { nombre: 'Esmeralda', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
+                    { nombre: 'verde-jade', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
                 ],
                 imagen: 'images/crop-tops/crop-negro.jpg'
             }
@@ -184,7 +184,7 @@ const LOOKS_DATA = {
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Blanco', bg: '#ffffff' }, { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' },
                     { nombre: 'Azul marino', bg: '#2a385b' }, { nombre: 'Gris', bg: '#b4b1ac' }, { nombre: 'Gris oxford', bg: '#808080' },
-                    { nombre: 'Esmeralda', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
+                    { nombre: 'verde-jade', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
                 ],
                 imagen: 'images/crop-tops/crop-negro.jpg'
             },
@@ -309,7 +309,7 @@ const LOOKS_DATA = {
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Blanco', bg: '#ffffff' }, { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' },
                     { nombre: 'Azul marino', bg: '#2a385b' }, { nombre: 'Gris', bg: '#b4b1ac' }, { nombre: 'Gris oxford', bg: '#808080' },
-                    { nombre: 'Esmeralda', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
+                    { nombre: 'verde-jade', bg: '#4999B4' }, { nombre: 'Vino', bg: '#682d4d' }
                 ],
                 imagen: 'images/crop-tops/crop-negro.jpg'
             },
@@ -318,7 +318,7 @@ const LOOKS_DATA = {
                 sku: 'LEGGINGKW-002',
                 tallas: ['CH', 'M', 'L', 'XL'],
                 colores: [
-                    { nombre: 'Esmeralda', bg: '#4999B4' },
+                    { nombre: 'verde-jade', bg: '#4999B4' },
                     { nombre: 'Vino', bg: '#682d4d' }, { nombre: 'Cafe', bg: '#61341f' }, { nombre: 'Negro', bg: '#000000' }
                 ],
                 imagen: 'images/leggings/legging-flare-negro.jpeg'
@@ -346,7 +346,7 @@ const LOOKS_DATA = {
                 sku: 'JACKETPO-002',
                 tallas: ['CH', 'M', 'L'],
                 colores: [
-                    {nombre:'Verde olivo',bg:'#4c4e43'},{nombre:'Hueso',bg:'#e7e2dc'},{nombre:'Ivory',bg:'#bdab9f'}
+                    {nombre:'Verde olivo',bg:'#4c4e43'},{nombre:'ivory',bg:'#e7e2dc'},{nombre:'topo',bg:'#bdab9f'}
                 ],
                 imagen: 'images/chamarras/chamarra-deportiva-verde.jpg'
             },
@@ -355,7 +355,7 @@ const LOOKS_DATA = {
                 sku: 'LEGGINGYOGA-002',
                 tallas: ['CH', 'M', 'L'],
                 colores: [
-                    {nombre:'Cafe',bg:'#61341f'},{nombre:'Hueso',bg:'#e7e2dc'}
+                    {nombre:'Cafe',bg:'#61341f'},{nombre:'ivory',bg:'#e7e2dc'}
                 ],
                 imagen: 'images/leggings/legging-yoga-cafe.jpg'
             },
@@ -521,7 +521,7 @@ const INSPIRATION_GRID = {
             ]
         },
         {
-            img: 'images/lifestyle/crop-esmeralda-estudio.jpg',
+            img: 'images/lifestyle/crop-verde-jade-estudio.jpg',
             hotspots: [
                 { sku: 'CROPTOPKW-001', top: '35%', left: '50%' }
             ]
