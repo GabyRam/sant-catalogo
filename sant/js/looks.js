@@ -830,47 +830,31 @@ function renderLookPage(look, id) {
     let carouselItemsHTML = '';
     
     if (gridFotos.length > 0) {
-        carouselItemsHTML = gridFotos.map((foto, fotoIdx) => {
-            const hotspotsHTML = (foto.hotspots || [])
-                .map(h => renderHotspot(h, `grid-${fotoIdx}`))
-                .join('');
+    const fotosHTML = gridFotos.map((foto, fotoIdx) => {
+        const isVideo = foto.img.endsWith('.mp4') || foto.img.endsWith('.mov') || foto.img.endsWith('.webm');
+        const mediaHTML = isVideo
+            ? `<video src="${foto.img}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:top;"></video>`
+            : `<img src="${foto.img}" loading="lazy" alt="Inspiration Style" style="width:100%;height:100%;object-fit:cover;object-position:top;">`;
 
-            const isVideo = foto.img.endsWith('.mp4') || foto.img.endsWith('.mov') || foto.img.endsWith('.webm');
-            const mediaHTML = isVideo
-                ? `<video src="${foto.img}" autoplay loop muted playsinline class="d-block w-100" style="height:100%;object-fit:cover;object-position:top;"></video>`
-                : `<img src="${foto.img}" decoding="sync" class="d-block w-100" alt="Inspiration Style" style="height:100%;object-fit:cover;object-position:top;">`;
+        const hotspotsHTML = (foto.hotspots || [])
+            .map(h => renderHotspot(h, `grid-${fotoIdx}`))
+            .join('');
 
-            return `
-            <div class="carousel-item ${fotoIdx === 0 ? 'active' : ''} h-100">
-                <div class="look-thumb look-thumb--static" style="width:100%;height:100%;cursor:default;">
-                    <div class="look-thumb__img-container">
-                        ${mediaHTML}
-                    </div>
-                    ${hotspotsHTML}
-                </div>
-            </div>`;
-        }).join('');
-
-        const navBtns = gridFotos.length > 1 ? `
-            <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev" style="width:40px; justify-content:flex-start;" onclick="event.preventDefault();">
-                <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next" style="width:40px; justify-content:flex-end;" onclick="event.preventDefault();">
-                <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        ` : '';
-
-        var relacionadosHTML = `
-        <div class="d-flex justify-content-center w-100">
-            <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel" style="width: 100%; max-width: 320px;">
-                <div class="carousel-inner w-100" style="border-radius:4px; overflow:visible; aspect-ratio:3/4;">
-                    ${carouselItemsHTML}
-                </div>
-                ${navBtns}
-            </div>
+        return `
+        <div style="flex:0 0 calc(33.333% - 6px);aspect-ratio:3/4;overflow:hidden;border-radius:4px;position:relative;">
+            ${mediaHTML}
+            ${hotspotsHTML}
         </div>`;
+    }).join('');
+
+    var relacionadosHTML = `
+    <div style="position:relative;width:100%;overflow:hidden;">
+        <div id="inspStrip-${id}" style="display:flex;gap:8px;transition:transform 0.45s ease;will-change:transform;">
+            ${fotosHTML}
+        </div>
+        <button onclick="moverInsp('${id}',-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;line-height:1;z-index:2;">‹</button>
+        <button onclick="moverInsp('${id}',1)"  style="position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;line-height:1;z-index:2;">›</button>
+    </div>`;
     } else {
         var relacionadosHTML = '';
     }
@@ -1028,6 +1012,23 @@ async function cargarStockPrendas(prendas) {
             if (stockEl) stockEl.innerHTML = '';
         }
     }));
+}
+
+const _inspPage = {};
+
+function moverInsp(id, dir) {
+    if (_inspPage[id] === undefined) _inspPage[id] = 0;
+    const strip = document.getElementById(`inspStrip-${id}`);
+    if (!strip) return;
+
+    const total = strip.children.length;
+    const porPagina = 3; // cambia aquí según lo que uses
+    const paginas = Math.ceil(total / porPagina);
+
+    _inspPage[id] = ((_inspPage[id] + dir) + paginas) % paginas;
+
+    const itemW = strip.children[0].offsetWidth + 8;
+    strip.style.transform = `translateX(-${_inspPage[id] * itemW * porPagina}px)`;
 }
 
 // ─────────────────────────────────────────────────────────────
