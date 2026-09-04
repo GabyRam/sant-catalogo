@@ -82,26 +82,6 @@
     margin: 0;
 }
 
-/* ── Link Zweat ── */
-.navbar-zweat {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #aaa !important;
-    border-left: 1px solid #e0ddd9;
-    padding-left: 20px !important;
-    margin-left: 8px;
-    text-decoration: none;
-    transition: color 0.2s ease;
-    align-self: center;
-}
-
-.navbar-zweat:hover {
-    color: #1a1a1a !important;
-}
-
 /* ── Alineación del menú ── */
 #navbarCatalogo .navbar-nav {
     align-items: flex-start;
@@ -111,7 +91,7 @@
     text-align: left;
 }
 
-/* ── Link "Nueva Colección" animado ── */
+/* ── Link "Recién llegado" animado ── */
 .nav-nueva-coleccion {
     position: relative;
     font-weight: 500;

@@ -36,12 +36,9 @@
             </button>
 
             <div class="navbar-logos">
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../nueva-coleccion.html">
                     <img src="../images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
                 </a>
-                <!-- <a class="navbar-zweat" href="../zweat/index.html">
-                    zweat
-                </a> -->
             </div>
 
             <button class="carrito-navbar-btn" onclick="toggleCarrito()">
@@ -51,8 +48,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCatalogo">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Nueva
-                            Colección ✦</a></li>
+                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Recién llegado ✦</a></li>
                     <li class="nav-item"><a class="nav-link" href="bikers.html">Bikers</a></li>
                     <li class="nav-item"><a class="nav-link" href="calcetas.html">Calcetas</a></li>
                     <li class="nav-item"><a class="nav-link" href="chamarras.html">Chamarras</a></li>
@@ -92,6 +88,36 @@
     <section id="chamarras" class="container py-5">
         <h2 class="text-center mb-5">Chamarras</h2>
         <div class="row g-4">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0 producto-nuevo">
+                    <div class="producto-img">
+                        <img id="chamarra4" src="../images/chamarras/chamarra-basica-azul-rey.jpg"
+                            alt="Chamarra">
+                    </div>
+                    <div class="card-body">
+                        <h5>Chamarra</h5>
+                        <p class="precio" data-nombre="Chamarra"></p>
+                        <p class="descripcion">Tela Ultrasoft · Ajuste ergonómico que realza la silueta sin restringir
+                            el movimiento · Medio cierre frontal</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <!-- <span class="color negro"
+                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-negra.jpg', '../images/chamarras/chamarra-basica-negra-detalle.jpg')"></span> -->
+                            <span class="color azul-rey"
+                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-azul-rey.jpg')"></span>
+                            <!-- <span class="color cafe"
+                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-cafe.jpg', '../images/chamarras/chamarra-basica-cafe-detalle.jpg')"></span> -->
+                        </div>
+                        <!-- <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'},{nombre:'Café',bg:'#6F4E37'}])">+
+                            Agregar al carrito</button> -->
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Azul Rey',bg:'#0B7FF2'}])">+
+                            Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
@@ -166,37 +192,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card producto border-0 producto-nuevo">
-                    <div class="producto-img tiene-detalle">
-                        <img id="chamarra4" src="../images/chamarras/chamarra-basica-negra.jpg" class="img-frente"
-                            alt="Chamarra">
-                        <img src="../images/chamarras/chamarra-basica-negra-detalle.jpg" class="img-detalle"
-                            alt="Chamarra detalle">
-                    </div>
-                    <div class="card-body">
-                        <p class="ultimas-piezas"><strong>* Preventa</strong></p>
-                        <h5>Chamarra</h5>
-                        <p class="precio" data-nombre="Chamarra"></p>
-                        <p class="descripcion">Tela Ultrasoft · Ajuste ergonómico que realza la silueta sin restringir
-                            el movimiento · Medio cierre frontal completo · Ojales para pulgar</p>
-                        <p><strong>Tallas:</strong> CH - XL</p>
-                        <div class="colores">
-                            <span class="color negro"
-                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-negra.jpg', '../images/chamarras/chamarra-basica-negra-detalle.jpg')"></span>
-                            <span class="color azul-marino"
-                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-azul-marino.jpg', '../images/chamarras/chamarra-basica-azul-marino-detalle.jpg')"></span>
-                            <span class="color cafe"
-                                onclick="cambiarImagen('chamarra4','../images/chamarras/chamarra-basica-cafe.jpg', '../images/chamarras/chamarra-basica-cafe-detalle.jpg')"></span>
-                        </div>
-                        <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'},{nombre:'Café',bg:'#6F4E37'}])">+
-                            Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 

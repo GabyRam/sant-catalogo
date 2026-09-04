@@ -37,12 +37,9 @@
             </button>
 
             <div class="navbar-logos">
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../nueva-coleccion.html">
                     <img src="../images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
                 </a>
-                <!-- <a class="navbar-zweat" href="../zweat/index.html">
-                    zweat
-                </a> -->
             </div>
 
             <button class="carrito-navbar-btn" onclick="toggleCarrito()">
@@ -52,8 +49,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCatalogo">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Nueva
-                            Colección ✦</a></li>
+                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Recién llegado ✦</a></li>
                     <li class="nav-item"><a class="nav-link" href="bikers.html">Bikers</a></li>
                     <li class="nav-item"><a class="nav-link" href="calcetas.html">Calcetas</a></li>
                     <li class="nav-item"><a class="nav-link" href="chamarras.html">Chamarras</a></li>
@@ -95,6 +91,36 @@
         <div class="row g-4">
 
             <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0 producto-nuevo">
+                    <img id="short2" src="../images/shorts/short-bicolor-negro.jpg" class="card-img-top" alt="Short bicolor">
+                    <div class="card-body">
+                        <!-- <p class="ultimas-piezas"><strong>* Preventa</strong></p> -->
+                        <h5>Short Bitono</h5>
+                        <p class="precio" data-nombre="Short"></p>
+                        <p class="descripcion">Tela Ultrasoft · Estilo vintage · Cintura ancha con forma V para
+                            estilizar</p>
+                        <p><strong>Tallas:</strong> CH - L</p>
+                        <div class="colores">
+                            <span class="color negro"
+                                onclick="cambiarImagen('short2','../images/shorts/short-bicolor-negro.jpg')"></span>
+                            <!-- <span class="color rojo"
+                                                    onclick="cambiarImagen('short2','../images/shorts/short-rojo.jpg')"></span> -->
+                            <span class="color azul-rey"
+                                onclick="cambiarImagen('short2','../images/shorts/short-azul-rey.jpg')"></span>
+                            <!-- <span class="color fucsia"
+                                                    onclick="cambiarImagen('short2','../images/shorts/short-rosa-neon.jpg')"></span> -->
+                        </div>
+                        <!-- <button class="btn-agregar-carrito"
+                                                onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
+                                                Agregar al carrito</button> -->
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#0B7FF2'}])">+
+                            Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
                     <img id="short1" src="../images/shorts/short-negro.jpg" class="card-img-top"
                         alt="Short cintura alta negro">
@@ -118,36 +144,7 @@
                             Agregar al carrito</button>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card producto border-0 producto-nuevo">
-                    <img id="short2" src="../images/shorts/short-bicolor-negro.jpg" class="card-img-top"
-                        alt="Short bicolor">
-                    <div class="card-body">
-                        <p class="ultimas-piezas"><strong>* Preventa</strong></p>
-                        <h5>Short Bitono</h5>
-                        <p class="precio" data-nombre="Short"></p>
-                        <p class="descripcion">Tela Ultrasoft · Estilo vintage · Cintura ancha con forma V para
-                            estilizar</p>
-                        <p><strong>Tallas:</strong> CH - L</p>
-                        <div class="colores">
-                            <span class="color negro"
-                                onclick="cambiarImagen('short2','../images/shorts/short-bicolor-negro.jpg')"></span>
-                            <span class="color rojo"
-                                onclick="cambiarImagen('short2','../images/shorts/short-rojo.jpg')"></span>
-                            <span class="color azul-rey"
-                                onclick="cambiarImagen('short2','../images/shorts/short-azul-rey.jpg')"></span>
-                            <span class="color fucsia"
-                                onclick="cambiarImagen('short2','../images/shorts/short-rosa-neon.jpg')"></span>
-                        </div>
-                        <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
-                            Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-            
+            </div>            
         </div>
     </section>
 

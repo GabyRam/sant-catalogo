@@ -36,12 +36,9 @@
             </button>
 
             <div class="navbar-logos">
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../nueva-coleccion.html">
                     <img src="../images/logos/LOGO SANT_BLACK.png" alt="SANT Activewear" class="logo-img">
                 </a>
-                <!-- <a class="navbar-zweat" href="../zweat/index.html">
-                    zweat
-                </a> -->
             </div>
 
             <button class="carrito-navbar-btn" onclick="toggleCarrito()">
@@ -51,8 +48,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCatalogo">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Nueva
-                            Colección ✦</a></li>
+                    <li class="nav-item"><a class="nav-link nav-nueva-coleccion" href="../nueva-coleccion.html">✦ Recién llegado ✦</a></li>
                     <li class="nav-item"><a class="nav-link" href="bikers.html">Bikers</a></li>
                     <li class="nav-item"><a class="nav-link" href="calcetas.html">Calcetas</a></li>
                     <li class="nav-item"><a class="nav-link" href="chamarras.html">Chamarras</a></li>
@@ -95,8 +91,39 @@
         <div class="row g-4">
 
             <div class="col-12 col-md-6 col-lg-4">
+                <div class="card producto border-0 producto-nuevo">
+                    <img id="legging4" src="../images/leggings/legging-flare-negro.jpeg" class="card-img-top"
+                        alt="Flow Pants">
+                    <div class="card-body">
+                        <h5>Flow Pants</h5>
+                        <p class="precio" data-nombre="Flow Pants"></p>
+                        <p class="descripcion">Legging acampanado · Cintura V · Tela súper soft (alta suavidad y
+                            elasticidad) · Estiliza la figura</p>
+                        <p><strong>Tallas:</strong> CH - XL</p>
+                        <div class="colores">
+                            <span class="color negro color-nuevo"
+                                onclick="cambiarImagen('legging4','../images/leggings/legging-flare-negro.jpeg')"></span>
+                            <!-- <span class="color verde-jade"
+                                onclick="cambiarImagen('legging4','../images/leggings/legging-flare-esmeralda.jpeg')"></span>
+                            <span class="color vino"
+                                onclick="cambiarImagen('legging4','../images/leggings/legging-flare-vino.jpeg')"></span>
+                            <span class="color cafe color-nuevo"
+                                onclick="cambiarImagen('legging4','../images/leggings/legging-flare-cafe.jpeg')"></span> -->
+                        </div>
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Flow Pants','LEGGINGKW-004',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al carrito</button>
+                        <!-- <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Flow Pants','LEGGINGKW-004',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#4999B4'},
+                            {nombre:'Vino',bg:'#682d4d'},{nombre:'Cafe',bg:'#61341f'},{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al carrito</button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="legging1" src="../images/leggings/legging-negro-V.jpg" class="card-img-top"
+                    <img id="legging1" src="../images/leggings/legging-azul-rey.jpeg" class="card-img-top"
                         alt="Legging cintura V negro">
                     <div class="card-body">
                         <h5>Legging Cintura V</h5>
@@ -106,6 +133,8 @@
                         <p><strong>Tallas:</strong> CH - XL</p>
                         <p class="ultimas-piezas"><strong>NUEVOS COLORES</strong></p>
                         <div class="colores">
+                            <span class="color azul-rey color-nuevo"
+                                onclick="cambiarImagen('legging1','../images/leggings/legging-azul-rey.jpeg')"></span>
                             <span class="color negro"
                                 onclick="cambiarImagen('legging1','../images/leggings/legging-negro-V.jpg')"></span>
                             <span class="color lavanda"
@@ -116,15 +145,14 @@
                                 onclick="cambiarImagen('legging1','../images/leggings/legging-azul-marino.jpg')"></span>
                             <span class="color gris"
                                 onclick="cambiarImagen('legging1','../images/leggings/legging-gris.jpg')"></span>
-                            <span class="color rojo color-nuevo"
-                                onclick="cambiarImagen('legging1','../images/leggings/legging-rojo.jpeg')"></span>
-                            <span class="color azul-rey color-nuevo"
-                                onclick="cambiarImagen('legging1','../images/leggings/legging-azul-rey.jpeg')"></span>
+                            <!-- <span class="color rojo color-nuevo"
+                                onclick="cambiarImagen('legging1','../images/leggings/legging-rojo.jpeg')"></span> -->
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Cintura V','LEGGINGKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},
+                            onclick="abrirModal('Legging Cintura V','LEGGINGKW-001',['CH','M','L','XL'],[{nombre:'Azul Rey',bg:'#0B7FF2', noTallas:['XL']},
+                            {nombre:'Negro',bg:'#000000'},
                             {nombre:'Lavanda',bg:'#A799BC'},{nombre:'Azul',bg:'#adc1f4'},{nombre:'Azul marino',bg:'#2a385b'},
-                            {nombre:'Gris Oxford',bg:'#808080'},{nombre:'Rojo',bg:'#E2011B', noTallas:['XL']},{nombre:'Azul Rey',bg:'#0B7FF2', noTallas:['XL']}])">+
+                            {nombre:'Gris Oxford',bg:'#808080'}])">+
                             Agregar al carrito</button>
                     </div>
                 </div>
@@ -132,7 +160,7 @@
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0">
-                    <img id="legging2" src="../images/leggings/legging-flare-esmeralda.jpeg" class="card-img-top"
+                    <img id="legging2" src="../images/leggings/legging-flare-negro.jpeg" class="card-img-top"
                         alt="Legging Flare">
                     <div class="card-body">
                         <h5>Legging Flare</h5>
@@ -146,14 +174,18 @@
                                 onclick="cambiarImagen('legging2','../images/leggings/legging-flare-esmeralda.jpeg')"></span>
                             <span class="color vino"
                                 onclick="cambiarImagen('legging2','../images/leggings/legging-flare-vino.jpeg')"></span>
-                            <span class="color cafe color-nuevo"
-                                onclick="cambiarImagen('legging2','../images/leggings/legging-flare-cafe.jpeg')"></span>
+                            <!-- <span class="color cafe color-nuevo"
+                                onclick="cambiarImagen('legging2','../images/leggings/legging-flare-cafe.jpeg')"></span> -->
                             <span class="color negro color-nuevo"
                                 onclick="cambiarImagen('legging2','../images/leggings/legging-flare-negro.jpeg')"></span>
                         </div>
-                        <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#4999B4'},
+                        <!-- <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#2A6C7E'},
                             {nombre:'Vino',bg:'#682d4d'},{nombre:'Cafe',bg:'#61341f'},{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al carrito</button> -->
+                        <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#2A6C7E'},
+                            {nombre:'Vino',bg:'#682d4d'},{nombre:'Negro',bg:'#000000'}])">+
                             Agregar al carrito</button>
                     </div>
                 </div>
@@ -162,7 +194,7 @@
             <!-- LEGGING YOGA -->
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card producto border-0 producto-nuevo">
+                <div class="card producto border-0">
                     <div class="producto-img tiene-espalda">
                         <img id="legging4" src="../images/leggings/legging-yoga-cafe.jpg" class="card-img-top img-frente"
                             alt="Legging Yoga">
@@ -190,7 +222,7 @@
 
             <!-- LEGGING -->
 
-            <div class="col-12 col-md-6 col-lg-4">
+            <!-- <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0 producto-nuevo">
                     <img id="legging5" src="../images/leggings/legging-negro.jpg" class="card-img-top" alt="Legging">
                     <div class="card-body">
@@ -212,7 +244,7 @@
                             Agregar al carrito</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
