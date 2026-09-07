@@ -16,7 +16,8 @@ const PRECIOS = {
     'Biker': 389, 'Leggings': 499, 'Legging Yoga': 499,
     'Pantalón Yoga': 499, 'Chamarra': 499, 'Jumper': 499,
     'Falda': 499, 'Legging Flare': 549, 'Calceta Yoga': 65,
-    'Calceta Moda': 60, 'Vestido': 549, 'Flow Pants': 549
+    'Calceta Moda': 60, 'Vestido': 549, 'Flow Pants': 549,
+    'Short Bitono': 389, 'Tank Top': 389
 };
 
 const CALCETAS_PRECIOS = {

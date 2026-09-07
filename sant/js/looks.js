@@ -47,7 +47,7 @@ const LOOKS_DATA = {
                 colores: [
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' }, { nombre: 'Azul marino', bg: '#2a385b' },
-                    { nombre: 'Gris Oxford', bg: '#808080' }, { nombre: 'Rojo', bg: '#E2011B', noTallas: ['XL'] }, { nombre: 'Azul Rey', bg: '#0B7FF2', noTallas: ['XL'] }
+                    { nombre: 'Gris Oxford', bg: '#808080' }, { nombre: 'Rojo', bg: '#E2011B', noTallas: ['XL'] }, { nombre: 'Azul Rey', bg: '#214BD1', noTallas: ['XL'] }
                 ],
                 imagen: 'images/leggings/legging-negro-V.jpg'
             },
@@ -106,7 +106,7 @@ const LOOKS_DATA = {
                 sku: 'TANKKW-001',
                 tallas: ['CH', 'M', 'L'],
                 colores: [
-                    { nombre: 'Negro', bg: '#000000' }, { nombre: 'Rojo', bg: '#E2011B' }, { nombre: 'Azul Rey', bg: '#0B7FF2' },
+                    { nombre: 'Negro', bg: '#000000' }, { nombre: 'Rojo', bg: '#E2011B' }, { nombre: 'Azul Rey', bg: '#214BD1' },
                     { nombre: 'Rosa Neón', bg: '#fc53ae' }
                 ],
                 imagen: 'images/tops/tank-bicolor-negro.jpg'
@@ -119,7 +119,7 @@ const LOOKS_DATA = {
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' }, { nombre: 'Azul marino', bg: '#2a385b' },
                     { nombre: 'Gris Oxford', bg: '#808080' }, { nombre: 'Rojo', bg: '#E2011B', noTallas: ['XL'] },
-                    { nombre: 'Azul Rey', bg: '#0B7FF2', noTallas: ['XL'] }
+                    { nombre: 'Azul Rey', bg: '#214BD1', noTallas: ['XL'] }
                 ],
                 imagen: 'images/leggings/legging-negro-V.jpg'
             },
@@ -172,7 +172,7 @@ const LOOKS_DATA = {
                     { nombre: 'Negro', bg: '#000000' },
                     { nombre: 'Lavanda', bg: '#A799BC' }, { nombre: 'Azul', bg: '#adc1f4' }, { nombre: 'Azul marino', bg: '#2a385b' },
                     { nombre: 'Gris Oxford', bg: '#808080' }, { nombre: 'Rojo', bg: '#E2011B', noTallas: ['XL'] },
-                    { nombre: 'Azul Rey', bg: '#0B7FF2', noTallas: ['XL'] }
+                    { nombre: 'Azul Rey', bg: '#214BD1', noTallas: ['XL'] }
                 ],
                 imagen: 'images/leggings/legging-negro-V.jpg'
             },
@@ -277,7 +277,7 @@ const LOOKS_DATA = {
                 sku: 'SHORTKW-002',
                 tallas: ['CH', 'M', 'L'],
                 colores: [
-                   {nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'},{nombre:'Rosa Neón',bg:'#fc53ae'}
+                   {nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#214BD1'},{nombre:'Rosa Neón',bg:'#fc53ae'}
                 ],
                 imagen: 'images/shorts/short-bicolor-negro.jpg'
             },
@@ -328,7 +328,7 @@ const LOOKS_DATA = {
                 sku: 'TOPKW-004',
                 tallas: ['CH', 'M', 'L'],
                 colores: [
-                    {nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#0B7FF2'}
+                    {nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#214BD1'}
                 ],
                 imagen: 'images/tops/top-asimetrico-negro.jpg'
             },

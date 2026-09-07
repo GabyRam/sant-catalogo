@@ -258,7 +258,7 @@ const PRODUCTO_META = {
       'Azul marino': { bg: '#2a385b' },
       'Gris Oxford': { bg: '#808080' },
       'Rojo':        { bg: '#E2011B', noTallas: ['XL'] },
-      'Azul Rey':    { bg: '#0B7FF2', noTallas: ['XL'] },
+      'Azul Rey':    { bg: '#214BD1', noTallas: ['XL'] },
     }
   },
   'LEGGINGKW-002': {
