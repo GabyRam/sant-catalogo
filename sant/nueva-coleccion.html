@@ -106,15 +106,15 @@
                         <div class="colores">
                             <span class="color negro"
                                 onclick="cambiarImagen('top6','images/tops/top-tirante-ancho-negro.jpg', 'images/tops/top-tirante-ancho-negro-espalda.jpg')"></span>
-                            <!-- <span class="color azul-marino"
-                                onclick="cambiarImagen('top6','images/tops/top-tirante-ancho-azul-marino.jpg', 'images/tops/top-tirante-ancho-azul-marino-espalda.jpg')"></span> -->
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('top6','images/tops/top-tirante-ancho-azul-marino.jpg', 'images/tops/top-tirante-ancho-azul-marino-espalda.jpg')"></span>
                         </div>
-                        <!-- <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top tirante ancho','TOPKW-003',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
-                            Agregar al carrito</button> -->
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Top tirante ancho','TOPKW-003',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Top tirante ancho','TOPKW-003',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
                             Agregar al carrito</button>
+                        <!-- <button class="btn-agregar-carrito"
+                            onclick="abrirModal('Top tirante ancho','TOPKW-003',['CH','M','L'],[{nombre:'Negro',bg:'#000000'}])">+
+                            Agregar al carrito</button> -->
                     </div>
                 </div>
             </div>
@@ -202,14 +202,14 @@
                                 onclick="cambiarImagen('top9','images/tops/top-rojo.jpg', 'images/tops/top-rojo-espalda.jpg')"></span> -->
                             <span class="color azul-rey"
                                 onclick="cambiarImagen('top9','images/tops/top-azul-rey.jpg', 'images/tops/top-azul-rey-espalda.jpg')"></span>
-                            <!-- <span class="color fucsia"
-                                onclick="cambiarImagen('top9','images/tops/top-rosa-neon.jpg', 'images/tops/top-rosa-neon-espalda.jpg')"></span> -->
+                            <span class="color fucsia"
+                                onclick="cambiarImagen('top9','images/tops/top-rosa-neon.jpg', 'images/tops/top-rosa-neon-espalda.jpg')"></span>
                         </div>
                         <!-- <button class="btn-agregar-carrito"
                             onclick="abrirModal('Tank Top', 'TANKKW-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#214BD1'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                             Agregar al carrito</button> -->
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Tank Top', 'TANKKW-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'}])">+
+                            onclick="abrirModal('Tank Top', 'TANKKW-001',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                             Agregar al carrito</button>
                     </div>
                 </div>
@@ -273,20 +273,21 @@
                         <div class="colores">
                             <span class="color negro"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-negro.jpeg')"></span>
-                            <!-- <span class="color verde-jade"
+                            <span class="color verde-jade"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-esmeralda.jpeg')"></span>
                             <span class="color vino"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-vino.jpeg')"></span>
-                            <span class="color cafe color-nuevo"
+                            <!-- <span class="color cafe color-nuevo"
                                 onclick="cambiarImagen('legging2','images/leggings/legging-flare-cafe.jpeg')"></span> -->
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[
+                                {nombre:'Negro',bg:'#000000'},
+                                {nombre:'Verde Jade',bg:'#2A6C7E'},
+                                {nombre:'Vino',bg:'#591A2D'},
+                            // {nombre:'Cafe',bg:'#61341f'},
+                            ])">+
                             Agregar al carrito</button>
-                        <!-- <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Legging Flare','LEGGINGKW-002',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#4999B4'},
-                            {nombre:'Vino',bg:'#682d4d'},{nombre:'Cafe',bg:'#61341f'},{nombre:'Negro',bg:'#000000'}])">+
-                            Agregar al carrito</button> -->
                     </div>
                 </div>
             </div>
@@ -294,7 +295,7 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card producto border-0 producto-nuevo">
                     <div class="producto-img tiene-detalle">
-                        <img id="top8" src="images/leggings/yoga-kiwi-negro.jpg" class="card-img-top" alt="Yoga kiwi">
+                        <img id="legging6" src="images/leggings/yoga-kiwi-negro.jpg" class="card-img-top" alt="Yoga kiwi">
                         <img src="images/leggings/yoga-kiwi-negro-bolsa.jpg" class="img-espalda" alt="Yoga kiwi bolsa">
                     </div>
                     <div class="card-body">
@@ -304,17 +305,19 @@
                         <p><strong>Tallas:</strong> CH - XL</p>
                         <div class="colores">
                             <span class="color negro"
-                                onclick="cambiarImagen('legging4','images/leggings/legging-flare-negro.jpg', 'images/leggings/legging-flare-negro-bolsa.jpg')"></span>
+                                onclick="cambiarImagen('legging6','images/leggings/yoga-kiwi-negro.jpg', 'images/leggings/yoga-kiwi-negro-bolsa.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('legging6','images/leggings/yoga-kiwi-marino.jpg', 'images/leggings/yoga-kiwi-marino-bolsa.jpg')"></span>
                             <!-- <span class="color verde-jade"
-                                            onclick="cambiarImagen('legging4','images/leggings/legging-flare-esmeralda.jpeg')"></span>
+                                            onclick="cambiarImagen('legging6','images/leggings/legging-flare-esmeralda.jpeg')"></span>
                                         <span class="color vino"
-                                            onclick="cambiarImagen('legging4','images/leggings/legging-flare-vino.jpeg')"></span>
+                                            onclick="cambiarImagen('legging6','images/leggings/legging-flare-vino.jpeg')"></span>
                                         <span class="color cafe color-nuevo"
-                                            onclick="cambiarImagen('legging4','images/leggings/legging-flare-cafe.jpeg')"></span> 
+                                            onclick="cambiarImagen('legging6','images/leggings/legging-flare-cafe.jpeg')"></span> 
                             -->
                         </div>
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Flow Pants','LEGGINGKW-004',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'}])">+
+                            onclick="abrirModal('Flow Pants','LEGGINGKW-004',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
                             Agregar al carrito</button>
                         <!-- <button class="btn-agregar-carrito"
                                         onclick="abrirModal('Flow Pants','LEGGINGKW-004',['CH','M','L','XL'],[{nombre:'Verde Jade',bg:'#4999B4'},
@@ -350,14 +353,14 @@
                                         onclick="cambiarImagen('short2','images/shorts/short-rojo.jpg')"></span> -->
                                     <span class="color azul-rey"
                                         onclick="cambiarImagen('short2','images/shorts/short-azul-rey.jpg')"></span>
-                                    <!-- <span class="color fucsia"
-                                        onclick="cambiarImagen('short2','images/shorts/short-rosa-neon.jpg')"></span> -->
+                                    <span class="color fucsia"
+                                        onclick="cambiarImagen('short2','images/shorts/short-rosa-neon.jpg')"></span>
                                 </div>
                                 <!-- <button class="btn-agregar-carrito"
                                     onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Rojo',bg:'#E2011B'},{nombre:'Azul Rey',bg:'#214BD1'},{nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                                     Agregar al carrito</button> -->
                                 <button class="btn-agregar-carrito"
-                                    onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'}])">+
+                                    onclick="abrirModal('Short Bicolor','SHORTKW-002',['CH','M','L'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'}, {nombre:'Rosa Neón',bg:'#fc53ae'}])">+
                                     Agregar al carrito</button>
                             </div>
                         </div>
@@ -422,6 +425,8 @@
                                 onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-negra.jpg', 'images/chamarras/chamarra-basica-negra-detalle.jpg')"></span>
                             <span class="color azul-rey"
                                 onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-azul-rey.jpg', 'images/chamarras/chamarra-basica-azul-rey-cierre.jpg')"></span>
+                            <span class="color azul-marino"
+                                onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-azul-marino.jpg', 'images/chamarras/chamarra-basica-azul-marino-cierre.jpg')"></span>
                             <!-- <span class="color cafe"
                                 onclick="cambiarImagen('chamarra4','images/chamarras/chamarra-basica-cafe.jpg', 'images/chamarras/chamarra-basica-cafe-detalle.jpg')"></span> -->
                         </div>
@@ -429,7 +434,7 @@
                             onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Marino',bg:'#2a385b'},{nombre:'Café',bg:'#6F4E37'}])">+
                             Agregar al carrito</button> -->
                         <button class="btn-agregar-carrito"
-                            onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'}])">+
+                            onclick="abrirModal('Chamarra Básica','JACKETKW-001',['CH','M','L','XL'],[{nombre:'Negro',bg:'#000000'},{nombre:'Azul Rey',bg:'#214BD1'},{nombre:'Azul Marino',bg:'#2a385b'}])">+
                             Agregar al carrito</button>
                     </div>
                 </div>
